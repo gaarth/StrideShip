@@ -66,13 +66,11 @@ export function UseCases() {
 
   return (
     <section id="use-cases" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
-          <motion.p variants={fadeUp} style={{ fontSize: "clamp(13px, 1.1vw, 16px)", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#60a5fa", marginBottom: "20px" }}>
-            Use Cases
-          </motion.p>
-          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.04em", color: "#F1F5F9" }}>
-            Systems we build.
+          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
+            Systems<br />
+            <span style={{ fontWeight: 300, fontStyle: "italic" }}>we build.</span>
           </motion.h2>
         </motion.div>
 
@@ -85,7 +83,6 @@ export function UseCases() {
                 ...glassStyle,
                 padding: "clamp(36px, 4vw, 56px)", transition: "border-color 0.2s",
               }}>
-                <span style={{ fontSize: "14px", fontFamily: "monospace", color: "#64748B", display: "block", marginBottom: "24px", letterSpacing: "0.05em" }}>{c.num}</span>
                 <h3 style={{ fontSize: "clamp(1.5rem, 2vw, 1.875rem)", fontWeight: 500, color: "#F1F5F9", letterSpacing: "-0.02em", marginBottom: "16px" }}>{c.title}</h3>
                 <p style={{ fontSize: "clamp(16px, 1.4vw, 19px)", color: "#94A3B8", lineHeight: 1.7, marginBottom: "32px" }}>{c.desc}</p>
 
@@ -96,7 +93,7 @@ export function UseCases() {
                       <ul style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "24px", paddingBottom: "16px", listStyle: "none" }}>
                         {c.details.map((d, i) => (
                           <li key={i} style={{ display: "flex", alignItems: "center", gap: "16px", fontSize: "clamp(15px, 1.3vw, 17px)", color: "#94A3B8", marginBottom: "16px" }}>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2.5" strokeLinecap="round" style={{ flexShrink: 0 }}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B8FA8" strokeWidth="2.5" strokeLinecap="round" style={{ flexShrink: 0 }}>
                               <path d="M20 6L9 17l-5-5" />
                             </svg>
                             {d}
@@ -109,7 +106,7 @@ export function UseCases() {
 
                 <button onClick={() => setOpen(isOpen ? null : c.id)}
                   style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "clamp(14px, 1.1vw, 16px)", color: "#64748B", background: "none", border: "none", cursor: "pointer", padding: "8px 0", transition: "color 0.2s", fontWeight: 500 }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#60a5fa")}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#6B8FA8")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#64748B")}>
                   <motion.svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
                     animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>

@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
+import { CostOfManual } from "@/components/sections/cost-of-manual";
 import { Problem } from "@/components/sections/problem";
 import { Capabilities } from "@/components/sections/capabilities";
 import { Process } from "@/components/sections/process";
@@ -46,6 +47,7 @@ export default function Home() {
       
       <Navbar />
       <Hero />
+      <CostOfManual />
       <Problem />
       <Capabilities />
       <Process />

@@ -16,12 +16,13 @@ const glassStyle = {
 export function CTA() {
   return (
     <section id="cta" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div
           style={{
             ...glassStyle,
             padding: "clamp(80px, 10vw, 140px) clamp(32px, 5vw, 64px)",
             textAlign: "center", position: "relative", overflow: "hidden",
+            zIndex: 1, // ensure the glass box sits properly Context
           }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}
         >
@@ -29,19 +30,55 @@ export function CTA() {
           <div style={{
             position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
             width: "800px", height: "500px",
-            background: "radial-gradient(ellipse, rgba(59,130,246,0.1), transparent 70%)",
-            pointerEvents: "none", zIndex: -1
+            background: "radial-gradient(ellipse, rgba(107,143,168,0.1), transparent 70%)",
+            pointerEvents: "none", zIndex: 0
           }} />
 
-          <motion.p variants={fadeUp} style={{ position: "relative", fontSize: "clamp(13px, 1.1vw, 16px)", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#60a5fa", marginBottom: "clamp(24px, 3vw, 32px)" }}>
-            Get Started
-          </motion.p>
-          <motion.h2 variants={fadeUp} style={{ position: "relative", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.04em", color: "#F1F5F9", marginBottom: "clamp(24px, 3vw, 32px)" }}>
-            Let&rsquo;s look at your operations.
+          {/* LARGE DECORATIVE WATERMARK */}
+          <div style={{
+            position: "absolute",
+            top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+            opacity: 0.035,
+            fontWeight: 900, // pushed to 900 for extra geometric thickness
+            letterSpacing: "-0.04em",
+            color: "white", 
+            pointerEvents: "none",
+            userSelect: "none",
+            whiteSpace: "nowrap",
+            zIndex: 0,
+            fontSize: "clamp(10rem, 18vw, 24rem)", 
+            fontFamily: '"Eurostile", "Microgramma", "Arial Black", sans-serif',
+            fontStyle: "italic",
+            textTransform: "uppercase",
+            // Implementing the hollow/acrylic glass bevel look from the reference image
+            WebkitTextStroke: "4px white",
+            WebkitTextFillColor: "transparent",
+            // Stretch the text slightly to give it that ultra-wide industrial aesthetic
+            transform: "translate(-50%, -50%) scaleX(1.2)", 
+          }}>
+            StrideShip
+          </div>
+
+          <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "clamp(24px, 3vw, 32px)" }}>
+            Let&rsquo;s look at<br />
+            <span style={{ fontWeight: 300, fontStyle: "italic" }}>your operations.</span>
           </motion.h2>
 
           <motion.p variants={fadeUp} style={{
             position: "relative",
+            zIndex: 1,
+            fontSize: "clamp(16px, 1.5vw, 22px)",
+            color: "#CBD5E1",
+            maxWidth: "680px",
+            margin: "0 auto clamp(32px, 4vw, 48px)",
+            lineHeight: 1.6,
+          }}>
+            If your team is losing weekends to customs queries, chasing carriers for updates, or living in spreadsheets — that&rsquo;s the conversation.
+          </motion.p>
+
+          <motion.p variants={fadeUp} style={{
+            position: "relative",
+            zIndex: 1,
             fontSize: "clamp(16px, 1.4vw, 20px)",
             color: "#94A3B8",
             fontWeight: 500,
@@ -51,7 +88,7 @@ export function CTA() {
             15-minute call · No commitment · Honest assessment
           </motion.p>
 
-          <motion.div variants={fadeUp} style={{ position: "relative", display: "inline-block" }}>
+          <motion.div variants={fadeUp} style={{ position: "relative", zIndex: 1, display: "inline-block" }}>
             <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={70} paddingX={60} fontSize={18}>
               Book a Demo
             </StarButton>
@@ -59,6 +96,7 @@ export function CTA() {
 
           <motion.p variants={fadeUp} style={{
             position: "relative",
+            zIndex: 1,
             fontSize: "clamp(15px, 1.3vw, 18px)",
             color: "#64748B",
             maxWidth: "520px",

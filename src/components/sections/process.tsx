@@ -42,15 +42,12 @@ export function Process() {
 
   return (
     <section id="process" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         {/* Header */}
         <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
-          <motion.p variants={fadeUp} style={{ fontSize: "clamp(13px, 1.1vw, 16px)", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#60a5fa", marginBottom: "20px" }}>
-            — Our Process —
-          </motion.p>
-          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.04em" }}>
+          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
             From diagnosis<br />
-            <span style={{ color: "#64748B" }}>to deployment.</span>
+            <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>to deployment.</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", marginTop: "24px", maxWidth: "600px", lineHeight: 1.7 }}>
             A five-phase engagement designed to deliver precision infrastructure without disrupting what's already running.
@@ -70,8 +67,8 @@ export function Process() {
                   backgroundColor: "rgba(10, 15, 30, 0.25)",
                   backdropFilter: "blur(20px)", // Use highly-optimized 20px blur
                   WebkitBackdropFilter: "blur(20px)",
-                  border: isHovered ? "1px solid rgba(59,130,246,0.3)" : "none",
-                  boxShadow: isHovered ? "0 10px 40px rgba(59,130,246,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)",
+                  border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "none",
+                  boxShadow: isHovered ? "0 10px 40px rgba(107,143,168,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)",
                   padding: "clamp(24px, 3.5vw, 32px)", // slightly reduced inner padding
                   cursor: "default",
                   transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -81,7 +78,7 @@ export function Process() {
                 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "20px" }}>
                   <div>
-                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#60a5fa", display: "block", marginBottom: "12px", letterSpacing: "0.05em" }}>{step.num}</span>
+                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#6B8FA8", display: "block", marginBottom: "12px", letterSpacing: "0.05em" }}>{step.num}</span>
                     <h3 style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", fontWeight: 600, color: "#F1F5F9", letterSpacing: "-0.01em", marginBottom: "6px" }}>{step.title}</h3>
                     <p style={{ fontSize: "clamp(13px, 1.1vw, 14px)", color: "#8b9ab0" }}>{step.sub}</p>
                   </div>
@@ -90,9 +87,9 @@ export function Process() {
                   <div style={{
                     width: "36px", height: "36px", borderRadius: "50%",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    backgroundColor: isHovered ? "rgba(59,130,246,0.15)" : "rgba(255,255,255,0.03)",
-                    border: isHovered ? "1px solid rgba(59,130,246,0.3)" : "1px solid rgba(255,255,255,0.1)",
-                    color: isHovered ? "#60a5fa" : "#F1F5F9",
+                    backgroundColor: isHovered ? "rgba(107,143,168,0.15)" : "rgba(255,255,255,0.03)",
+                    border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.1)",
+                    color: isHovered ? "#6B8FA8" : "#F1F5F9",
                     transition: "all 0.3s ease",
                     flexShrink: 0
                   }}>

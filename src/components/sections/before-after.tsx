@@ -29,14 +29,12 @@ const after = [
 export function BeforeAfter() {
   return (
     <section id="before-after" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
-          <motion.p variants={fadeUp} style={{ fontSize: "clamp(13px, 1.1vw, 16px)", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#60a5fa", marginBottom: "20px" }}>
-            — The Transformation —
-          </motion.p>
-          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.04em", color: "#F1F5F9" }}>
-            Before vs After
+          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
+            Before<br />
+            <span style={{ fontWeight: 300, fontStyle: "italic" }}>vs After</span>
           </motion.h2>
         </motion.div>
 
@@ -69,8 +67,8 @@ export function BeforeAfter() {
             style={{ ...glassStyle, border: "1px solid rgba(255,255,255,0.06)", padding: "clamp(40px, 4.5vw, 64px)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "clamp(32px, 4vw, 48px)" }}>
               <div style={{ width: "44px", height: "44px", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center",
-                backgroundColor: "rgba(59,130,246,0.08)" }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                backgroundColor: "rgba(107,143,168,0.08)" }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B8FA8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" opacity="0.3" />
                   <path d="M9 12l2 2 4-4" />
                 </svg>
@@ -80,7 +78,7 @@ export function BeforeAfter() {
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
               {after.map((item, i) => (
                 <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "16px", fontSize: "clamp(15px, 1.3vw, 18px)", color: "#94A3B8", lineHeight: 1.7, marginBottom: i < after.length - 1 ? "clamp(16px, 1.8vw, 22px)" : 0 }}>
-                  <span style={{ marginTop: "11px", width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#3b82f6", flexShrink: 0, boxShadow: "0 0 8px rgba(59,130,246,0.5)" }} />
+                  <span style={{ marginTop: "11px", width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#6B8FA8", flexShrink: 0, boxShadow: "0 0 8px rgba(107,143,168,0.5)" }} />
                   <span>{item}</span>
                 </li>
               ))}

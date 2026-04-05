@@ -19,7 +19,7 @@ export function Hero() {
       >
         {/* Removed internal fade div because BeamsBackground applies a CSS gradient mask for true flow */}
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", maxWidth: "1200px", padding: "0 clamp(24px, 5vw, 64px)", marginTop: "12vh", position: "relative", zIndex: 5 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", maxWidth: "100%", width: "100%", padding: "0 clamp(24px, 5vw, 64px)", marginTop: "12vh", position: "relative", zIndex: 5 }}>
           {/* Headline */}
           <h1 style={{
             fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
@@ -35,7 +35,7 @@ export function Hero() {
             color: "#CBD5E1", maxWidth: "680px", lineHeight: 1.6,
             margin: "0 0 clamp(32px, 3.5vw, 48px) 0",
           }}>
-            From RFQs to shipment workflows, we eliminate the systems slowing your business down.
+            From ICEGATE query loops to RFQ pipelines — we build the custom operational systems that eliminate the manual work destroying your margins.
           </p>
 
           {/* CTAs */}

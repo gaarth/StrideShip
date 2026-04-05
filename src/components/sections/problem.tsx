@@ -54,16 +54,13 @@ export function Problem() {
 
   return (
     <section id="problem" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
-          <motion.p variants={fadeUp}
-            style={{ fontSize: "clamp(13px, 1.1vw, 16px)", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "#60a5fa", marginBottom: "20px" }}>
-            — The Problem —
-          </motion.p>
           <motion.h2 variants={fadeUp}
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 600, lineHeight: 1.05, letterSpacing: "-0.04em", color: "#F1F5F9", marginBottom: "24px" }}>
-            Where logistics<br className="hidden md:block" />
-            <span style={{ color: "#64748B" }}>operations break down.</span>
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "24px" }}>
+            Where logistics<br />
+            operations<br />
+            <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>break down.</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", maxWidth: "600px", lineHeight: 1.6 }}>
             Growing logistics businesses hit the same ceiling. Manual processes that were manageable at small scale become the constraint at every level of growth.
@@ -81,8 +78,8 @@ export function Problem() {
                 style={{
                   ...glassStyle,
                   borderRadius: "20px",
-                  border: isHovered ? "1px solid rgba(59,130,246,0.3)" : "1px solid rgba(255,255,255,0.06)",
-                  boxShadow: isHovered ? "0 10px 40px rgba(59,130,246,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : glassStyle.boxShadow,
+                  border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.06)",
+                  boxShadow: isHovered ? "0 10px 40px rgba(107,143,168,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : glassStyle.boxShadow,
                   padding: "clamp(28px, 4vw, 40px)",
                   cursor: "default",
                   transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -91,7 +88,6 @@ export function Problem() {
                 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "20px" }}>
                   <div>
-                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#60a5fa", display: "block", marginBottom: "16px", letterSpacing: "0.05em" }}>{c.num}</span>
                     <h3 style={{ fontSize: "clamp(1.25rem, 1.8vw, 1.6rem)", fontWeight: 600, color: "#F1F5F9", letterSpacing: "-0.01em", marginBottom: "8px" }}>{c.title}</h3>
                     <p style={{ fontSize: "clamp(14px, 1.2vw, 15px)", color: "#8b9ab0" }}>{c.desc}</p>
                   </div>
@@ -99,9 +95,9 @@ export function Problem() {
                   <div style={{
                     width: "36px", height: "36px", borderRadius: "50%",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    backgroundColor: isHovered ? "rgba(59,130,246,0.15)" : "rgba(255,255,255,0.03)",
-                    border: isHovered ? "1px solid rgba(59,130,246,0.3)" : "1px solid rgba(255,255,255,0.1)",
-                    color: isHovered ? "#60a5fa" : "#F1F5F9",
+                    backgroundColor: isHovered ? "rgba(107,143,168,0.15)" : "rgba(255,255,255,0.03)",
+                    border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.1)",
+                    color: isHovered ? "#6B8FA8" : "#F1F5F9",
                     transition: "all 0.3s ease",
                     flexShrink: 0
                   }}>
@@ -121,7 +117,7 @@ export function Problem() {
                       <ul style={{ listStyle: "none", padding: 0 }}>
                         {c.items.map((item, idx) => (
                           <li key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "16px", fontSize: "clamp(14px, 1.2vw, 16px)", color: "#cbd5e1", lineHeight: 1.6, marginBottom: "16px" }}>
-                            <span style={{ marginTop: "10px", width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#3b82f6", flexShrink: 0, boxShadow: "0 0 10px #3b82f6" }} />
+                            <span style={{ marginTop: "10px", width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#6B8FA8", flexShrink: 0, boxShadow: "0 0 10px #6B8FA8" }} />
                             {item}
                           </li>
                         ))}

@@ -36,7 +36,7 @@ export function StarButton({
   href,
   lightWidth = 110,
   duration = 3,
-  lightColor = "#3b82f6",
+  lightColor = "#6B8FA8",
   backgroundColor = "#0C1322",
   borderWidth = 1,
   height = 56,

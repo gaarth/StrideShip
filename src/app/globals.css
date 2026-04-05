@@ -22,7 +22,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3);
+  background-color: rgba(107,143,168, 0.3);
   color: #fff;
 }
 
@@ -41,7 +41,7 @@ body {
   to { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 
 /* Custom scrollbar */

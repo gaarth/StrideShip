@@ -3,10 +3,19 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 
+const highlightedStyle = {
+  background: "linear-gradient(135deg, #F8FAFC 20%, #6B8FA8 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+  color: "transparent",
+  fontWeight: 800,
+};
+
 const items = [
-  { text: "We work with a limited number of clients.", sub: "Quality over volume. Always." },
-  { text: "Every system is custom-built.", sub: "No templates. No shortcuts." },
-  { text: "Built for scale, not just speed.", sub: "Infrastructure that compounds over time." },
+  { text: <>We work with a <span style={highlightedStyle}>limited</span> number of clients.</>, sub: "Quality over volume. Always." },
+  { text: <>Every system is <span style={highlightedStyle}>custom-built</span>.</>, sub: "No templates. No shortcuts." },
+  { text: <>Built for <span style={highlightedStyle}>scale</span>, not just <span style={highlightedStyle}>speed</span>.</>, sub: "Infrastructure that compounds over time." },
 ];
 
 export function Positioning() {
@@ -16,24 +25,20 @@ export function Positioning() {
     offset: ["start start", "end end"],
   });
 
-  // Track the active sentence via pure React state
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Drive the state strictly based on scroll position bounds.
-  // This physically destroys the old text from the DOM before rendering the next,
-  // making overlapping bugs 100% mechanically impossible.
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.30) {
+    if (latest < 0.33) {
       setActiveIndex(0);
-    } else if (latest >= 0.30 && latest < 0.60) {
+    } else if (latest >= 0.33 && latest < 0.66) {
       setActiveIndex(1);
     } else {
-      setActiveIndex(2); // Last sentence gets a huge 40% of the timeline to sit firmly on screen
+      setActiveIndex(2); 
     }
   });
 
   return (
-    <section ref={sectionRef} id="positioning" style={{ height: "450vh", position: "relative" }}>
+    <section ref={sectionRef} id="positioning" style={{ height: "250vh", position: "relative" }}>
       <div style={{
         position: "sticky",
         top: 0,
@@ -45,26 +50,13 @@ export function Positioning() {
         overflow: "hidden",
       }}>
         
-        {/* The label is part of the standard vertical flex layout, so it can never mathematically overlap with the text below it. */}
-        <p style={{
-          fontSize: "clamp(13px, 1.1vw, 16px)",
-          fontWeight: 500,
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-          color: "#60a5fa",
-          whiteSpace: "nowrap",
-          marginBottom: "clamp(48px, 6vw, 72px)", 
-        }}>
-          — Our Position —
-        </p>
-
         {/* The Text Container acts as a fixed-height stage so the layout doesn't collapse during swaps */}
         <div style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          minHeight: "220px", 
+          minHeight: "320px", 
         }}>
           <AnimatePresence mode="wait">
             <motion.div
@@ -77,21 +69,21 @@ export function Positioning() {
                 textAlign: "center",
                 padding: "0 clamp(24px, 5vw, 64px)",
                 width: "100%",
-                maxWidth: "1100px",
+                maxWidth: "1400px",
               }}
             >
               <h3 style={{
-                fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)",
+                fontSize: "clamp(3.5rem, 7vw, 6rem)",
                 fontWeight: 600,
                 color: "#F1F5F9",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.1,
-                marginBottom: "clamp(16px, 2vw, 24px)",
+                letterSpacing: "-0.04em",
+                lineHeight: 1.05,
+                marginBottom: "clamp(24px, 3vw, 32px)",
               }}>
                 {items[activeIndex].text}
               </h3>
               <p style={{
-                fontSize: "clamp(18px, 1.6vw, 22px)",
+                fontSize: "clamp(20px, 2vw, 26px)",
                 color: "#64748B",
                 lineHeight: 1.5,
               }}>
@@ -100,6 +92,28 @@ export function Positioning() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Small transparent scroll down indicator */}
+        <motion.div
+          animate={{ y: [0, 8, 0], opacity: [0.2, 0.6, 0.2] }}
+          transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
+          style={{
+            position: "absolute",
+            bottom: "clamp(40px, 6vh, 80px)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "10px",
+            color: "rgba(255,255,255,0.4)",
+            pointerEvents: "none",
+          }}
+        >
+          <span style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500 }}>Scroll</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </motion.div>
 
       </div>
     </section>

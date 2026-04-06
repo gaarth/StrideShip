@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight: 400 !important;
 }
 
 html {
@@ -24,6 +25,19 @@ body {
 ::selection {
   background-color: rgba(107,143,168, 0.3);
   color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-worksans), sans-serif !important;
+  letter-spacing: -0.04em;
+}
+
+[style*="font-style: italic"],
+[style*="font-style:italic"],
+i, em {
+  font-family: var(--font-libre), Georgia, serif !important;
+  font-weight: 400 !important;
+  color: #94A3B8 !important;
 }
 
 /* StarButton sweep animation */

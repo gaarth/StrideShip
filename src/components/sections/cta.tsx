@@ -16,7 +16,7 @@ const glassStyle = {
 export function CTA() {
   return (
     <section id="cta" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div
           style={{
             ...glassStyle,
@@ -37,7 +37,7 @@ export function CTA() {
           {/* LARGE DECORATIVE WATERMARK */}
           <div style={{
             position: "absolute",
-            top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+            top: "50%", left: "50%",
             opacity: 0.035,
             fontWeight: 900, // pushed to 900 for extra geometric thickness
             letterSpacing: "-0.04em",
@@ -89,7 +89,7 @@ export function CTA() {
           </motion.p>
 
           <motion.div variants={fadeUp} style={{ position: "relative", zIndex: 1, display: "inline-block" }}>
-            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={70} paddingX={60} fontSize={18}>
+            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={70} paddingX={60} fontSize="clamp(1rem, 1.5vw, 1.125rem)">
               Book a Demo
             </StarButton>
           </motion.div>

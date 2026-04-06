@@ -72,7 +72,7 @@ export function CostOfManual() {
         zIndex: -1,
       }} />
 
-      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div 
           initial="hidden" 
           whileInView="show" 

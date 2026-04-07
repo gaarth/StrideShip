@@ -37,7 +37,7 @@ export function CTA() {
           {/* LARGE DECORATIVE WATERMARK */}
           <div style={{
             position: "absolute",
-            top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+            top: "50%", left: "50%",
             opacity: 0.035,
             fontWeight: 900, // pushed to 900 for extra geometric thickness
             letterSpacing: "-0.04em",

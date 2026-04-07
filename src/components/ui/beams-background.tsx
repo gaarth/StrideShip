@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BeamsBackgroundProps {
@@ -28,11 +27,11 @@ function createBeam(width: number, height: number): Beam {
   return {
     x: Math.random() * width * 1.5 - width * 0.25,
     y: Math.random() * height * 1.5 - height * 0.25,
-    width: 30 + Math.random() * 60,
+    width: 80 + Math.random() * 120,
     length: height * 2.5,
     angle,
     speed: 0.6 + Math.random() * 1.2,
-    opacity: 0.12 + Math.random() * 0.16,
+    opacity: 0.15 + Math.random() * 0.18,
     hue: 190 + Math.random() * 70,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.02 + Math.random() * 0.03,
@@ -47,7 +46,6 @@ export function BeamsBackground({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const beamsRef = useRef<Beam[]>([]);
   const animationFrameRef = useRef<number>(0);
-  const MINIMUM_BEAMS = 20;
 
   const opacityMap = { subtle: 0.7, medium: 0.85, strong: 1 };
 
@@ -57,16 +55,20 @@ export function BeamsBackground({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Detect weak devices: use fewer beams on mobile/low-power
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const beamCount = isMobile ? 8 : 12;
+
     const updateCanvasSize = () => {
-      const dpr = window.devicePixelRatio || 1;
+      // Cap DPR at 2 to avoid rendering 4x pixels on hi-DPI screens
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       canvas.style.width = `${window.innerWidth}px`;
       canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(dpr, dpr);
-      const totalBeams = MINIMUM_BEAMS * 1.5;
-      beamsRef.current = Array.from({ length: totalBeams }, () =>
-        createBeam(canvas.width, canvas.height)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      beamsRef.current = Array.from({ length: beamCount }, () =>
+        createBeam(window.innerWidth, window.innerHeight)
       );
     };
 
@@ -74,12 +76,13 @@ export function BeamsBackground({
     window.addEventListener("resize", updateCanvasSize);
 
     function resetBeam(beam: Beam, index: number, totalBeams: number) {
-      if (!canvas) return beam;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       const column = index % 3;
-      const spacing = canvas.width / 3;
-      beam.y = canvas.height + 100;
+      const spacing = w / 3;
+      beam.y = h + 100;
       beam.x = column * spacing + spacing / 2 + (Math.random() - 0.5) * spacing * 0.5;
-      beam.width = 100 + Math.random() * 100;
+      beam.width = 120 + Math.random() * 140;
       beam.speed = 0.5 + Math.random() * 0.4;
       beam.hue = 190 + (index * 70) / totalBeams;
       beam.opacity = 0.2 + Math.random() * 0.1;
@@ -103,10 +106,21 @@ export function BeamsBackground({
       ctx.restore();
     }
 
-    function animate() {
+    let lastTime = 0;
+    const targetInterval = 1000 / 30; // Cap at 30fps — visually identical for slow-moving beams
+
+    function animate(time: number) {
       if (!canvas || !ctx) return;
+
+      const delta = time - lastTime;
+      if (delta < targetInterval) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastTime = time - (delta % targetInterval);
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.filter = "blur(35px)";
+      // No ctx.filter blur — this was the #1 performance killer
       const totalBeams = beamsRef.current.length;
       beamsRef.current.forEach((beam, index) => {
         beam.y -= beam.speed;
@@ -117,7 +131,7 @@ export function BeamsBackground({
       animationFrameRef.current = requestAnimationFrame(animate);
     }
 
-    animate();
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("resize", updateCanvasSize);
@@ -134,12 +148,12 @@ export function BeamsBackground({
         WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
       }}
     >
-      <canvas ref={canvasRef} className="absolute inset-0" style={{ filter: "blur(15px)" }} />
-      <motion.div
+      {/* Canvas with a soft CSS blur — much cheaper than ctx.filter per frame */}
+      <canvas ref={canvasRef} className="absolute inset-0" style={{ filter: "blur(30px)", willChange: "transform" }} />
+      {/* Static tinted overlay — no backdrop-filter, just a semi-transparent layer */}
+      <div
         className="absolute inset-0"
-        animate={{ opacity: [0.05, 0.15, 0.05] }}
-        transition={{ duration: 10, ease: "easeInOut", repeat: Infinity }}
-        style={{ backdropFilter: "blur(20px)", backgroundColor: "rgba(6,11,20,0.05)" }}
+        style={{ backgroundColor: "rgba(6,11,20,0.08)" }}
       />
       {/* Children rendered above the beams */}
       <div className="relative z-10">{children}</div>

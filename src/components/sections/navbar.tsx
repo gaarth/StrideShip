@@ -55,9 +55,7 @@ export function Navbar() {
             padding: scrolled ? "8px 8px 8px 24px" : "0", 
             borderRadius: scrolled ? "9999px" : "0",
             border: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
-            backgroundColor: scrolled ? "rgba(6,11,20,0.8)" : "transparent",
-            backdropFilter: scrolled ? "blur(32px)" : "none",
-            WebkitBackdropFilter: scrolled ? "blur(32px)" : "none",
+            backgroundColor: scrolled ? "rgba(6,11,20,0.92)" : "transparent",
             boxShadow: scrolled ? "0 10px 40px -10px rgba(0,0,0,0.5)" : "none",
           }}
         >

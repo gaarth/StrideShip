@@ -19,9 +19,9 @@ const doubled = [...items, ...items];
 
 export function WhoWeHelp() {
   return (
-    <section id="who-we-help" style={{ padding: "clamp(80px, 12vw, 140px) 0", overflow: "hidden" }}>
+    <section id="who-we-help" style={{ padding: "clamp(48px, 7vw, 84px) 0", overflow: "hidden" }}>
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}
+        <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.25rem, 5.5vw, 4rem)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "20px" }}>
             Built for the teams<br />
@@ -47,8 +47,7 @@ export function WhoWeHelp() {
               display: "flex", alignItems: "center", justifyContent: "center",
               padding: "clamp(20px, 2.5vw, 28px) clamp(32px, 3.5vw, 48px)",
               borderRadius: "20px",
-              backgroundColor: "rgba(10, 15, 30, 0.4)",
-              backdropFilter: "blur(20px)",
+              backgroundColor: "rgba(10, 15, 30, 0.75)",
               border: "1px solid rgba(255,255,255,0.06)",
               whiteSpace: "nowrap",
               boxShadow: "0 20px 40px -20px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05)",

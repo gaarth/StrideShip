@@ -5,9 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 
 const glassStyle = {
-  backgroundColor: "rgba(10, 15, 30, 0.25)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  backgroundColor: "rgba(10, 15, 30, 0.75)",
   border: "none" as const,
   boxShadow: "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.06)",
   transform: "translateZ(0)",
@@ -53,11 +51,11 @@ export function Problem() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
 
   return (
-    <section id="problem" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
+    <section id="problem" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+        <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp}
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "24px" }}>
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "16px" }}>
             Where logistics<br />
             operations<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>break down.</span>

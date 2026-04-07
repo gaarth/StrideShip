@@ -53,9 +53,7 @@ const cases = [
 
 const glassStyle = {
   borderRadius: "24px",
-  backgroundColor: "rgba(10, 15, 30, 0.25)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  backgroundColor: "rgba(10, 15, 30, 0.75)",
   border: "none" as const,
   boxShadow: "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.06)",
   transform: "translateZ(0)",
@@ -65,9 +63,9 @@ export function UseCases() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <section id="use-cases" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
+    <section id="use-cases" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+        <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
             Systems<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>we build.</span>
@@ -120,7 +118,7 @@ export function UseCases() {
         </motion.div>
 
         <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={VP}
-          style={{ textAlign: "center", marginTop: "clamp(48px, 5vw, 64px)", fontSize: "clamp(17px, 1.5vw, 21px)", color: "#64748B", lineHeight: 1.6 }}>
+          style={{ textAlign: "center", marginTop: "clamp(28px, 3vw, 40px)", fontSize: "clamp(17px, 1.5vw, 21px)", color: "#64748B", lineHeight: 1.6 }}>
           ....and many more, depending on <span style={{ color: "#F1F5F9", fontWeight: 600 }}>YOUR</span> needs.
         </motion.p>
       </div>

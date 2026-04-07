@@ -57,7 +57,7 @@ const stats = [
 
 export function CostOfManual() {
   return (
-    <section id="cost-of-manual" style={{ padding: "clamp(40px, 6vw, 80px) 0", position: "relative" }}>
+    <section id="cost-of-manual" style={{ padding: "clamp(24px, 3.5vw, 48px) 0", position: "relative" }}>
       {/* Background ambient glow to anchor the heavy numerals */}
       <div style={{
         position: "absolute",
@@ -80,7 +80,7 @@ export function CostOfManual() {
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-3"
           style={{
-            gap: "clamp(48px, 6vw, 80px)",
+            gap: "clamp(28px, 3.5vw, 48px)",
             position: "relative",
           }}
         >
@@ -106,18 +106,18 @@ export function CostOfManual() {
                 height: "1px",
                 width: "100%",
                 background: "linear-gradient(90deg, rgba(107,143,168,0.6) 0%, rgba(255,255,255,0.05) 100%)",
-                marginBottom: "clamp(24px, 3vw, 40px)",
+                marginBottom: "clamp(14px, 1.8vw, 24px)",
                 boxShadow: "0 0 12px rgba(107,143,168,0.4)"
               }} />
 
               {/* Massive Tabular Numeral applying Space Grotesk */}
               <h3 className={spaceGrotesk.className} style={{
-                fontSize: "clamp(3.5rem, 5.5vw, 5rem)",
-                fontWeight: 700, // Thicker weight for Space Grotesk looks fantastic
+                fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
+                fontWeight: 700,
                 color: "#F8FAFC",
                 lineHeight: 1,
                 letterSpacing: "-0.04em",
-                marginBottom: "clamp(16px, 2vw, 24px)",
+                marginBottom: "clamp(10px, 1.2vw, 14px)",
                 textShadow: "0 10px 30px rgba(0,0,0,0.5)"
               }}>
                 {stat.isCurrency ? (
@@ -147,7 +147,7 @@ export function CostOfManual() {
                 </p>
                 
                 <span style={{
-                  marginTop: "16px",
+                  marginTop: "10px",
                   fontSize: "clamp(11px, 0.9vw, 12px)",
                   color: "#475569",
                   textTransform: "uppercase",

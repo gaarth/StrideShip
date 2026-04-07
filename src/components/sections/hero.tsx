@@ -47,8 +47,7 @@ export function Hero() {
               onClick={() => document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })}
               style={{
                 height: "54px", padding: "0 38px", borderRadius: "9999px",
-                border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255, 255, 255, 0.06)",
-                backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.15)", background: "rgba(10, 15, 30, 0.7)",
                 color: "#F1F5F9", fontSize: "clamp(0.875rem, 1.5vw, 1rem)", fontWeight: 500, cursor: "pointer",
                 transition: "all 0.25s ease",
               }}

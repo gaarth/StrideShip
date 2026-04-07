@@ -5,9 +5,7 @@ import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 
 // Extremely heavy, translucent fluid glass look
 export const glassStyle = {
-  backgroundColor: "rgba(10, 15, 30, 0.4)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  backgroundColor: "rgba(10, 15, 30, 0.75)",
   border: "1px solid rgba(255,255,255,0.08)",
   boxShadow: "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.06)",
   transform: "translateZ(0)", 
@@ -41,10 +39,10 @@ const SvgDefs = () => (
 
 export function Capabilities() {
   return (
-    <section id="capabilities" style={{ padding: "clamp(80px, 12vw, 140px) 0", position: 'relative' }}>
+    <section id="capabilities" style={{ padding: "clamp(48px, 7vw, 84px) 0", position: 'relative' }}>
       <SvgDefs />
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+        <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
             We don&rsquo;t add tools.<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>We replace manual systems.</span>

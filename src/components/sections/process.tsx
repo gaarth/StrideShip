@@ -41,15 +41,15 @@ export function Process() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="process" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
+    <section id="process" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         {/* Header */}
-        <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+        <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
             From diagnosis<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>to deployment.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", marginTop: "24px", maxWidth: "600px", lineHeight: 1.7 }}>
+          <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", marginTop: "14px", maxWidth: "600px", lineHeight: 1.7 }}>
             A five-phase engagement designed to deliver precision infrastructure without disrupting what's already running.
           </motion.p>
         </motion.div>
@@ -64,9 +64,7 @@ export function Process() {
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
                   borderRadius: "14px", // requested smaller border radius
-                  backgroundColor: "rgba(10, 15, 30, 0.25)",
-                  backdropFilter: "blur(20px)", // Use highly-optimized 20px blur
-                  WebkitBackdropFilter: "blur(20px)",
+                  backgroundColor: "rgba(10, 15, 30, 0.75)",
                   border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "none",
                   boxShadow: isHovered ? "0 10px 40px rgba(107,143,168,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)",
                   padding: "clamp(24px, 3.5vw, 32px)", // slightly reduced inner padding

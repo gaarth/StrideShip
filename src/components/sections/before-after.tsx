@@ -80,14 +80,15 @@ const StockGraph = ({ trend }: { trend: "up" | "down" }) => {
       viewBox="0 0 200 150"
       style={{
         position: "absolute",
-        top: "50%",
-        transform: "translateY(-50%)",
+        bottom: isDown ? "auto" : "-10%",
+        top: isDown ? "50%" : "auto",
+        transform: isDown ? "translateY(-50%)" : "none",
         right: "-20px",
         width: "min(380px, 65%)",
         height: "auto",
         pointerEvents: "none",
         zIndex: 0,
-        opacity: 0.45,
+        opacity: isDown ? 0.45 : 0.25,
         filter: "drop-shadow(0px 0px 8px rgba(0,0,0,0.5))",
       }}
     >
@@ -216,11 +217,11 @@ export function BeforeAfter() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="before-after" style={{ padding: "clamp(80px, 12vw, 140px) 0", position: "relative" }}>
+    <section id="before-after" style={{ padding: "clamp(48px, 7vw, 84px) 0", position: "relative" }}>
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
 
         {/* ── Section header ── */}
-        <motion.div style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}
+        <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.p variants={fadeUp} style={{
             fontSize: "clamp(0.75rem, 1vw, 0.875rem)", fontWeight: 600, letterSpacing: "0.12em",
@@ -257,9 +258,7 @@ export function BeforeAfter() {
               position: "relative",
               borderRadius: "24px",
               border: "1px solid rgba(148,163,184,0.2)",
-              background: "linear-gradient(135deg, rgba(148,163,184,0.06) 0%, rgba(10,15,30,0.55) 60%)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              background: "linear-gradient(135deg, rgba(148,163,184,0.06) 0%, rgba(10,15,30,0.85) 60%)",
               boxShadow: "0 10px 40px -10px rgba(0,0,0,0.6), 0 0 60px -20px rgba(148,163,184,0.12), inset 0 1px 0 0 rgba(148,163,184,0.08)",
               padding: "clamp(32px, 4vw, 52px)",
               overflow: "hidden",
@@ -272,7 +271,7 @@ export function BeforeAfter() {
             {/* Foreground Content Wrapper */}
             <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", flexGrow: 1 }}>
               {/* Header */}
-              <div style={{ marginBottom: "clamp(24px, 3vw, 36px)" }}>
+              <div style={{ marginBottom: "clamp(14px, 1.8vw, 22px)" }}>
               <span style={{
                 display: "inline-block", fontSize: "clamp(10px, 0.85vw, 12px)", fontWeight: 700,
                 letterSpacing: "0.1em", textTransform: "uppercase", color: "#94A3B8",
@@ -289,7 +288,7 @@ export function BeforeAfter() {
             </div>
 
             {/* Stat badges */}
-            <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(24px, 3vw, 32px)", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(14px, 1.8vw, 20px)", flexWrap: "wrap" }}>
               {beforeStats.map((s) => (
                 <StatBadge key={s.label} item={s} inView={inView} color="#94A3B8" bg="rgba(148,163,184,0.08)" />
               ))}
@@ -356,9 +355,7 @@ export function BeforeAfter() {
               position: "relative",
               borderRadius: "24px",
               border: "1px solid rgba(148,163,184,0.2)",
-              background: "linear-gradient(135deg, rgba(148,163,184,0.06) 0%, rgba(10,15,30,0.55) 60%)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              background: "linear-gradient(135deg, rgba(148,163,184,0.06) 0%, rgba(10,15,30,0.85) 60%)",
               boxShadow: "0 10px 40px -10px rgba(0,0,0,0.6), 0 0 60px -20px rgba(148,163,184,0.12), inset 0 1px 0 0 rgba(148,163,184,0.08)",
               padding: "clamp(32px, 4vw, 52px)",
               overflow: "hidden",
@@ -371,7 +368,7 @@ export function BeforeAfter() {
             {/* Foreground Content Wrapper */}
             <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", flexGrow: 1 }}>
               {/* Header */}
-              <div style={{ marginBottom: "clamp(24px, 3vw, 36px)" }}>
+              <div style={{ marginBottom: "clamp(14px, 1.8vw, 22px)" }}>
               <span style={{
                 display: "inline-block", fontSize: "clamp(10px, 0.85vw, 12px)", fontWeight: 700,
                 letterSpacing: "0.1em", textTransform: "uppercase", color: "#94A3B8",
@@ -388,7 +385,7 @@ export function BeforeAfter() {
             </div>
 
             {/* Stat badges */}
-            <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(24px, 3vw, 32px)", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(14px, 1.8vw, 20px)", flexWrap: "wrap" }}>
               {afterStats.map((s) => (
                 <StatBadge key={s.label} item={s} inView={inView} color="#94A3B8" bg="rgba(148,163,184,0.09)" />
               ))}
@@ -423,7 +420,7 @@ export function BeforeAfter() {
 
         {/* ── Closing quote ── */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={VP}
-          style={{ textAlign: "center", marginTop: "clamp(64px, 7vw, 96px)" }}>
+          style={{ textAlign: "center", marginTop: "clamp(36px, 4vw, 56px)" }}>
           <div style={{
             width: "60px", height: "1px",
             background: "linear-gradient(to right, transparent, rgba(107,143,168,0.4), transparent)",

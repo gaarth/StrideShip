@@ -38,7 +38,7 @@ export function Positioning() {
   });
 
   return (
-    <section ref={sectionRef} id="positioning" style={{ height: "250vh", position: "relative" }}>
+    <section ref={sectionRef} id="positioning" style={{ height: "300vh", position: "relative" }}>
       <div style={{
         position: "sticky",
         top: 0,
@@ -56,7 +56,7 @@ export function Positioning() {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
-          minHeight: "320px", 
+          minHeight: "240px", 
         }}>
           <AnimatePresence mode="wait">
             <motion.div

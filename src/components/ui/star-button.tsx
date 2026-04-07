@@ -26,9 +26,9 @@ interface StarButtonProps {
   lightColor?: string;
   backgroundColor?: string;
   borderWidth?: number;
-  height?: number;
-  paddingX?: number;
-  fontSize?: number;
+  height?: number | string;
+  paddingX?: number | string;
+  fontSize?: number | string;
 }
 
 export function StarButton({
@@ -62,9 +62,9 @@ export function StarButton({
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    height: `${height}px`,
-    paddingLeft: `${paddingX}px`,
-    paddingRight: `${paddingX}px`,
+    height: typeof height === "number" ? `${height}px` : height,
+    paddingLeft: typeof paddingX === "number" ? `${paddingX}px` : paddingX,
+    paddingRight: typeof paddingX === "number" ? `${paddingX}px` : paddingX,
     borderRadius: "9999px",
     fontWeight: 500,
     cursor: "pointer",
@@ -114,7 +114,7 @@ export function StarButton({
         style={{
           position: "relative",
           zIndex: 10,
-          fontSize: `${fontSize}px`,
+          fontSize: typeof fontSize === "number" ? `${fontSize}px` : fontSize,
           fontWeight: 500,
           backgroundImage: "linear-gradient(to top, #ffffff, #c5cdd8)",
           WebkitBackgroundClip: "text",

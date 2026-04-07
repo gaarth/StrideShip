@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { StarButton } from "@/components/ui/star-button";
 
 const links = [
@@ -60,15 +61,17 @@ export function Navbar() {
             boxShadow: scrolled ? "0 10px 40px -10px rgba(0,0,0,0.5)" : "none",
           }}
         >
-          <motion.button layout onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            style={{ background: "none", border: "none", color: "#F1F5F9", fontSize: "22px", fontWeight: 600, letterSpacing: "-0.02em", cursor: "pointer", flexShrink: 0 }}>
-            StrideShip
-          </motion.button>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <motion.button layout
+              style={{ background: "none", border: "none", color: "#F1F5F9", fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)", letterSpacing: "-0.02em", cursor: "pointer", flexShrink: 0 }}>
+              StrideShip
+            </motion.button>
+          </Link>
 
           <motion.div layout className="hidden md:flex items-center" style={{ gap: "6px" }}>
             {links.map((l) => (
               <button key={l.href} onClick={() => go(l.href)}
-                style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "17px", padding: "12px 22px", borderRadius: "9999px", cursor: "pointer", transition: "color 0.2s" }}
+                style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "clamp(0.875rem, 1.5vw, 1rem)", padding: "12px 22px", borderRadius: "9999px", cursor: "pointer", transition: "color 0.2s" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#F1F5F9")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}>
                 {l.label}
@@ -77,7 +80,7 @@ export function Navbar() {
           </motion.div>
 
           <motion.div layout className="hidden md:block">
-            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={scrolled ? 48 : 52} paddingX={scrolled ? 32 : 36} fontSize={16}>
+            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={scrolled ? 48 : 52} paddingX={scrolled ? 32 : 36} fontSize="clamp(0.875rem, 1.5vw, 1rem)">
               Book a Call
             </StarButton>
           </motion.div>
@@ -102,12 +105,12 @@ export function Navbar() {
               backgroundColor: "rgba(12,19,34,0.97)", backdropFilter: "blur(24px)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "16px" }}>
             {links.map((l) => (
               <button key={l.href} onClick={() => go(l.href)}
-                style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", color: "#94A3B8", fontSize: "16px", padding: "14px 16px", borderRadius: "8px", cursor: "pointer" }}>
+                style={{ display: "block", width: "100%", textAlign: "left", background: "none", border: "none", color: "#94A3B8", fontSize: "clamp(0.875rem, 1.5vw, 1rem)", padding: "14px 16px", borderRadius: "8px", cursor: "pointer" }}>
                 {l.label}
               </button>
             ))}
             <div style={{ marginTop: "12px", padding: "0 12px" }}>
-              <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={48} paddingX={32} fontSize={15}>
+              <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={48} paddingX={32} fontSize="clamp(0.875rem, 1.5vw, 1rem)">
                 Book a Call
               </StarButton>
             </div>

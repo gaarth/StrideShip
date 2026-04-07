@@ -42,7 +42,7 @@ export function Process() {
 
   return (
     <section id="process" style={{ padding: "clamp(80px, 12vw, 140px) 0" }}>
-      <div style={{ maxWidth: "100%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         {/* Header */}
         <motion.div style={{ marginBottom: "clamp(56px, 7vw, 80px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
@@ -78,7 +78,7 @@ export function Process() {
                 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "20px" }}>
                   <div>
-                    <span style={{ fontSize: "14px", fontWeight: 600, color: "#6B8FA8", display: "block", marginBottom: "12px", letterSpacing: "0.05em" }}>{step.num}</span>
+                    <span style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)", fontWeight: 600, color: "#6B8FA8", display: "block", marginBottom: "12px", letterSpacing: "0.05em" }}>{step.num}</span>
                     <h3 style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", fontWeight: 600, color: "#F1F5F9", letterSpacing: "-0.01em", marginBottom: "6px" }}>{step.title}</h3>
                     <p style={{ fontSize: "clamp(13px, 1.1vw, 14px)", color: "#8b9ab0" }}>{step.sub}</p>
                   </div>

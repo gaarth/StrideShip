@@ -68,8 +68,7 @@ export function Positioning() {
               style={{
                 textAlign: "center",
                 padding: "0 clamp(24px, 5vw, 64px)",
-                width: "100%",
-                maxWidth: "1400px",
+                width: "80%",
               }}
             >
               <h3 style={{
@@ -108,7 +107,7 @@ export function Positioning() {
             pointerEvents: "none",
           }}
         >
-          <span style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500 }}>Scroll</span>
+          <span style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500 }}>Scroll</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <polyline points="19 12 12 19 5 12"></polyline>

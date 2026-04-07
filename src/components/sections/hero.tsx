@@ -19,7 +19,7 @@ export function Hero() {
       >
         {/* Removed internal fade div because BeamsBackground applies a CSS gradient mask for true flow */}
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", maxWidth: "100%", width: "100%", padding: "0 clamp(24px, 5vw, 64px)", marginTop: "12vh", position: "relative", zIndex: 5 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "80%", padding: "0 clamp(24px, 5vw, 64px)", marginTop: "12vh", position: "relative", zIndex: 5 }}>
           {/* Headline */}
           <h1 style={{
             fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
@@ -40,7 +40,7 @@ export function Hero() {
 
           {/* CTAs */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "18px", justifyContent: "center" }}>
-            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={54} paddingX={38} fontSize={17}>
+            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={54} paddingX={38} fontSize="clamp(0.875rem, 1.5vw, 1rem)">
               Book a Demo
             </StarButton>
             <button
@@ -49,7 +49,7 @@ export function Hero() {
                 height: "54px", padding: "0 38px", borderRadius: "9999px",
                 border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255, 255, 255, 0.06)",
                 backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-                color: "#F1F5F9", fontSize: "17px", fontWeight: 500, cursor: "pointer",
+                color: "#F1F5F9", fontSize: "clamp(0.875rem, 1.5vw, 1rem)", fontWeight: 500, cursor: "pointer",
                 transition: "all 0.25s ease",
               }}
               onMouseEnter={(e) => {

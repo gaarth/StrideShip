@@ -35,7 +35,7 @@ export function Hero() {
             color: "#CBD5E1", maxWidth: "680px", lineHeight: 1.6,
             margin: "0 0 clamp(32px, 3.5vw, 48px) 0",
           }}>
-            From ICEGATE query loops to RFQ pipelines — we build the custom operational systems that eliminate the manual work destroying your margins.
+            We build custom automation for the manual side of logistics, making your documentation automated and your workflows faster.
           </p>
 
           {/* CTAs */}

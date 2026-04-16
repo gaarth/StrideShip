@@ -60,6 +60,7 @@ export function Positioning() {
         }}>
           <AnimatePresence mode="wait">
             <motion.div
+              className="pos-text"
               key={activeIndex}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}

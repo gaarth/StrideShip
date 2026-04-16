@@ -218,7 +218,7 @@ export function BeforeAfter() {
 
   return (
     <section id="before-after" style={{ padding: "clamp(48px, 7vw, 84px) 0", position: "relative" }}>
-      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div className="ba-wrapper" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
 
         {/* ── Section header ── */}
         <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
@@ -245,7 +245,7 @@ export function BeforeAfter() {
         </motion.div>
 
         {/* ── Two cards + arrow ── */}
-        <div ref={ref} style={{
+        <div ref={ref} className="ba-grid" style={{
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           gap: "clamp(16px, 2vw, 24px)",
@@ -322,6 +322,7 @@ export function BeforeAfter() {
 
           {/* ── Arrow divider ── */}
           <motion.div
+            className="ba-arrow"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={VP}

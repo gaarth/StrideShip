@@ -20,7 +20,7 @@ const doubled = [...items, ...items];
 export function WhoWeHelp() {
   return (
     <section id="who-we-help" style={{ padding: "clamp(48px, 7vw, 84px) 0", overflow: "hidden" }}>
-      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.25rem, 5.5vw, 4rem)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "20px" }}>

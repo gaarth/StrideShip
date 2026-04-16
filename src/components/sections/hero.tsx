@@ -19,7 +19,7 @@ export function Hero() {
       >
         {/* Removed internal fade div because BeamsBackground applies a CSS gradient mask for true flow */}
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "80%", padding: "0 clamp(24px, 5vw, 64px)", marginTop: "12vh", position: "relative", zIndex: 5 }}>
+        <div className="hero-inner" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", width: "80%", padding: "0 clamp(24px, 5vw, 64px)", marginTop: "12vh", position: "relative", zIndex: 5 }}>
           {/* Headline */}
           <h1 style={{
             fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
@@ -39,7 +39,7 @@ export function Hero() {
           </p>
 
           {/* CTAs */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "18px", justifyContent: "center" }}>
+          <div className="hero-ctas" style={{ display: "flex", flexWrap: "wrap", gap: "18px", justifyContent: "center" }}>
             <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={54} paddingX={38} fontSize="clamp(0.875rem, 1.5vw, 1rem)">
               Book a Demo
             </StarButton>

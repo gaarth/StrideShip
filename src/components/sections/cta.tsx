@@ -14,8 +14,9 @@ const glassStyle = {
 export function CTA() {
   return (
     <section id="cta" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
-      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div
+          className="cta-glass"
           style={{
             ...glassStyle,
             padding: "clamp(48px, 6vw, 84px) clamp(32px, 5vw, 64px)",
@@ -33,7 +34,7 @@ export function CTA() {
           }} />
 
           {/* LARGE DECORATIVE WATERMARK */}
-          <div style={{
+          <div className="cta-watermark" style={{
             position: "absolute",
             top: "50%", left: "50%",
             opacity: 0.035,

@@ -59,7 +59,7 @@ export function CTA() {
           </div>
 
           <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "clamp(14px, 1.8vw, 20px)" }}>
-            Let&rsquo;s look at<br />
+            Let&rsquo;s look at{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>your operations.</span>
           </motion.h2>
 

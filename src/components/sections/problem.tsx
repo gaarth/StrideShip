@@ -56,8 +56,8 @@ export function Problem() {
         <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp}
             style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "16px" }}>
-            Where logistics<br />
-            operations<br />
+            Where logistics{" "}<br />
+            operations{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>break down.</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", maxWidth: "600px", lineHeight: 1.6 }}>

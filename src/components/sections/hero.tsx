@@ -26,7 +26,7 @@ export function Hero() {
             fontWeight: 500, lineHeight: 1.05, letterSpacing: "-0.04em",
             color: "#F1F5F9", margin: "0 0 clamp(20px, 2.5vw, 32px) 0",
           }}>
-            Automating the manual<br />infrastructure of global trade.
+            Automating the manual{" "}<br />infrastructure of global trade.
           </h1>
 
           {/* Subtitle */}

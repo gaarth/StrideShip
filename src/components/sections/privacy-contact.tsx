@@ -21,12 +21,12 @@ export function PrivacyContact() {
           Co-Founder & CEO
         </p>
         <a
-          href="mailto:gaarth.strideship@gmail.com"
+          href="mailto:ceo@strideship.dev"
           style={linkStyle}
           onMouseOver={(e) => (e.currentTarget.style.borderColor = "rgba(96,165,250,1)")}
           onMouseOut={(e) => (e.currentTarget.style.borderColor = "rgba(96,165,250,0.3)")}
         >
-          gaarth.strideship@gmail.com
+          ceo@strideship.dev
         </a>
       </div>
 
@@ -38,12 +38,12 @@ export function PrivacyContact() {
           Co-Founder & CTO
         </p>
         <a
-          href="mailto:siddhant.strideship@gmail.com"
+          href="mailto:cto@strideship.dev"
           style={linkStyle}
           onMouseOver={(e) => (e.currentTarget.style.borderColor = "rgba(96,165,250,1)")}
           onMouseOut={(e) => (e.currentTarget.style.borderColor = "rgba(96,165,250,0.3)")}
         >
-          siddhant.strideship@gmail.com
+          cto@strideship.dev
         </a>
       </div>
     </div>

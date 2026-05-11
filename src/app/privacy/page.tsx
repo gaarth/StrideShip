@@ -1,10 +1,27 @@
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { PrivacyContact } from "@/components/sections/privacy-contact";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Privacy Policy | Strideship",
-  description: "Privacy Policy for StrideShip, ensuring data security and confidentiality.",
+export const metadata: Metadata = {
+  title: "Privacy Policy | StrideShip",
+  description: "Privacy Policy for StrideShip — how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | StrideShip",
+    description: "Privacy Policy for StrideShip — how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
+    url: "https://strideship.dev/privacy",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | StrideShip",
+    description: "Privacy Policy for StrideShip — how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function PrivacyPage() {

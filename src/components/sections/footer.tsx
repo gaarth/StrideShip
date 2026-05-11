@@ -11,6 +11,12 @@ export function Footer() {
             <Link href="/about" style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "#94A3B8", textDecoration: "none", transition: "color 0.2s" }} onMouseOver={(e) => e.currentTarget.style.color = "#F1F5F9"} onMouseOut={(e) => e.currentTarget.style.color = "#94A3B8"}>
               About Us
             </Link>
+            <Link href="/blog" style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "#94A3B8", textDecoration: "none", transition: "color 0.2s" }} onMouseOver={(e) => e.currentTarget.style.color = "#F1F5F9"} onMouseOut={(e) => e.currentTarget.style.color = "#94A3B8"}>
+              Blog
+            </Link>
+            <Link href="/faq" style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "#94A3B8", textDecoration: "none", transition: "color 0.2s" }} onMouseOver={(e) => e.currentTarget.style.color = "#F1F5F9"} onMouseOut={(e) => e.currentTarget.style.color = "#94A3B8"}>
+              FAQ
+            </Link>
             <Link href="/privacy" style={{ fontSize: "clamp(13px, 1vw, 15px)", color: "#94A3B8", textDecoration: "none", transition: "color 0.2s" }} onMouseOver={(e) => e.currentTarget.style.color = "#F1F5F9"} onMouseOut={(e) => e.currentTarget.style.color = "#94A3B8"}>
               Privacy Policy
             </Link>

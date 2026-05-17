@@ -12,7 +12,7 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number, to: num
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const count = useMotionValue(from);
-  
+
   const rounded = useTransform(count, (latest) => {
     const isDone = Math.round(latest) >= to;
     return prefix + Math.round(latest).toLocaleString('en-IN') + (isDone ? suffix : "");
@@ -73,10 +73,10 @@ export function CostOfManual() {
       }} />
 
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div 
-          initial="hidden" 
-          whileInView="show" 
-          viewport={VP} 
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={VP}
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-3"
           style={{
@@ -85,7 +85,7 @@ export function CostOfManual() {
           }}
         >
           {stats.map((stat, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               variants={fadeUp}
               style={{
@@ -126,7 +126,7 @@ export function CostOfManual() {
                   stat.value
                 )}
               </h3>
-              
+
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 <span style={{
                   fontSize: "clamp(18px, 1.5vw, 22px)",
@@ -136,7 +136,7 @@ export function CostOfManual() {
                 }}>
                   {stat.label}
                 </span>
-                
+
                 <p style={{
                   fontSize: "clamp(15px, 1.2vw, 17px)",
                   color: "#94A3B8",
@@ -145,7 +145,7 @@ export function CostOfManual() {
                 }}>
                   {stat.context}
                 </p>
-                
+
                 <span style={{
                   marginTop: "10px",
                   fontSize: "clamp(11px, 0.9vw, 12px)",

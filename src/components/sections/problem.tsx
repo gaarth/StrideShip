@@ -76,16 +76,18 @@ export function Problem() {
                 style={{
                   ...glassStyle,
                   borderRadius: "20px",
-                  border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.06)",
-                  boxShadow: isHovered ? "0 10px 40px rgba(107,143,168,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : glassStyle.boxShadow,
+                  border: isHovered ? "1px solid rgba(107,143,168,0.25)" : "1px solid rgba(255,255,255,0.06)",
+                  boxShadow: isHovered ? "0 10px 48px rgba(107,143,168,0.08), inset 0 1px 0 rgba(255,255,255,0.08)" : glassStyle.boxShadow,
                   padding: "clamp(28px, 4vw, 40px)",
                   cursor: "default",
-                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  transition: "border-color 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1)",
                   position: "relative",
                   overflow: "hidden",
                 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "20px" }}>
                   <div>
+                    {/* Step number — editorial weight */}
+                    <span style={{ display: "block", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#334155", marginBottom: "10px" }}>{c.num}</span>
                     <h3 style={{ fontSize: "clamp(1.25rem, 1.8vw, 1.6rem)", fontWeight: 600, color: "#F1F5F9", letterSpacing: "-0.01em", marginBottom: "8px" }}>{c.title}</h3>
                     <p style={{ fontSize: "clamp(14px, 1.2vw, 15px)", color: "#8b9ab0" }}>{c.desc}</p>
                   </div>

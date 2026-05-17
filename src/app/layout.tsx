@@ -17,9 +17,18 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Strideship — Custom Operational Systems for Global Trade",
+  title: "Strideship — AI for Customs",
   description:
     "We automate the manual infrastructure of global trade. From RFQs to shipment workflows, custom-built systems that eliminate operational friction.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 };
 
 import { SmoothScroll } from "@/components/smooth-scroll";

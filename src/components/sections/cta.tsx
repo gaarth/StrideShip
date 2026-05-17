@@ -20,7 +20,7 @@ export function CTA() {
             ...glassStyle,
             padding: "clamp(48px, 6vw, 84px) clamp(32px, 5vw, 64px)",
             textAlign: "center", position: "relative", overflow: "hidden",
-            zIndex: 1, // ensure the glass box sits properly Context
+            zIndex: 1,
           }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}
         >
@@ -37,22 +37,20 @@ export function CTA() {
             position: "absolute",
             top: "50%", left: "50%",
             opacity: 0.035,
-            fontWeight: 900, // pushed to 900 for extra geometric thickness
+            fontWeight: 900,
             letterSpacing: "-0.04em",
-            color: "white", 
+            color: "white",
             pointerEvents: "none",
             userSelect: "none",
             whiteSpace: "nowrap",
             zIndex: 0,
-            fontSize: "clamp(10rem, 18vw, 24rem)", 
+            fontSize: "clamp(10rem, 18vw, 24rem)",
             fontFamily: '"Eurostile", "Microgramma", "Arial Black", sans-serif',
             fontStyle: "italic",
             textTransform: "uppercase",
-            // Implementing the hollow/acrylic glass bevel look from the reference image
             WebkitTextStroke: "4px white",
             WebkitTextFillColor: "transparent",
-            // Stretch the text slightly to give it that ultra-wide industrial aesthetic
-            transform: "translate(-50%, -50%) scaleX(1.2)", 
+            transform: "translate(-50%, -50%) scaleX(1.2)",
           }}>
             StrideShip
           </div>

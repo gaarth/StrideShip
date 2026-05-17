@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:\\\\Users\\\\RYZEN\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.1.0\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh --project-dir \"c:/hackathon_prac/StrideShip\")",
+      "Bash(xargs cat *)",
+      "Bash(bash \"/c/Users/RYZEN/.claude/plugins/cache/claude-plugins-official/superpowers/5.1.0/skills/brainstorming/scripts/start-server.sh\" --project-dir \"c:/hackathon_prac/StrideShip\")",
+      "Bash(npx skills *)",
+      "Bash(npx tsc *)",
+      "Bash(git show *)"
+    ]
+  }
+}

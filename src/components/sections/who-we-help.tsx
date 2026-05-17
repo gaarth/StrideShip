@@ -23,12 +23,13 @@ export function WhoWeHelp() {
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.25rem, 5.5vw, 4rem)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "20px" }}>
             Built for the teams<br />
             <span style={{ fontStyle: "italic" }}>running global trade.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
-            From customs clearance to last-mile delivery, we work with every node in the logistics chain.
+          <motion.p variants={fadeUp} style={{ fontSize: "clamp(15px, 1.3vw, 18px)", color: "#475569", maxWidth: "520px", margin: "0 auto", lineHeight: 1.6 }}>
+            Whether you handle consolidation, clearance, or freight — we&rsquo;ve built for your stack.
           </motion.p>
         </motion.div>
       </div>

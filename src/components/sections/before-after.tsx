@@ -6,18 +6,36 @@ import { fadeUp, slideL, slideR, stagger, VP } from "@/lib/motion-variants";
 
 /* ─────────────── Animated counter hook ─────────────── */
 function useCountUp(target: number, inView: boolean, duration = 1400) {
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(target); // Start at target — real value visible immediately
+  const rafRef = useRef<number | null>(null);
+
   useEffect(() => {
-    if (!inView) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+    if (!inView) {
+      // Reset to 0 when scrolled back out so the counter replays on re-entry
+      setVal(0);
+      return;
+    }
+
+    // Animate from 0 to target
+    setVal(0);
     let start: number | null = null;
     const step = (ts: number) => {
       if (!start) start = ts;
       const progress = Math.min((ts - start) / duration, 1);
       setVal(Math.floor(progress * target));
-      if (progress < 1) requestAnimationFrame(step);
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(step);
+      }
     };
-    requestAnimationFrame(step);
+    rafRef.current = requestAnimationFrame(step);
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, [inView, target, duration]);
+
   return val;
 }
 
@@ -214,7 +232,8 @@ function StatBadge({
 /* ─────────────── Main component ─────────────── */
 export function BeforeAfter() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  // once: false so counters replay when user scrolls back up
+  const inView = useInView(ref, { once: false, margin: "-100px" });
 
   return (
     <section id="before-after" style={{ padding: "clamp(48px, 7vw, 84px) 0", position: "relative" }}>
@@ -223,12 +242,7 @@ export function BeforeAfter() {
         {/* ── Section header ── */}
         <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
-          <motion.p variants={fadeUp} style={{
-            fontSize: "clamp(0.75rem, 1vw, 0.875rem)", fontWeight: 600, letterSpacing: "0.12em",
-            textTransform: "uppercase", color: "#6B8FA8", marginBottom: "16px",
-          }}>
-            The Transformation
-          </motion.p>
+
           <motion.h2 variants={fadeUp} style={{
             fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95,
             letterSpacing: "-0.03em", color: "#F1F5F9",
@@ -245,11 +259,8 @@ export function BeforeAfter() {
         </motion.div>
 
         {/* ── Two cards + arrow ── */}
-        <div ref={ref} style={{
-          display: "grid",
-          gridTemplateColumns: "1fr auto 1fr",
+        <div ref={ref} className="ba-grid" style={{
           gap: "clamp(16px, 2vw, 24px)",
-          alignItems: "stretch",
         }}>
 
           {/* ── BEFORE card ── */}
@@ -322,15 +333,13 @@ export function BeforeAfter() {
 
           {/* ── Arrow divider ── */}
           <motion.div
+            className="ba-arrow"
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={VP}
             transition={{ duration: 0.5, delay: 0.3 }}
-            style={{
-              display: "flex", flexDirection: "column", alignItems: "center", gap: "8px",
-              color: "#334155",
-            }}>
-            <div style={{
+            style={{ color: "#334155" }}>
+            <div className="ba-line-v" style={{
               width: "1px", height: "40px",
               background: "linear-gradient(to bottom, transparent, rgba(107,143,168,0.3))",
             }} />
@@ -340,10 +349,11 @@ export function BeforeAfter() {
               display: "flex", alignItems: "center", justifyContent: "center",
               color: "#6B8FA8",
               background: "rgba(107,143,168,0.05)",
+              flexShrink: 0,
             }}>
               <IconArrowRight />
             </div>
-            <div style={{
+            <div className="ba-line-v" style={{
               width: "1px", height: "40px",
               background: "linear-gradient(to bottom, rgba(107,143,168,0.3), transparent)",
             }} />

@@ -43,6 +43,7 @@ export function Capabilities() {
       <SvgDefs />
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
             We don&rsquo;t add tools.<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>We replace manual systems.</span>
@@ -73,10 +74,18 @@ export function Capabilities() {
             {/* Massive abstracted gear/pipeline object */}
             <div style={{ position: "absolute", top: "50%", right: "-10%", transform: "translateY(-50%)", width: "60%", height: "150%", pointerEvents: "none", zIndex: 1, display: "flex", alignItems: "center", opacity: 0.35 }}>
               <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="120" cy="100" r="80" fill="none" stroke="url(#matte1)" strokeWidth="40" filter="url(#heavyShadow)" />
-                <circle cx="120" cy="100" r="30" fill="none" stroke="url(#matte2)" strokeWidth="15" filter="url(#heavyShadow)" />
-                <rect x="0" y="80" width="140" height="40" rx="20" fill="url(#matte1)" filter="url(#heavyShadow)" />
-                <circle cx="140" cy="100" r="12" fill="url(#accentMatte)" filter="url(#softShadow)" />
+                {/* Outer ring — slow orbit around its own centre */}
+                <circle cx="120" cy="100" r="80" fill="none" stroke="url(#matte1)" strokeWidth="40" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "120px 100px", animation: "cap-float-up 6s ease-in-out infinite" }} />
+                {/* Inner ring — slight counter-movement */}
+                <circle cx="120" cy="100" r="30" fill="none" stroke="url(#matte2)" strokeWidth="15" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "120px 100px", animation: "cap-float-down 6s ease-in-out infinite 0.4s" }} />
+                {/* Pipeline bar — floats with outer ring */}
+                <rect x="0" y="80" width="140" height="40" rx="20" fill="url(#matte1)" filter="url(#heavyShadow)"
+                  style={{ animation: "cap-float-up 6s ease-in-out infinite 0.8s" }} />
+                {/* Accent node — pulses independently */}
+                <circle cx="140" cy="100" r="12" fill="url(#accentMatte)" filter="url(#softShadow)"
+                  style={{ transformOrigin: "140px 100px", animation: "cap-dot-pulse 3s ease-in-out infinite 1s" }} />
               </svg>
             </div>
           </motion.div>
@@ -109,9 +118,15 @@ export function Capabilities() {
             {/* Abstract intersecting rings/blocks */}
             <div style={{ position: "absolute", bottom: "-15%", right: "-10%", width: "80%", height: "80%", pointerEvents: "none", zIndex: 1, opacity: 0.35 }}>
               <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="40" width="110" height="110" rx="30" fill="url(#matte1)" filter="url(#heavyShadow)" transform="rotate(15 100 100)" />
-                <rect x="70" y="70" width="110" height="110" rx="30" fill="url(#matte2)" filter="url(#heavyShadow)" transform="rotate(-15 100 100)" />
-                <circle cx="120" cy="120" r="20" fill="url(#accentMatte)" filter="url(#softShadow)" />
+                {/* Block A — tilts clockwise slowly */}
+                <rect x="40" y="40" width="110" height="110" rx="30" fill="url(#matte1)" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "100px 100px", animation: "cap-tilt-cw 7s ease-in-out infinite" }} />
+                {/* Block B — counter-tilts for tension */}
+                <rect x="70" y="70" width="110" height="110" rx="30" fill="url(#matte2)" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "100px 100px", animation: "cap-tilt-ccw 7s ease-in-out infinite 0.6s" }} />
+                {/* Accent circle — pulses like a live connection node */}
+                <circle cx="120" cy="120" r="20" fill="url(#accentMatte)" filter="url(#softShadow)"
+                  style={{ transformOrigin: "120px 120px", animation: "cap-dot-pulse 3.5s ease-in-out infinite 1.2s" }} />
               </svg>
             </div>
           </motion.div>
@@ -128,12 +143,15 @@ export function Capabilities() {
             {/* Matte Pie Chart Graphic */}
             <div style={{ position: "absolute", top: "0", right: "-10%", width: "90%", height: "90%", pointerEvents: "none", zIndex: 1, opacity: 0.35 }}>
               <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                {/* Base large circle */}
-                <circle cx="100" cy="100" r="80" fill="url(#matte1)" filter="url(#heavyShadow)" />
-                {/* Overlay half slice */}
-                <path d="M 100 100 L 100 20 A 80 80 0 0 1 180 100 Z" fill="url(#matte2)" filter="url(#heavyShadow)" />
-                {/* Popped out accent slice */}
-                <path d="M 100 100 L 20 100 A 80 80 0 0 1 100 20 Z" fill="url(#accentMatte)" filter="url(#heavyShadow)" transform="translate(-15, -15)" />
+                {/* Base circle — slow inhale/exhale */}
+                <circle cx="100" cy="100" r="80" fill="url(#matte1)" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "100px 100px", animation: "cap-circle-pulse 5s ease-in-out infinite" }} />
+                {/* Half slice — counter-pulse for visual tension */}
+                <path d="M 100 100 L 100 20 A 80 80 0 0 1 180 100 Z" fill="url(#matte2)" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "100px 100px", animation: "cap-circle-pulse 5s ease-in-out infinite 0.5s" }} />
+                {/* Accent slice — pops further out on each breath */}
+                <path d="M 100 100 L 20 100 A 80 80 0 0 1 100 20 Z" fill="url(#accentMatte)" filter="url(#heavyShadow)"
+                  style={{ animation: "cap-slice-breathe 5s ease-in-out infinite 1s" }} />
               </svg>
             </div>
             
@@ -167,10 +185,16 @@ export function Capabilities() {
             </div>
             {/* Abstract Geometric drafting overlay  */}
             <div style={{ position: "absolute", top: "0", left: "-5%", bottom: "0", width: "60%", pointerEvents: "none", zIndex: 1, display: "flex", alignItems: "center", opacity: 0.35 }}>
-              <svg width="100%" height="150%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'rotate(15deg)' }}>
+              {/* The whole SVG floats — rotate is baked into the keyframe so it's one transform */}
+              <svg width="100%" height="150%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                style={{ animation: "cap-diamond-float 8s ease-in-out infinite" }}>
                 <polygon points="10,100 90,20 170,100 90,180" fill="url(#matte1)" filter="url(#heavyShadow)" />
-                <polygon points="10,130 90,50 170,130 90,210" fill="url(#matte2)" filter="url(#heavyShadow)" />
-                <circle cx="90" cy="115" r="30" fill="url(#accentMatte)" filter="url(#heavyShadow)" />
+                {/* Second diamond trails with a delay for depth */}
+                <polygon points="10,130 90,50 170,130 90,210" fill="url(#matte2)" filter="url(#heavyShadow)"
+                  style={{ animation: "cap-float-down 8s ease-in-out infinite 1s" }} />
+                {/* Accent circle breathes */}
+                <circle cx="90" cy="115" r="30" fill="url(#accentMatte)" filter="url(#heavyShadow)"
+                  style={{ transformOrigin: "90px 115px", animation: "cap-dot-pulse 4s ease-in-out infinite 0.5s" }} />
                 <circle cx="90" cy="115" r="10" fill="#0f172a" />
               </svg>
             </div>

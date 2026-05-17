@@ -66,9 +66,10 @@ export function UseCases() {
     <section id="use-cases" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
-            Systems<br />
-            <span style={{ fontWeight: 300, fontStyle: "italic" }}>we build.</span>
+            What we<br />
+            <span style={{ fontWeight: 300, fontStyle: "italic" }}>actually build.</span>
           </motion.h2>
         </motion.div>
 
@@ -82,7 +83,7 @@ export function UseCases() {
                 padding: "clamp(36px, 4vw, 56px)", transition: "border-color 0.2s",
               }}>
                 <h3 style={{ fontSize: "clamp(1.5rem, 2vw, 1.875rem)", fontWeight: 500, color: "#F1F5F9", letterSpacing: "-0.02em", marginBottom: "16px" }}>{c.title}</h3>
-                <p style={{ fontSize: "clamp(16px, 1.4vw, 19px)", color: "#94A3B8", lineHeight: 1.7, marginBottom: "32px" }}>{c.desc}</p>
+                <p className={`uc-desc${isOpen ? " uc-expanded" : ""}`} style={{ fontSize: "clamp(16px, 1.4vw, 19px)", color: "#94A3B8", lineHeight: 1.7, marginBottom: "32px" }}>{c.desc}</p>
 
                 <AnimatePresence>
                   {isOpen && (
@@ -118,8 +119,8 @@ export function UseCases() {
         </motion.div>
 
         <motion.p variants={fadeUp} initial="hidden" whileInView="show" viewport={VP}
-          style={{ textAlign: "center", marginTop: "clamp(28px, 3vw, 40px)", fontSize: "clamp(17px, 1.5vw, 21px)", color: "#64748B", lineHeight: 1.6 }}>
-          ....and many more, depending on <span style={{ color: "#F1F5F9", fontWeight: 600 }}>YOUR</span> needs.
+          style={{ textAlign: "center", marginTop: "clamp(28px, 3vw, 40px)", fontSize: "clamp(15px, 1.3vw, 18px)", color: "#475569", lineHeight: 1.6 }}>
+          Every engagement starts with your operations. We build what your team actually needs.
         </motion.p>
       </div>
     </section>

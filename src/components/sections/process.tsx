@@ -45,27 +45,32 @@ export function Process() {
       <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         {/* Header */}
         <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
             From diagnosis<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>to deployment.</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", marginTop: "14px", maxWidth: "600px", lineHeight: 1.7 }}>
-            A five-phase engagement designed to deliver precision infrastructure without disrupting what's already running.
+            A five-phase engagement designed to deliver precision infrastructure without disrupting what&rsquo;s already running.
           </motion.p>
         </motion.div>
 
-        <motion.div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 24px)" }}
-          initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 24px)" }}>
           {steps.map((step, i) => {
             const isHovered = hoveredIndex === i;
             return (
-              <motion.div key={step.num} variants={fadeUp}
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ type: "spring", duration: 0.5, bounce: 0.1, delay: i * 0.1 }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
                   borderRadius: "14px", // requested smaller border radius
                   backgroundColor: "rgba(10, 15, 30, 0.75)",
-                  border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "none",
+                  border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.06)",
                   boxShadow: isHovered ? "0 10px 40px rgba(107,143,168,0.1), inset 0 1px 0 rgba(255,255,255,0.1)" : "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)",
                   padding: "clamp(24px, 3.5vw, 32px)", // slightly reduced inner padding
                   cursor: "default",
@@ -113,7 +118,7 @@ export function Process() {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

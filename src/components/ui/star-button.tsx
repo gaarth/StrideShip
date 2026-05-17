@@ -131,14 +131,14 @@ export function StarButton({
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" ref={elRef as React.Ref<HTMLAnchorElement>} style={outerStyle}>
+      <a href={href} target="_blank" rel="noopener noreferrer" ref={elRef as React.Ref<HTMLAnchorElement>} style={outerStyle} className="star-btn-press">
         {inner}
       </a>
     );
   }
 
   return (
-    <button ref={elRef as React.Ref<HTMLButtonElement>} style={outerStyle}>
+    <button ref={elRef as React.Ref<HTMLButtonElement>} style={outerStyle} className="star-btn-press">
       {inner}
     </button>
   );

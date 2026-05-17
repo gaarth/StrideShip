@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-17T00:00:00Z",
+  "title": "Design System: StrideShip",
+  "extensions": {
+    "colorMeta": {
+      "void-navy":     { "role": "neutral",   "displayName": "Void Navy",     "canonical": "oklch(9% 0.018 240)",  "tonalRamp": ["#020408","#060B14","#0A1221","#0F1A2E","#152440","#1E3356","#2A4670","#3D618F"] },
+      "abyss-core":    { "role": "neutral",   "displayName": "Abyss Core",    "canonical": "oklch(6% 0.012 240)",  "tonalRamp": ["#010204","#05070A","#080C12","#0C121C","#111926","#182334","#222F45","#30425E"] },
+      "ghost-white":   { "role": "neutral",   "displayName": "Ghost White",   "canonical": "oklch(95% 0.006 220)", "tonalRamp": ["#4A5568","#64748B","#94A3B8","#CBD5E1","#E2E8F0","#F1F5F9","#F8FAFC","#FEFEFF"] },
+      "slate-mid":     { "role": "neutral",   "displayName": "Slate Mid",     "canonical": "oklch(84% 0.008 220)", "tonalRamp": ["#2D3748","#4A5568","#64748B","#94A3B8","#CBD5E1","#E2E8F0","#F1F5F9","#F8FAFC"] },
+      "slate-muted":   { "role": "neutral",   "displayName": "Slate Muted",   "canonical": "oklch(67% 0.010 220)", "tonalRamp": ["#1E2A3A","#2D3E55","#3D5470","#4E6B8A","#6B8FA8","#94A3B8","#CBD5E1","#E2E8F0"] },
+      "slate-deep":    { "role": "neutral",   "displayName": "Slate Deep",    "canonical": "oklch(50% 0.010 220)", "tonalRamp": ["#1A2333","#253347","#30455E","#3D5778","#4E6B8A","#64748B","#94A3B8","#CBD5E1"] },
+      "slate-shadow":  { "role": "neutral",   "displayName": "Slate Shadow",  "canonical": "oklch(42% 0.010 220)", "tonalRamp": ["#141E2D","#1E2D42","#293D58","#334E6F","#3F6187","#4E6B8A","#64748B","#94A3B8"] },
+      "steel-accent":  { "role": "primary",   "displayName": "Steel Accent",  "canonical": "oklch(58% 0.050 220)", "tonalRamp": ["#1A2D3D","#243F54","#2E526C","#3A6585","#4D7FA0","#6B8FA8","#8EAFC4","#B5CFDF"] },
+      "glass-surface": { "role": "neutral",   "displayName": "Glass Surface", "canonical": "oklch(10% 0.020 240)", "tonalRamp": ["#040810","#0A0F1E","#0F172A","#162035","#1E2D45","#283D5A","#354F72","#446488"] },
+      "blue-wash":     { "role": "tertiary",  "displayName": "Blue Wash",     "canonical": "oklch(50% 0.180 262)", "tonalRamp": ["#0D1B4B","#1230A0","#1A44BE","#2563EB","#3B82F6","#60A5FA","#93C5FD","#BFDBFE"] }
+    },
+    "typographyMeta": {
+      "display":         { "displayName": "Display",         "purpose": "Hero headlines. Maximum one per section. Always Work Sans 800." },
+      "headline":        { "displayName": "Headline",        "purpose": "Section headers and primary CTA headings." },
+      "title":           { "displayName": "Title",           "purpose": "Card headings and capability titles." },
+      "body":            { "displayName": "Body",            "purpose": "All prose and supporting copy. Max 65–75ch line length." },
+      "label":           { "displayName": "Label",           "purpose": "Stats, KPIs, process numbers. Space Grotesk tabular." },
+      "italic-contrast": { "displayName": "Italic Contrast", "purpose": "Libre Baskerville italic for subordinate headline clauses only." }
+    },
+    "shadows": [
+      { "name": "glass-highlight", "value": "inset 0 1px 0 rgba(255,255,255,0.06)", "purpose": "All glass card surfaces. Reads as a lit edge, not elevation." },
+      { "name": "hover-glow",      "value": "0 0 24px rgba(107,143,168,0.15)",       "purpose": "Interactive cards at hover. Steel accent hue, diffuse." },
+      { "name": "svg-ambient",     "value": "drop-shadow(0 20px 60px rgba(0,0,0,0.6))", "purpose": "Background decorative SVG geometry only. Never content elements." }
+    ],
+    "motion": [
+      { "name": "ease-settle",   "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Primary easing for all entrances — fast in, slow settle. Framer Motion standard." },
+      { "name": "ease-standard", "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "purpose": "State transitions (hover, focus, border shifts). Shorter duration 150–200ms." },
+      { "name": "duration-fast",  "value": "150ms", "purpose": "Button state changes, border color shifts." },
+      { "name": "duration-enter", "value": "500ms", "purpose": "Scroll-triggered section entrances." },
+      { "name": "stagger-delay",  "value": "100ms", "purpose": "Stagger delay between list/card children." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "768px", "purpose": "Primary breakpoint. Below: mobile nav, reduced beam count (8), single-column layout." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast light fill on dark surface. Used for primary CTAs only.",
+      "html": "<button class=\"ds-btn-primary\">Book a Demo</button>",
+      "css": ".ds-btn-primary { background: #F1F5F9; color: #060B14; font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.01em; padding: 14px 36px; border-radius: 9999px; border: none; cursor: pointer; height: 50px; transition: background 200ms cubic-bezier(0.25, 0.1, 0.25, 1); } .ds-btn-primary:hover { background: #CBD5E1; } .ds-btn-primary:focus-visible { outline: 2px solid #6B8FA8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent with faint border. Secondary actions, view-more links.",
+      "html": "<button class=\"ds-btn-ghost\">View Process</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #F1F5F9; font-family: 'Work Sans', system-ui, sans-serif; font-weight: 500; font-size: 0.9rem; padding: 13px 35px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.10); cursor: pointer; height: 50px; transition: background 200ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1); } .ds-btn-ghost:hover { background: rgba(10,15,30,0.4); border-color: rgba(107,143,168,0.4); } .ds-btn-ghost:focus-visible { outline: 2px solid #6B8FA8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "card-glass",
+      "description": "Primary container surface. Translucent glass plane with inset highlight edge.",
+      "html": "<div class=\"ds-card-glass\"><h3 class=\"ds-card-title\">Workflow Automation</h3><p class=\"ds-card-body\">Replace end-to-end manual processes with intelligent systems.</p></div>",
+      "css": ".ds-card-glass { background: rgba(10, 15, 30, 0.75); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 24px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); transition: border-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 200ms cubic-bezier(0.25, 0.1, 0.25, 1); } .ds-card-glass:hover { border-color: rgba(255,255,255,0.12); box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 0 24px rgba(107,143,168,0.15); } .ds-card-title { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 600; font-size: 1.25rem; letter-spacing: -0.02em; color: #F1F5F9; margin: 0 0 12px; } .ds-card-body { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 400; font-size: 1rem; color: #94A3B8; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky nav. Transparent at top, compresses into glass pill on scroll past 85vh.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#capabilities\">Capabilities</a><a class=\"ds-nav-link\" href=\"#process\">Process</a><a class=\"ds-nav-link ds-nav-link--active\" href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 32px; padding: 0 24px; height: 56px; background: transparent; transition: background 300ms cubic-bezier(0.25, 0.1, 0.25, 1), backdrop-filter 300ms; } .ds-nav--scrolled { background: rgba(10, 15, 30, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06); border-radius: 9999px; } .ds-nav-link { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 400; font-size: 0.9rem; color: #94A3B8; text-decoration: none; transition: color 150ms ease-out; } .ds-nav-link:hover { color: #F1F5F9; } .ds-nav-link--active { color: #6B8FA8; }"
+    },
+    {
+      "name": "Stat Display",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "KPI figures and quantitative claims. Space Grotesk tabular. Used in proof sections.",
+      "html": "<div class=\"ds-stat\"><span class=\"ds-stat-value\">₹50,000+</span><span class=\"ds-stat-label\">per container at risk from a single missed customs query</span></div>",
+      "css": ".ds-stat { display: flex; flex-direction: column; gap: 8px; } .ds-stat-value { font-family: 'Space Grotesk', monospace; font-weight: 700; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; letter-spacing: -0.02em; color: #F1F5F9; font-variant-numeric: tabular-nums; } .ds-stat-label { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 400; font-size: 0.85rem; color: #64748B; line-height: 1.4; max-width: 28ch; }"
+    },
+    {
+      "name": "Section Heading (with italic contrast)",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Display headline with a Libre Baskerville italic subordinate clause. The signature typographic pattern.",
+      "html": "<h1 class=\"ds-display\">Automate the manual <em class=\"ds-display-em\">infrastructure of global trade.</em></h1>",
+      "css": ".ds-display { font-family: 'Work Sans', system-ui, sans-serif; font-weight: 800; font-size: clamp(3.5rem, 7vw, 6rem); line-height: 0.95; letter-spacing: -0.04em; color: #F1F5F9; margin: 0; } .ds-display-em { font-family: 'Libre Baskerville', Georgia, serif; font-weight: 400; font-style: italic; color: #94A3B8; font-size: 0.92em; letter-spacing: -0.01em; }"
+    },
+    {
+      "name": "Capability Tag / Chip",
+      "kind": "chip",
+      "refersTo": "label",
+      "description": "Industry vertical labels and filter tags. Understated, high-contrast border.",
+      "html": "<span class=\"ds-chip\">LCL Consolidator</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.10); background: rgba(10,15,30,0.5); font-family: 'Work Sans', system-ui, sans-serif; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.04em; color: #94A3B8; text-transform: uppercase; transition: border-color 150ms ease-out, color 150ms ease-out; } .ds-chip:hover { border-color: rgba(107,143,168,0.4); color: #CBD5E1; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operations Floor at Midnight",
+    "overview": "This is not a startup. It is not a dashboard. It is the visual equivalent of a precision instrument: dark, exact, and devoid of decoration that does not earn its place. Every surface is purpose-built for the operations leader who has been burned by off-the-shelf software and has no patience for marketing aesthetics masquerading as infrastructure.\n\nThe system operates in deep navy darkness — not black for drama, but the particular near-black of a trading terminal or industrial control panel. Glass surfaces press into the darkness with inset highlight lines, not with colored borders or drop shadows. Motion is architectural: fast in, slow to settle, no bounce. Typography is heavy, compressed, and close-tracked — the letterforms of a person who writes memos, not tweets.\n\nThis system explicitly rejects the visual language of SaaS: no gradient text, no hero-metric templates, no identical card grids, no friendly-startup warmth. Notion, Monday.com, Zapier, Salesforce, and Webflow templates are anti-references — not because they fail aesthetically but because they signal the wrong posture. StrideShip is infrastructure, not tooling.",
+    "keyCharacteristics": [
+      "Ultra-dark navy ground with muted steel-blue accent used at ≤10% surface coverage",
+      "Glassmorphism as structural language, not decoration — translucent planes with inset highlight lines",
+      "Heavy, compressed sans-serif headlines (Work Sans 800) cut by Libre Baskerville italic for subordinate contrast",
+      "Motion: fast entry, exponential ease-out, no choreography for its own sake",
+      "Copy earns every word; no word restates what the adjacent element already communicates"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule",       "body": "Steel Accent (#6B8FA8) appears on no more than 10% of any screen. It is used at hover, active, or highlight states only — never as a fill, never as a background, never gradient-mixed with another color. Its rarity is exactly the point: when it appears, it means something.", "section": "colors" },
+      { "name": "The No-Pure-Black Rule",    "body": "Neither #000000 nor #ffffff appears anywhere in the system. Every neutral is tinted toward the brand hue. Void Navy is the darkest surface; Ghost White is the lightest text. Substituting pure black or white fails the system.", "section": "colors" },
+      { "name": "The Compression Rule",      "body": "Headline and Display type is always negatively tracked. If a heading looks like it was set with default letter-spacing, it has failed. Minimum -0.02em for Title; -0.03em for Headline; -0.04em for Display.", "section": "typography" },
+      { "name": "The Serif Sparingly Rule",  "body": "Libre Baskerville appears only inside headline elements as an italic subordinate clause, and only when the surrounding text is Work Sans. Never use it for body copy, labels, or standalone headings. It creates contrast by exception — use it constantly and the contrast disappears.", "section": "typography" },
+      { "name": "The Inset-Not-Drop Rule",   "body": "Cards and glass surfaces use inset highlights, not drop shadows. If a card has a box-shadow with positive Y-offset and blur greater than 4px applied as the primary depth signal, it is wrong. The plane system is tonal, not shadow-based.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use #060B14 as the base background. If any surface needs to be 'darker,' use #05070A — never #000000.",
+      "Do keep Steel Accent (#6B8FA8) at or below 10% surface coverage. Reserve it for glows, active borders, and icon highlights only.",
+      "Do use Glass Surface (rgba(10, 15, 30, 0.75)) with the inset highlight (inset 0 1px 0 rgba(255,255,255,0.06)) on every translucent container.",
+      "Do use Work Sans at 700–800 weight with negative tracking (-0.03em to -0.04em) for all headline and display type.",
+      "Do use Libre Baskerville italic in Slate Muted (#94A3B8) for subordinate headline clauses only — one per headline maximum.",
+      "Do use Space Grotesk for all numerical data, stats, KPIs, and tabular displays.",
+      "Do keep all body copy at 65–75ch maximum line length.",
+      "Do ease all motion with exponential curves (cubic-bezier(0.16, 1, 0.3, 1) — fast in, slow settle). No linear, no ease-in, no bounce.",
+      "Do use logistics vocabulary: ICEGATE, demurrage, Nhava Sheva, NVOCC, RFQ, CHAs, LCL. Never substitute generic SaaS language.",
+      "Do use specific numbers: ₹50,000+ per container, 6–8 hours daily, 30–90 day receivables gaps. Never round to vague claims."
+    ],
+    "donts": [
+      "Don't use gradient text (background-clip: text with a gradient). Prohibited. Use solid Ghost White or Slate Muted for emphasis.",
+      "Don't use colored border-left or border-right greater than 1px as a card or list-item accent stripe. Rewrite with full borders, background tints, or leading icons.",
+      "Don't use glassmorphism decoratively — blur and glass cards must be structural. If the blur serves no depth purpose, remove it.",
+      "Don't use the hero-metric template: big number + small label + supporting stats + gradient accent. This is a SaaS cliché and fails the AI slop test.",
+      "Don't use identical card grids — same-sized cards with icon + heading + text repeated endlessly. Vary sizing, weight, and content density.",
+      "Don't use modals as a first-response to interaction. Exhaust inline and progressive disclosure alternatives first.",
+      "Don't use em dashes (—) or double hyphens (--) in copy. Use commas, colons, semicolons, or parentheses.",
+      "Don't borrow aesthetic language from Notion, Monday.com, Zapier, Salesforce, Freshworks, Zoho, Fiverr, Upwork, or any generic Webflow template.",
+      "Don't use friendly-startup tone: no 'Hey there!', no rocket emojis, no 'seamlessly', no 'unlock your potential', no 'game-changing', no 'revolutionary'.",
+      "Don't animate CSS layout properties (width, height, top, left, padding). Animate only opacity and transform.",
+      "Don't use bounce or elastic easing curves. Ever.",
+      "Don't nest cards inside cards. Nested cards are always wrong.",
+      "Don't use pure #000000 or #ffffff anywhere. Tint every neutral toward the brand hue."
+    ]
+  }
+}

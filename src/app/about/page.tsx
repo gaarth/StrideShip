@@ -1,14 +1,71 @@
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "About Us | Strideship",
-  description: "The leadership, story, and core philosophy behind StrideShip.",
+export const metadata: Metadata = {
+  title: "About StrideShip | Logistics Automation Experts in Mumbai",
+  description:
+    "Meet the team behind StrideShip — Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About StrideShip | Logistics Automation Experts in Mumbai",
+    description:
+      "Meet the team behind StrideShip — Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+    url: "https://strideship.dev/about",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About StrideShip — Logistics Automation Experts",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About StrideShip | Logistics Automation Experts in Mumbai",
+    description:
+      "Meet the team behind StrideShip — Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+    images: ["/og-image.png"],
+  },
 };
+
+const personSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Gaarth Godbole",
+    jobTitle: "Co-Founder and CEO",
+    worksFor: { "@type": "Organization", name: "StrideShip" },
+    url: "https://strideship.dev/about",
+    sameAs: "https://www.linkedin.com/company/strideship/",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Siddhant Vaidya",
+    jobTitle: "Co-Founder and CTO",
+    worksFor: { "@type": "Organization", name: "StrideShip" },
+    url: "https://strideship.dev/about",
+    sameAs: "https://www.linkedin.com/company/strideship/",
+  },
+];
 
 export default function AboutPage() {
   return (
     <main style={{ position: "relative" }}>
+      {/* Person JSON-LD schemas */}
+      {personSchemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
       {/* Locked screen background matching Home layout */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -1, background: "radial-gradient(ellipse at 50% 40%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.05) 40%, transparent 70%)" }} />
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -2, backgroundColor: "#05070A" }} />
@@ -25,7 +82,7 @@ export default function AboutPage() {
               <span style={{ fontStyle: "italic", color: "#94A3B8" }}>Global Trade</span>
             </h1>
             <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#64748B", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
-              We're taking logistics off paper and transforming it into a high-precision, tech-first sector.
+              We&rsquo;re taking logistics off paper and transforming it into a high-precision, tech-first sector.
             </p>
           </header>
 
@@ -46,10 +103,10 @@ export default function AboutPage() {
                   Co-Founder & Chief Executive Officer
                 </p>
                 <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem" }}>
-                  As the driving force behind StrideShip's mission, Gaarth Godbole leads the company's strategic vision and global client operations. Based in the heart of Mumbai's logistics hub, he specializes in identifying the systemic inefficiencies that prevent high-growth agencies and Customs House Agents from reaching their full scale.
+                  As the driving force behind StrideShip&rsquo;s mission, Gaarth Godbole leads the company&rsquo;s strategic vision and global client operations. Based in the heart of Mumbai&rsquo;s logistics hub, he specializes in identifying the systemic inefficiencies that prevent high-growth agencies and Customs House Agents from reaching their full scale.
                 </p>
                 <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginTop: "16px" }}>
-                  Gaarth focuses on the macro-economic challenges of the supply chain, working closely with industry veterans to ensure StrideShip delivers a business engine that decouples a firm's revenue potential from its back-office headcount. His leadership is centered on transforming logistics from a labor-heavy industry into a high-precision, tech-first sector.
+                  Gaarth focuses on the macro-economic challenges of the supply chain, working closely with industry veterans to ensure StrideShip delivers a business engine that decouples a firm&rsquo;s revenue potential from its back-office headcount. His leadership is centered on transforming logistics from a labor-heavy industry into a high-precision, tech-first sector.
                 </p>
               </div>
 
@@ -65,10 +122,10 @@ export default function AboutPage() {
                   Co-Founder & Chief Technical Officer
                 </p>
                 <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem" }}>
-                  The architect of the StrideShip technical ecosystem, Siddhant Vaidya leads the development of the proprietary "Logic Layer" and automation infrastructure. He is responsible for the end-to-end technical roadmap, focusing on high-performance data extraction, secure multi-tenant architecture, and server-side reliability.
+                  The architect of the StrideShip technical ecosystem, Siddhant Vaidya leads the development of the proprietary &ldquo;Logic Layer&rdquo; and automation infrastructure. He is responsible for the end-to-end technical roadmap, focusing on high-performance data extraction, secure multi-tenant architecture, and server-side reliability.
                 </p>
                 <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginTop: "16px" }}>
-                  Siddhant's work ensures that the inherent chaos of global trade documentation—ranging from non-standardized PDFs to cluttered spreadsheets—is converted into 99.9% accurate, system-ready data. His mission is to build robust, scalable infrastructure that allows logistics firms to automate their most complex data pipelines without compromising on security or accuracy.
+                  Siddhant&rsquo;s work ensures that the inherent chaos of global trade documentation—ranging from non-standardized PDFs to cluttered spreadsheets—is converted into 99.9% accurate, system-ready data. His mission is to build robust, scalable infrastructure that allows logistics firms to automate their most complex data pipelines without compromising on security or accuracy.
                 </p>
               </div>
             </section>
@@ -94,10 +151,10 @@ export default function AboutPage() {
                 Building for the Reality of Trade
               </h3>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "20px" }}>
-                Most automation platforms fail because they are built for "clean" data environments that simply do not exist in international trade. They assume every invoice is formatted perfectly and every spreadsheet is standardized. In the real-world environment of Mumbai logistics—from the ports of Nhava Sheva to the offices of Ballard Estate—data is inherently messy.
+                Most automation platforms fail because they are built for &ldquo;clean&rdquo; data environments that simply do not exist in international trade. They assume every invoice is formatted perfectly and every spreadsheet is standardized. In the real-world environment of Mumbai logistics—from the ports of Nhava Sheva to the offices of Ballard Estate—data is inherently messy.
               </p>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem" }}>
-                StrideShip is engineered specifically for this reality. We don't just "scrape" text; we understand the underlying logic of logistics. Our platform is designed to handle the "Khich-Khich"—the diverse global document formats, the project-specific packing lists, and the fragmented communication channels that define daily operations.
+                StrideShip is engineered specifically for this reality. We don&rsquo;t just &ldquo;scrape&rdquo; text; we understand the underlying logic of logistics. Our platform is designed to handle the &ldquo;Khich-Khich&rdquo;—the diverse global document formats, the project-specific packing lists, and the fragmented communication channels that define daily operations.
               </p>
             </section>
 
@@ -107,7 +164,7 @@ export default function AboutPage() {
                 Our Core Philosophy
               </h2>
               <h3 style={{ fontSize: "clamp(1.1rem, 1.3vw, 1.3rem)", color: "#94A3B8", marginBottom: "32px", fontStyle: "italic" }}>
-                The "Review-Only" Workflow
+                The &ldquo;Review-Only&rdquo; Workflow
               </h3>
 
               <h4 style={{ fontSize: "1rem", color: "#CBD5E1", marginBottom: "12px" }}>From Manual Input to Strategic Audit</h4>
@@ -120,7 +177,7 @@ export default function AboutPage() {
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
                   <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(37,99,235,0.12)", border: "1px solid rgba(37,99,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
                   <p style={{ margin: 0, color: "#94A3B8", lineHeight: 1.7 }}>
-                    Ingestion & Extraction — Pulling precise line-item data from any unstructured source, whether it's a PDF invoice, a body-of-email text, or a cluttered Excel file.
+                    Ingestion & Extraction — Pulling precise line-item data from any unstructured source, whether it&rsquo;s a PDF invoice, a body-of-email text, or a cluttered Excel file.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
@@ -138,7 +195,7 @@ export default function AboutPage() {
               </ul>
 
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", fontStyle: "italic" }}>
-                By shifting your team's responsibility from "Typing" to "Auditing," we reduce processing times from hours to mere seconds. This allows a lean, focused team to manage the shipment volume of a global enterprise without the typical operational drag.
+                By shifting your team&rsquo;s responsibility from &ldquo;Typing&rdquo; to &ldquo;Auditing,&rdquo; we reduce processing times from hours to mere seconds. This allows a lean, focused team to manage the shipment volume of a global enterprise without the typical operational drag.
               </p>
             </section>
 
@@ -161,7 +218,7 @@ export default function AboutPage() {
                     <span style={{ color: "#60A5FA" }}>✦</span> Legacy System Preservation
                   </h4>
                   <p style={{ color: "#94A3B8", lineHeight: 1.7, fontSize: "1.05rem", paddingLeft: "30px" }}>
-                    We believe in enhancing what works. StrideShip does not require you to replace your trusted ERPs or abandon your decades of established expertise. We provide the "Logic Bridge" that makes your existing systems 10x more powerful.
+                    We believe in enhancing what works. StrideShip does not require you to replace your trusted ERPs or abandon your decades of established expertise. We provide the &ldquo;Logic Bridge&rdquo; that makes your existing systems 10x more powerful.
                   </p>
                 </div>
                 <div>

@@ -1,0 +1,48 @@
+# StrideShip
+> StrideShip is a Mumbai-based AI automation agency that builds custom operational systems for the global logistics industry. We automate the manual documentation and workflow infrastructure of customs clearance, freight forwarding, and trade compliance — replacing hours of manual data entry with intelligent, end-to-end automation systems.
+
+## What We Do
+- Custom automation of customs documentation (Bill of Entry processing, commercial invoice parsing, packing list extraction)
+- AI-powered BOE (Bill of Entry) preparation from commercial invoice PDFs into Google Sheets and ERP-ready formats
+- RFQ and quote automation for freight forwarders
+- Shipment tracking and operational dashboard systems
+- DGFT intelligence and duty credit scrip portfolio tracking (RoDTEP, MEIS, DFIA)
+- Automated client communication workflows (WhatsApp, email)
+- Custom integrations with Indian ERP systems (Softlink, SAP, etc.)
+
+## Who We Serve
+- Customs House Agents (CHAs) in India
+- Freight forwarders and NVOCCs
+- LCL consolidators and 3PL providers
+- Importers and exporters (EXIM businesses)
+- Clearance agents at major Indian ports (Nhava Sheva / JNPT, Mundra, Chennai)
+
+## Technology Stack
+- n8n workflow automation (self-hosted)
+- Google Gemini Vision API for document extraction
+- PostgreSQL for data management
+- Docker and Ubuntu Server infrastructure
+- Cloudflare Tunnels for secure connectivity
+- Google Sheets and ERP API integrations
+
+## Founders
+- Gaarth Godbole — Co-Founder and CEO. Mumbai-based. Specializes in logistics operations strategy and EXIM domain expertise.
+- Siddhant Vaidya — Co-Founder and CTO. Leads all technical architecture and automation infrastructure.
+
+## Key Concepts
+- The Manual Entry Trap: The problem where elite logistics professionals are forced to act as data entry clerks, preventing firm growth
+- Review-Only Workflow: StrideShip's target state where operators review auto-extracted data rather than manually typing it
+- Logic Layer: StrideShip's proprietary extraction and normalization engine
+- Ephemeral Processing: StrideShip does not retain client trade data after processing is complete
+
+## Contact
+- Website: https://strideship.dev
+- Email: ceo@strideship.dev
+- LinkedIn: https://www.linkedin.com/company/strideship/
+- Location: Mumbai, Maharashtra, India
+
+## Pages
+- [Homepage](https://strideship.dev): Full overview of services, ICP, process, and value proposition
+- [About](https://strideship.dev/about): Founder bios, company story, core philosophy
+- [Blog](https://strideship.dev/blog): Articles on logistics automation, customs AI, and Indian EXIM operations
+- [FAQ](https://strideship.dev/faq): Answers to common questions about logistics automation and StrideShip's services

@@ -14,8 +14,9 @@ const glassStyle = {
 export function CTA() {
   return (
     <section id="cta" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
-      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div
+          className="cta-glass"
           style={{
             ...glassStyle,
             padding: "clamp(48px, 6vw, 84px) clamp(32px, 5vw, 64px)",
@@ -33,7 +34,7 @@ export function CTA() {
           }} />
 
           {/* LARGE DECORATIVE WATERMARK */}
-          <div style={{
+          <div className="cta-watermark" style={{
             position: "absolute",
             top: "50%", left: "50%",
             opacity: 0.035,
@@ -56,7 +57,7 @@ export function CTA() {
           </div>
 
           <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "clamp(14px, 1.8vw, 20px)" }}>
-            Let&rsquo;s look at<br />
+            Let&rsquo;s look at{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>your operations.</span>
           </motion.h2>
 

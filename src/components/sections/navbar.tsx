@@ -10,6 +10,7 @@ const links = [
   { label: "Capabilities", href: "#capabilities" },
   { label: "Process", href: "#process" },
   { label: "Clients", href: "#who-we-help" },
+  { label: "Resources", href: "/blog" },
 ];
 
 export function Navbar() {
@@ -27,7 +28,11 @@ export function Navbar() {
 
   const go = (href: string) => {
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith("#")) {
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = href;
+    }
   };
 
   return (

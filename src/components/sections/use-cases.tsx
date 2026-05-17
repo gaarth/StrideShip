@@ -8,9 +8,10 @@ const cases = [
   {
     id: "docs", num: "01",
     title: "Document Processing & Automation",
-    desc: "From messy emails to structured data in seconds. We parse PDF invoices, packing lists, and quote requests — instantly formatting them into clean Excel sheets with zero errors.",
+    desc: "AI-powered customs documentation automation — from messy emails to structured data in seconds. We parse PDF invoices, packing lists, and customs documents, enabling Bill of Entry automation and BOE processing with zero manual entry.",
     details: [
       "Parse PDF invoices, bills of lading, and packing lists instantly",
+      "Automate Bill of Entry preparation from commercial invoices",
       "Auto-structure messy email content into organized spreadsheets",
       "Eliminate repetitive copy-paste across Excel files completely",
       "Cross-validate documents against bookings automatically",
@@ -64,11 +65,11 @@ export function UseCases() {
 
   return (
     <section id="use-cases" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
-      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
 
           <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9" }}>
-            What we<br />
+            Systems we<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>actually build.</span>
           </motion.h2>
         </motion.div>

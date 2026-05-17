@@ -237,7 +237,7 @@ export function BeforeAfter() {
 
   return (
     <section id="before-after" style={{ padding: "clamp(48px, 7vw, 84px) 0", position: "relative" }}>
-      <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+      <div className="ba-wrapper" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
 
         {/* ── Section header ── */}
         <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
@@ -247,7 +247,7 @@ export function BeforeAfter() {
             fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95,
             letterSpacing: "-0.03em", color: "#F1F5F9",
           }}>
-            Before<br />
+            Before{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic" }}>vs After</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{
@@ -293,7 +293,7 @@ export function BeforeAfter() {
                 fontSize: "clamp(1.5rem, 2.5vw, 2.125rem)", fontWeight: 800,
                 color: "#F1F5F9", letterSpacing: "-0.02em", lineHeight: 1.2,
               }}>
-                Manual. Slow.<br />
+                Manual. Slow.{" "}<br />
                 <span style={{ fontWeight: 300, fontStyle: "italic", color: "#94A3B8" }}>Always reactive.</span>
               </h3>
             </div>
@@ -389,7 +389,7 @@ export function BeforeAfter() {
                 fontSize: "clamp(1.5rem, 2.5vw, 2.125rem)", fontWeight: 800,
                 color: "#F1F5F9", letterSpacing: "-0.02em", lineHeight: 1.2,
               }}>
-                Automated. Fast.<br />
+                Automated. Fast.{" "}<br />
                 <span style={{ fontWeight: 300, fontStyle: "italic", color: "#94A3B8" }}>Always in control.</span>
               </h3>
             </div>

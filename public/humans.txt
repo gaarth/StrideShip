@@ -1,0 +1,13 @@
+/* TEAM */
+CEO: Gaarth Godbole
+Contact: ceo@strideship.dev
+Location: Mumbai, Maharashtra, India
+
+CTO: Siddhant Vaidya
+Contact: cto@strideship.dev
+Location: Mumbai, Maharashtra, India
+
+/* SITE */
+Last update: 2026/05/18
+Language: English
+Technology: Next.js, React, TypeScript, Framer Motion, Tailwind CSS

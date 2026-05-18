@@ -10,7 +10,7 @@ const links = [
   { label: "Capabilities", href: "#capabilities" },
   { label: "Process", href: "#process" },
   { label: "Clients", href: "#who-we-help" },
-  { label: "Resources", href: "/blog" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Navbar() {

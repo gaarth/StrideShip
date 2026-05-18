@@ -1,48 +1,48 @@
-import type { MetadataRoute } from 'next'
-import { blogPosts } from '@/lib/blog-data'
-
-const BASE_URL = 'https://strideship.dev'
+import type { MetadataRoute } from "next";
+import { blogPosts } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://strideship.dev";
+
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: BASE_URL,
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: `${BASE_URL}/about`,
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
-      url: `${BASE_URL}/faq`,
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/blog`,
+      url: `${baseUrl}/faq`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
-      url: `${BASE_URL}/privacy`,
+      url: `${baseUrl}/privacy`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
-  ]
+  ];
 
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
+    url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }))
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
-  return [...staticPages, ...blogPages]
+  return [...staticPages, ...blogPages];
 }

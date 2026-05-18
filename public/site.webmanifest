@@ -1,6 +1,13 @@
 {
-  "name": "strideship",
-  "short_name": "strideship",
+  "name": "StrideShip — AI Customs & Logistics Automation",
+  "short_name": "StrideShip",
+  "description": "Custom AI automation systems for Indian customs brokers, freight forwarders, and logistics firms. Bill of Entry automation, RFQ processing, shipment tracking.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#060B14",
+  "background_color": "#060B14",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -13,9 +20,13 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "categories": ["business", "productivity"],
+  "lang": "en-IN"
 }

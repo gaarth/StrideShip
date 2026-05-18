@@ -1,48 +1,55 @@
 # StrideShip
-> StrideShip is a Mumbai-based AI automation agency that builds custom operational systems for the global logistics industry. We automate the manual documentation and workflow infrastructure of customs clearance, freight forwarding, and trade compliance — replacing hours of manual data entry with intelligent, end-to-end automation systems.
 
-## What We Do
-- Custom automation of customs documentation (Bill of Entry processing, commercial invoice parsing, packing list extraction)
-- AI-powered BOE (Bill of Entry) preparation from commercial invoice PDFs into Google Sheets and ERP-ready formats
-- RFQ and quote automation for freight forwarders
-- Shipment tracking and operational dashboard systems
-- DGFT intelligence and duty credit scrip portfolio tracking (RoDTEP, MEIS, DFIA)
-- Automated client communication workflows (WhatsApp, email)
-- Custom integrations with Indian ERP systems (Softlink, SAP, etc.)
+> AI-powered customs and logistics automation for Indian freight forwarders, customs house agents (CHAs), and import/export businesses.
 
-## Who We Serve
-- Customs House Agents (CHAs) in India
-- Freight forwarders and NVOCCs
-- LCL consolidators and 3PL providers
-- Importers and exporters (EXIM businesses)
-- Clearance agents at major Indian ports (Nhava Sheva / JNPT, Mundra, Chennai)
+## About
 
-## Technology Stack
-- n8n workflow automation (self-hosted)
-- Google Gemini Vision API for document extraction
-- PostgreSQL for data management
-- Docker and Ubuntu Server infrastructure
-- Cloudflare Tunnels for secure connectivity
-- Google Sheets and ERP API integrations
+StrideShip builds custom operational automation systems for logistics businesses in India. We replace manual document processing, data entry, and workflow coordination with AI-powered infrastructure. Every system is custom-built — no templates, no off-the-shelf software.
 
-## Founders
-- Gaarth Godbole — Co-Founder and CEO. Mumbai-based. Specializes in logistics operations strategy and EXIM domain expertise.
-- Siddhant Vaidya — Co-Founder and CTO. Leads all technical architecture and automation infrastructure.
+## Core Services
 
-## Key Concepts
-- The Manual Entry Trap: The problem where elite logistics professionals are forced to act as data entry clerks, preventing firm growth
-- Review-Only Workflow: StrideShip's target state where operators review auto-extracted data rather than manually typing it
-- Logic Layer: StrideShip's proprietary extraction and normalization engine
-- Ephemeral Processing: StrideShip does not retain client trade data after processing is complete
+- **Document Processing & Automation**: AI-powered parsing of PDF invoices, packing lists, commercial documents into structured data. Bill of Entry (BOE) automation for ICEGATE filing.
+- **RFQ & Quote Automation**: Convert unstructured email requests into accurate, formatted quotes with audit trails.
+- **Shipment Tracking Systems**: Multi-carrier real-time tracking with automated milestone alerts and exception detection.
+- **Operations Dashboards**: Live KPIs, team performance monitoring, and automated reporting.
+- **System Integration**: Connect CRM, ERP (Softlink, Logi-Sys, SAP), carrier APIs into a unified operational layer.
+- **Workflow Automation**: End-to-end automation of RFQ pipelines, shipment coordination, and customs document workflows.
+
+## Target Industries
+
+- Custom House Agents (CHAs)
+- Freight Forwarders
+- LCL Consolidators
+- 3PL Providers
+- NVOCC Operators
+- Importers & Exporters
+- Clearance Agents
+
+## Key Capabilities
+
+- Bill of Entry automation for Indian customs
+- ICEGATE filing preparation
+- HSN code classification and validation
+- BCD/IGST/CVD/SWS duty calculation
+- DGFT filing and duty credit scrip tracking (RoDTEP, DFIA, SEIS)
+- Compliance prerequisite checking (BIS, LMPC, FSSAI, CDSCO)
+- Multi-carrier shipment tracking
+- Commercial invoice and packing list data extraction
+
+## Location
+
+Mumbai, Maharashtra, India
 
 ## Contact
+
 - Website: https://strideship.dev
 - Email: ceo@strideship.dev
+- Book a Call: https://cal.com/gaarth-godbole/audit-call
 - LinkedIn: https://www.linkedin.com/company/strideship/
-- Location: Mumbai, Maharashtra, India
 
-## Pages
-- [Homepage](https://strideship.dev): Full overview of services, ICP, process, and value proposition
-- [About](https://strideship.dev/about): Founder bios, company story, core philosophy
-- [Blog](https://strideship.dev/blog): Articles on logistics automation, customs AI, and Indian EXIM operations
-- [FAQ](https://strideship.dev/faq): Answers to common questions about logistics automation and StrideShip's services
+## Further Reading
+
+- [About StrideShip](https://strideship.dev/about)
+- [FAQ](https://strideship.dev/faq)
+- [Blog](https://strideship.dev/blog)
+- [Full documentation for LLMs](https://strideship.dev/llms-full.txt)

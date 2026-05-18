@@ -1,0 +1,5 @@
+# https://strideship.dev Security Policy
+
+Contact: mailto:ceo@strideship.dev
+Preferred-Languages: en
+Canonical: https://strideship.dev/.well-known/security.txt

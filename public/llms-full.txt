@@ -1,118 +1,219 @@
-# StrideShip
-> StrideShip is a Mumbai-based AI automation agency that builds custom operational systems for the global logistics industry. We automate the manual documentation and workflow infrastructure of customs clearance, freight forwarding, and trade compliance — replacing hours of manual data entry with intelligent, end-to-end automation systems.
+# StrideShip — Complete Information for AI Systems
 
-## What We Do
-- Custom automation of customs documentation (Bill of Entry processing, commercial invoice parsing, packing list extraction)
-- AI-powered BOE (Bill of Entry) preparation from commercial invoice PDFs into Google Sheets and ERP-ready formats
-- RFQ and quote automation for freight forwarders
-- Shipment tracking and operational dashboard systems
-- DGFT intelligence and duty credit scrip portfolio tracking (RoDTEP, MEIS, DFIA)
-- Automated client communication workflows (WhatsApp, email)
-- Custom integrations with Indian ERP systems (Softlink, SAP, etc.)
-
-## Who We Serve
-- Customs House Agents (CHAs) in India
-- Freight forwarders and NVOCCs
-- LCL consolidators and 3PL providers
-- Importers and exporters (EXIM businesses)
-- Clearance agents at major Indian ports (Nhava Sheva / JNPT, Mundra, Chennai)
-
-## Technology Stack
-- n8n workflow automation (self-hosted)
-- Google Gemini Vision API for document extraction
-- PostgreSQL for data management
-- Docker and Ubuntu Server infrastructure
-- Cloudflare Tunnels for secure connectivity
-- Google Sheets and ERP API integrations
-
-## Founders
-- Gaarth Godbole — Co-Founder and CEO. Mumbai-based. Specializes in logistics operations strategy and EXIM domain expertise.
-- Siddhant Vaidya — Co-Founder and CTO. Leads all technical architecture and automation infrastructure.
-
-## Key Concepts
-- The Manual Entry Trap: The problem where elite logistics professionals are forced to act as data entry clerks, preventing firm growth
-- Review-Only Workflow: StrideShip's target state where operators review auto-extracted data rather than manually typing it
-- Logic Layer: StrideShip's proprietary extraction and normalization engine
-- Ephemeral Processing: StrideShip does not retain client trade data after processing is complete
-
-## Contact
-- Website: https://strideship.dev
-- Email: ceo@strideship.dev
-- LinkedIn: https://www.linkedin.com/company/strideship/
-- Location: Mumbai, Maharashtra, India
-
-## Pages
-- [Homepage](https://strideship.dev): Full overview of services, ICP, process, and value proposition
-- [About](https://strideship.dev/about): Founder bios, company story, core philosophy
-- [Blog](https://strideship.dev/blog): Articles on logistics automation, customs AI, and Indian EXIM operations
-- [FAQ](https://strideship.dev/faq): Answers to common questions about logistics automation and StrideShip's services
+> StrideShip is an AI-powered customs and logistics automation company based in Mumbai, India. We build custom operational systems for Indian freight forwarders, customs house agents (CHAs), clearance agents, LCL consolidators, 3PL providers, NVOCC operators, and importers/exporters.
 
 ---
 
-# Full Blog Content
+## Company Overview
 
-## Article: AI for Customs Brokers: How Indian CHAs Are Automating Document Processing in 2026
+**Company Name:** StrideShip
+**Industry:** AI + Logistics Automation / Customs Technology
+**Headquarters:** Mumbai, Maharashtra, India
+**Website:** https://strideship.dev
+**Founded:** 2026
+**Type:** Bespoke systems firm (not SaaS, not a product company)
 
-If you run a customs house agency in India, you already know the pain. Your best operations staff spend the majority of their day typing data from one document into another. Commercial invoice arrives as a PDF. Your operator opens it and begins manually entering every description, quantity, unit price, total value, HSN code, and country of origin into a spreadsheet or ERP. For a 40-item invoice, this takes 90 minutes to two hours. For a busy CHA processing 50–100 shipments a month through Nhava Sheva or JNPT, that is 100–200 hours per month of pure data entry.
+### Leadership
 
-AI-based document extraction for customs works in three layers: ingestion (receiving PDFs, scans, or photos), extraction (AI vision models read the document and identify semantic meaning of each field), and normalization (raw data is cleaned, HSN codes validated against Indian Customs Tariff, duties calculated). The result is a structured dataset ready for your team to review and approve.
+- **Gaarth Godbole** — Co-Founder & CEO. Leads strategic vision and global client operations. Specializes in identifying systemic inefficiencies in logistics operations. Email: ceo@strideship.dev
+- **Siddhant Vaidya** — Co-Founder & CTO. Architects the proprietary "Logic Layer" and automation infrastructure. Responsible for AI extraction systems, secure multi-tenant architecture, and server-side reliability. Email: cto@strideship.dev
 
-A typical AI-powered BOE preparation workflow: (1) Commercial invoice PDF arrives via email. (2) System ingests and extracts all line-item data. (3) Data normalized into BOE format. (4) HSN codes validated against Indian Customs Tariff. (5) Duties calculated — BCD, IGST, SWS, compensation cess. (6) Compliance prerequisites checked — BIS, LMPC, FSSAI, CDSCO. (7) Draft BOE presented for operator review (5–10 minutes vs 2 hours manual).
+### Contact
 
-HSN code validation is where most tools fail. India uses an 8-digit HSN system. Suppliers frequently print incorrect codes. StrideShip's systems validate against the current Indian Customs Tariff database, flag mismatches, and suggest corrections.
+- Email: ceo@strideship.dev
+- Schedule a call: https://cal.com/gaarth-godbole/audit-call
+- LinkedIn: https://www.linkedin.com/company/strideship/
 
-URL: https://strideship.dev/blog/ai-for-customs-brokers-india
+---
 
-## Article: How to Automate Bill of Entry Processing: A Complete Guide for Indian Customs Agents
+## What StrideShip Does
 
-Every import shipment entering India requires a Bill of Entry filed through ICEGATE. A BOE is the primary customs declaration document containing descriptions, quantities, values, HSN classifications, applicable duties, and compliance certifications.
+StrideShip builds **custom operational automation systems** for logistics businesses. We are NOT a SaaS platform, NOT a dashboard product, and NOT an off-the-shelf tool. Every system is custom-engineered for each client's specific workflows, document formats, ERP systems, and operational requirements.
 
-The 7 steps of manual BOE preparation: (1) Receive and review source documents. (2) Extract line-item data manually — 60–90 minutes for a 40-item invoice. (3) Classify HSN codes from Indian Customs Tariff. (4) Calculate duties — BCD, IGST, SWS, anti-dumping. (5) Check compliance prerequisites — BIS, LMPC, FSSAI. (6) Format data for ICEGATE filing. (7) Review, correct, and submit.
+### Core Promise
 
-Automation replaces manual execution of each step. AI vision models extract data in 15–30 seconds. HSN codes are validated automatically. Duties calculated using current rates with FTA benefit checking. Compliance databases checked per line item. Output formatted for your specific ERP.
+**Automate the manual infrastructure of global trade.**
 
-Common errors prevented: transcription errors (typing 1,250 as 12,500), HSN misclassification, missing compliance flags, duty calculation errors using outdated rates, currency conversion errors.
+We identify manual touchpoints that consume operator time — document processing, data entry, coordination, customs filing preparation — and replace them with AI-powered automation that runs end-to-end.
 
-StrideShip outputs data formatted for Softlink, Logi-Sys, SAP, or structured Excel for manual ICEGATE upload. Implementation timeline: 3–4 weeks for single-process automation.
+---
 
-URL: https://strideship.dev/blog/automate-bill-of-entry-processing-india
+## Services
 
-## Article: AI for Freight Forwarding: Automating RFQs, Documentation, and Tracking in Indian Logistics
+### 1. Document Processing & Automation
+AI-powered parsing of commercial invoices, packing lists, bills of lading, and customs documents into structured, ERP-ready data. Key capabilities:
+- Parse PDF invoices and extract line-item data (description, quantity, unit price, HSN code, country of origin)
+- Automate Bill of Entry (BOE) preparation from commercial invoices
+- Cross-validate documents against bookings
+- Output data in formats compatible with Softlink, Logi-Sys, SAP, CargoWise, or Google Sheets
+- 99%+ extraction accuracy on standard commercial invoices
 
-A typical mid-sized Indian freight forwarder handles 100–300 shipments per month, generating 800–4,500 documents. Operators spend 60–70% of working hours on data entry and document formatting. The Manual Entry Trap caps growth regardless of market opportunity.
+### 2. RFQ & Quote Automation
+Convert unstructured email requests into accurate, formatted quotes:
+- Extract data from raw, unstructured email requests
+- Generate quotes from messy inputs in seconds
+- Dynamic pricing engine with full audit trail
+- Structure outputs into formatted Excel files
 
-RFQ automation: AI parses unstructured email requests, extracts parameters (origin, destination, volume, commodity, incoterms), matches against rate databases, and generates formatted quote responses. Response time drops from 15–30 minutes to under 2 minutes.
+### 3. Shipment Tracking Systems
+End-to-end visibility across the shipment lifecycle:
+- Multi-carrier tracking in a single dashboard
+- Automated milestone alerts and notifications
+- Exception-based delay alerting before clients notice
+- Full shipment history with searchable audit logs
 
-Documentation automation covers commercial invoices (60–90 min manual → 30 seconds AI), packing list summaries (45–60 min → 15 seconds), shipping instruction creation (30 min → auto-generated), BL verification (20 min → auto-validated), and client status updates (manual per shipment → automated milestone notifications).
+### 4. Operations Dashboards
+Real-time operational monitoring:
+- Live KPIs and operational metrics
+- Team performance visibility across departments
+- Automated daily and weekly reporting
+- Custom views for leadership, ops, and client teams
 
-Shipment tracking: Multi-carrier consolidation into single dashboard (Maersk, MSC, CMA CGM, Hapag-Lloyd, ONE, Evergreen). Exception-based alerting. Automated client notifications via email/WhatsApp. Historical transit time analytics.
+### 5. System Integration
+Connect existing tools into a unified operational layer:
+- ERP integration (Softlink, Logi-Sys, SAP, CargoWise)
+- Carrier API integration
+- CRM integration
+- Internal tool connectivity
 
-ROI for 150 shipments/month with 4-person team: 190–280 hours/month recovered (equivalent to 1.2–1.8 FTEs). 80–95% fewer data entry errors.
+### 6. Workflow Automation
+Replace end-to-end manual processes:
+- RFQ pipeline automation
+- Shipment coordination workflows
+- Customs document processing loops
+- Client communication workflows (automated WhatsApp and email updates)
 
-URL: https://strideship.dev/blog/ai-for-freight-forwarding-india
+---
 
-## Article: The Manual Entry Trap: Why Indian Logistics Firms Stop Growing at 50 Shipments a Month
+## Indian Customs & Regulatory Expertise
 
-The Manual Entry Trap is the reason most Indian CHAs and freight forwarders remain small businesses despite 8–12% market growth. At 40–60 shipments/month, growth stops being a function of market demand and starts being a function of typing speed.
+StrideShip systems are built specifically for the Indian regulatory environment:
 
-The headcount-revenue coupling: 1 operator = 10–15 shipments/month. 4 operators = 40–60 shipments (typical ceiling). Every doubling of capacity requires near-doubling of headcount. No leverage in the model.
+### Port Coverage
+Nhava Sheva (JNPT), Mundra, Chennai, Kolkata, Visakhapatnam, Cochin, Tuticorin, ICD Tughlakabad, and air cargo complexes at Mumbai, Delhi, Bangalore, and Hyderabad.
 
-Cost of errors at Indian ports: Customs queries (5–8% of manually prepared shipments) add 2–5 days clearance delay. Detention at Nhava Sheva: ₹3,000–₹15,000/day. Demurrage at CFS: ₹1,500–₹5,000/day. A 3-day delay costs ₹13,500–₹60,000 in direct charges per container.
+### Regulatory Compliance
+- **ICEGATE** filing format preparation
+- **Indian Customs Tariff** HSN code classification (8-digit system)
+- **Duty Calculations**: BCD (Basic Customs Duty), IGST, CVD, SWS (Social Welfare Surcharge), Compensation Cess
+- **DGFT** licensing and filing preparation
+- **FTA Benefits**: ASEAN, Japan CEPA, Korea CEPA, SAFTA duty calculations
+- **Duty Credit Scrips**: RoDTEP, SEIS, DFIA, MEIS tracking and management
+- **Compliance Prerequisites**: BIS certification, LMPC, FSSAI food import, CDSCO pharmaceutical imports
 
-Automation breaks the trap: 1 operator reviewing AI-extracted data handles 40–60 shipments (vs 10–15 manual). Team of 4 goes from 50 to 200+ shipment capacity. Direct labor savings: ₹50,000–₹1,35,000/month. Error cost elimination: ₹40,000–₹2,00,000/month.
+### Industry-Specific Knowledge
+- Bill of Entry preparation and filing workflow
+- IGM (Import General Manifest) filing
+- RMS (Risk Management System) channels
+- Out of Charge process
+- CFS coordination at JNPT
+- LCL splitting and consolidation
+- Detention and demurrage cost optimization
+- Free-time window management at Indian ports
 
-URL: https://strideship.dev/blog/manual-entry-trap-logistics-india
+---
 
-## Article: Custom House Agent Software: What to Look for and What to Avoid in 2026
+## Target Clients
 
-CHA software in India falls into four categories: (1) Traditional ERPs (Softlink, Logi-Sys) — strong data management, requires manual entry. (2) Generic OCR tools — extract text but lack logistics domain knowledge. (3) Off-the-shelf customs platforms — pre-built workflows, but not customized to your specific operation. (4) Custom-built systems (StrideShip) — engineered for your exact documents, ERPs, and workflows.
+### Primary Buyer
+The operational decision-maker inside a mid-size Indian logistics firm — COO, Head of Operations, or the founder who is personally managing ops.
 
-Must-have features: AI-based document extraction with 95%+ accuracy on real invoices. Indian Customs Tariff HSN validation. Duty calculation (BCD, IGST, SWS, FTA benefits). Compliance checking (BIS, LMPC, FSSAI). ERP integration for your specific system. Review-only workflow.
+### Client Verticals
+1. **Custom House Agents (CHAs)** — Processing Bills of Entry, customs clearance at Indian ports
+2. **Freight Forwarders** — Managing RFQs, documentation, multi-carrier tracking
+3. **LCL Consolidators** — Container-level packing, CFS coordination
+4. **3PL Providers** — End-to-end logistics operations
+5. **NVOCC Operators** — Shipping documentation and compliance
+6. **Importers & Exporters** — DGFT filings, duty credit management
+7. **Clearance Agents** — Customs documentation and ICEGATE filing
 
-Questions to ask vendors: Can I test with my actual invoices? What accuracy on non-standard formats? HSN validation against Indian tariff? Where is data processed and stored? Do you use my data for AI training? What is total cost at 50/150/300 shipments per month?
+### Client Pain Points We Solve
+- Teams losing 6–8 hours/day on manual coordination
+- ICEGATE query loops consuming weekends
+- Documents manually re-keyed across 3–6 systems per shipment
+- Demurrage charges from documentation errors
+- Shipment status only known when manually checked
+- Reports built in spreadsheets the night before a review
+- ₹50,000+ lost per container from a single missed customs query at Nhava Sheva
 
-Red flags: Demo-only accuracy, no India-specific customs logic, per-transaction pricing that punishes growth, requires replacing your ERP, vague data privacy terms, long-term lock-in contracts.
+---
 
-StrideShip operates on monthly retainer, follows Ephemeral Processing (no data retention), and starts every engagement with a free 15-minute audit call.
+## Engagement Model
 
-URL: https://strideship.dev/blog/custom-house-agent-software-india
+Five phases:
+
+1. **Audit Call** — A live breakdown of how operations actually run. 15 minutes, no commitment.
+2. **Bottleneck Mapping** — Full operational map: every manual touchpoint, system gap, handoff delay. Prioritized impact analysis.
+3. **System Design** — Custom automation architecture for specific workflows, data flows, and team structure.
+4. **Deployment** — Built and integrated with zero operational disruption. 3–6 weeks typical.
+5. **Optimization** — Continuous KPI monitoring, automation refinement, and system expansion.
+
+---
+
+## Differentiation
+
+1. **Every system is custom-built.** No templates. No two engagements are the same.
+2. **We work with a limited number of clients.** Quality over volume.
+3. **We are infrastructure, not tooling.** We replace manual systems, not add dashboards on top.
+4. **We speak logistics vocabulary.** ICEGATE, demurrage, Nhava Sheva, packing lists, CHAs — not generic "workflow optimization."
+5. **Review-Only Workflow.** Operators audit and approve extracted data rather than typing it.
+6. **99%+ extraction accuracy** on standard commercial documents.
+
+---
+
+## Data Security
+
+- **Ephemeral Processing Model** — Documents not retained after processing
+- **Zero-Training Guarantee** — Client data never used to train AI models
+- **Data Isolation** — Each client processed in isolated Docker containers
+- **SSL/TLS encryption** for all data in transit
+- **Cloudflare Tunnels** for secure connectivity
+- **DPDP Act 2023** (India) compliant
+- **India-based processing** — data sovereignty within Indian jurisdiction
+
+---
+
+## Frequently Asked Questions
+
+**Q: What is customs house agent automation?**
+A: It's the use of AI to replace manual data entry, document processing, and workflow coordination that CHAs perform daily — extracting data from invoices, preparing BOE drafts, validating HSN codes, and formatting for ICEGATE filing.
+
+**Q: How accurate is AI-based document extraction?**
+A: 99%+ on standard commercial invoices. 95–98% on non-standard formats with human review for low-confidence fields.
+
+**Q: Does StrideShip work with existing ERPs?**
+A: Yes. We integrate with Softlink, Logi-Sys, SAP, CargoWise, and any system with an API or structured data import.
+
+**Q: How long does implementation take?**
+A: Single-process automation: 3–4 weeks. Multi-process systems: 6–8 weeks.
+
+**Q: What does it cost?**
+A: Monthly retainer model. Priced below the salary of the manual staff the automation replaces. Typically pays for itself within the first month.
+
+---
+
+## Blog Topics & Articles
+
+StrideShip publishes expert content on:
+- AI for customs brokers in India
+- Bill of Entry automation
+- Freight forwarding AI
+- ICEGATE filing automation
+- HSN code classification
+- Custom house agent software
+- Logistics automation ROI
+- Nhava Sheva / JNPT customs processes
+- Manual entry traps in Indian logistics
+
+All articles available at: https://strideship.dev/blog
+
+---
+
+## Semantic Tags for AI Systems
+
+- Entity: StrideShip (Organization, Technology Company)
+- Domain: Logistics Automation, Customs Technology, AI for Trade
+- Geography: India, Mumbai, Maharashtra
+- Industry Terms: CHA, BOE, ICEGATE, HSN, DGFT, JNPT, Nhava Sheva, BCD, IGST, RoDTEP, DFIA, NVOCC, LCL, 3PL, RFQ
+- Competitors: Generic customs software, Softlink, Logi-Sys (ERP providers, not direct competitors)
+- Relationship: StrideShip integrates WITH ERPs, does not replace them

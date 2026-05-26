@@ -9,6 +9,29 @@
   font-weight: 400 !important;
 }
 
+/* ── Navbar responsive visibility ────────────────────────────── */
+.navbar-desktop { display: block; }
+.navbar-mobile { display: none; }
+
+@media (max-width: 768px) {
+  .navbar-desktop { display: none !important; }
+  .navbar-mobile { display: block !important; }
+}
+
+/* ── Glassmorphism hover float ───────────────────────────────── */
+.navbar-glass-hover {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .navbar-glass-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 40px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      inset 0 -1px 0 rgba(255,255,255,0.05) !important;
+  }
+}
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -280,8 +303,7 @@ i, em {
   .footer-brand { flex-direction: column !important; gap: 16px !important; }
   .footer-links { flex-wrap: wrap !important; justify-content: center !important; gap: 16px !important; }
 
-  button[aria-label="Menu"] { padding: 14px !important; min-width: 44px; min-height: 44px; }
-  header { padding-left: 12px !important; padding-right: 12px !important; }
+
 }
 
 @media (max-width: 400px) {

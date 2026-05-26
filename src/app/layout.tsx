@@ -46,9 +46,6 @@ export const metadata: Metadata = {
     "Nhava Sheva customs automation",
   ],
   metadataBase: new URL("https://strideship.dev"),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "StrideShip | AI Customs Automation & Logistics Software for India",
     description:
@@ -77,7 +74,7 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48 64x64 128x128 256x256" },
     ],
     apple: "/apple-touch-icon.png",
   },
@@ -94,8 +91,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your Google Search Console verification here when ready
-    // google: "your-verification-code",
+    google: "", // Paste your Google Search Console verification code here
   },
   other: {
     "msvalidate.01": "", // Add Bing Webmaster Tools verification

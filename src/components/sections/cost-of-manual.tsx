@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { Space_Grotesk } from "next/font/google";
 import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 
@@ -9,8 +9,8 @@ import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "700"] });
 
 function Counter({ from, to, prefix = "", suffix = "" }: { from: number, to: number, prefix?: string, suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const ref = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
   const count = useMotionValue(from);
 
   const rounded = useTransform(count, (latest) => {
@@ -19,12 +19,38 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number, to: num
   });
 
   useEffect(() => {
-    if (inView) {
-      animate(count, to, { duration: 2.5, ease: [0.16, 1, 0.3, 1] });
-    }
-  }, [inView, count, to]);
+    const el = ref.current;
+    if (!el) return;
 
-  return <motion.span ref={ref}>{rounded}</motion.span>;
+    const trigger = () => {
+      if (hasAnimated.current) return;
+      hasAnimated.current = true;
+      animate(count, to, { duration: 2.5, ease: [0.16, 1, 0.3, 1] });
+    };
+
+    // Use IntersectionObserver with no rootMargin so it works
+    // reliably in both portrait and landscape orientations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            trigger();
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.01 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [count, to]);
+
+  return (
+    <span ref={ref} style={{ display: "inline-block", minHeight: "1em" }}>
+      <motion.span>{rounded}</motion.span>
+    </span>
+  );
 }
 
 const stats = [

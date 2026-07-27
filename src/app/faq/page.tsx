@@ -112,19 +112,18 @@ export default function FAQPage() {
       />
 
       {/* Background */}
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -1, background: "radial-gradient(ellipse at 50% 40%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.05) 40%, transparent 70%)" }} />
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -2, backgroundColor: "#05070A" }} />
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -2, backgroundColor: "#F5F4F0" }} />
 
       <Navbar />
 
       <section style={{ padding: "clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px)", position: "relative" }}>
         <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)", maxWidth: "1200px" }}>
           <header style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#F1F5F9", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
+            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
               Frequently Asked{" "}<br />
-              <span style={{ fontStyle: "italic", color: "#94A3B8" }}>Questions</span>
+              <span style={{ fontStyle: "italic", color: "#64748B" }}>Questions</span>
             </h1>
-            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#64748B", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
               Everything you need to know about automating customs documentation, freight forwarding workflows, and logistics operations in India.
             </p>
           </header>

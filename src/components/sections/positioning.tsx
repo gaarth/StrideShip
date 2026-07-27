@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 
 const highlightedStyle = {
-  background: "linear-gradient(135deg, #F8FAFC 20%, #6B8FA8 100%)",
+  background: "linear-gradient(135deg, #0F172A 20%, #2563EB 100%)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   backgroundClip: "text",
@@ -49,8 +49,6 @@ export function Positioning() {
         justifyContent: "center",
         overflow: "hidden",
       }}>
-        
-        {/* The Text Container acts as a fixed-height stage so the layout doesn't collapse during swaps */}
         <div style={{
           display: "flex",
           alignItems: "center",
@@ -74,8 +72,8 @@ export function Positioning() {
             >
               <h3 style={{
                 fontSize: "clamp(3.5rem, 7vw, 6rem)",
-                fontWeight: 600,
-                color: "#F1F5F9",
+                fontWeight: 700,
+                color: "#0F172A",
                 letterSpacing: "-0.04em",
                 lineHeight: 1.05,
                 marginBottom: "clamp(24px, 3vw, 32px)",
@@ -84,7 +82,7 @@ export function Positioning() {
               </h3>
               <p style={{
                 fontSize: "clamp(20px, 2vw, 26px)",
-                color: "#64748B",
+                color: "#475569",
                 lineHeight: 1.5,
               }}>
                 {items[activeIndex].sub}
@@ -93,9 +91,8 @@ export function Positioning() {
           </AnimatePresence>
         </div>
 
-        {/* Small transparent scroll down indicator */}
         <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.2, 0.6, 0.2] }}
+          animate={{ y: [0, 8, 0], opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
           style={{
             position: "absolute",
@@ -104,17 +101,16 @@ export function Positioning() {
             flexDirection: "column",
             alignItems: "center",
             gap: "10px",
-            color: "rgba(255,255,255,0.4)",
+            color: "#64748B",
             pointerEvents: "none",
           }}
         >
-          <span style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500 }}>Scroll</span>
+          <span style={{ fontSize: "clamp(0.875rem, 1.5vw, 1rem)", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 600 }}>Scroll</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <polyline points="19 12 12 19 5 12"></polyline>
           </svg>
         </motion.div>
-
       </div>
     </section>
   );

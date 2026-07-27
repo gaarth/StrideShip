@@ -4,32 +4,32 @@ import { motion } from "framer-motion";
 import { StarButton } from "@/components/ui/star-button";
 import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 
-const glassStyle = {
+const lightCardStyle = {
   borderRadius: "32px",
-  backgroundColor: "rgba(13, 19, 33, 0.8)",
-  border: "1px solid rgba(255,255,255,0.06)",
-  boxShadow: "0 8px 32px 0 rgba(0,0,0,0.2), inset 0 1px 0 0 rgba(255,255,255,0.05)",
+  backgroundColor: "#FFFFFF",
+  border: "1px solid rgba(0, 0, 0, 0.05)",
+  boxShadow: "0 4px 24px -4px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02)",
 };
 
 export function CTA() {
   return (
-    <section id="cta" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
+    <section id="cta" style={{ padding: "clamp(64px, 8vw, 96px) 0" }}>
       <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div
           className="cta-glass"
           style={{
-            ...glassStyle,
+            ...lightCardStyle,
             padding: "clamp(48px, 6vw, 84px) clamp(32px, 5vw, 64px)",
             textAlign: "center", position: "relative", overflow: "hidden",
             zIndex: 1,
           }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}
         >
-          {/* Intense center glow behind glass block */}
+          {/* Subtle warm center glow */}
           <div style={{
             position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
             width: "800px", height: "500px",
-            background: "radial-gradient(ellipse, rgba(107,143,168,0.1), transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(37, 99, 235, 0.04), transparent 70%)",
             pointerEvents: "none", zIndex: 0
           }} />
 
@@ -37,10 +37,10 @@ export function CTA() {
           <div className="cta-watermark" style={{
             position: "absolute",
             top: "50%", left: "50%",
-            opacity: 0.035,
+            opacity: 0.03,
             fontWeight: 900,
             letterSpacing: "-0.04em",
-            color: "white",
+            color: "#0F172A",
             pointerEvents: "none",
             userSelect: "none",
             whiteSpace: "nowrap",
@@ -49,23 +49,23 @@ export function CTA() {
             fontFamily: '"Eurostile", "Microgramma", "Arial Black", sans-serif',
             fontStyle: "italic",
             textTransform: "uppercase",
-            WebkitTextStroke: "4px white",
+            WebkitTextStroke: "4px #0F172A",
             WebkitTextFillColor: "transparent",
             transform: "translate(-50%, -50%) scaleX(1.2)",
           }}>
             StrideShip
           </div>
 
-          <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "clamp(14px, 1.8vw, 20px)" }}>
+          <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#0F172A", marginBottom: "clamp(14px, 1.8vw, 20px)" }}>
             Let&rsquo;s look at{" "}<br />
-            <span style={{ fontWeight: 300, fontStyle: "italic" }}>your operations.</span>
+            <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>your operations.</span>
           </motion.h2>
 
           <motion.p variants={fadeUp} style={{
             position: "relative",
             zIndex: 1,
             fontSize: "clamp(16px, 1.5vw, 22px)",
-            color: "#CBD5E1",
+            color: "#334155",
             maxWidth: "680px",
             margin: "0 auto clamp(20px, 2.5vw, 30px)",
             lineHeight: 1.6,
@@ -77,8 +77,8 @@ export function CTA() {
             position: "relative",
             zIndex: 1,
             fontSize: "clamp(16px, 1.4vw, 20px)",
-            color: "#94A3B8",
-            fontWeight: 500,
+            color: "#2563EB",
+            fontWeight: 600,
             marginBottom: "clamp(24px, 3vw, 34px)",
             letterSpacing: "0.02em",
           }}>

@@ -171,24 +171,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
       />
 
-      {/* 
-        Locked screen gradient for a global blue wash effect.
-        By setting fixed, it acts as a permanent ambient light behind the glassy cards.
-      */}
-      <div 
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          pointerEvents: "none",
-          zIndex: -1,
-          background: "radial-gradient(ellipse at 50% 40%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.05) 40%, transparent 70%)",
-        }}
-      />
-      
-      {/* Core dark background */}
+      {/* Core Raft light warm background */}
       <div 
         style={{
           position: "fixed",
@@ -198,7 +181,7 @@ export default function Home() {
           bottom: 0,
           pointerEvents: "none",
           zIndex: -2,
-          backgroundColor: "#05070A",
+          backgroundColor: "#F5F4F0",
         }}
       />
       

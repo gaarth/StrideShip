@@ -4,11 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 
-const glassStyle = {
-  backgroundColor: "rgba(10, 15, 30, 0.75)",
-  border: "none" as const,
-  boxShadow: "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 0 rgba(255,255,255,0.06)",
-  transform: "translateZ(0)",
+const lightCardStyle = {
+  backgroundColor: "#FFFFFF",
+  border: "1px solid rgba(0, 0, 0, 0.05)",
+  boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
 };
 
 const cards = [
@@ -51,16 +50,16 @@ export function Problem() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
 
   return (
-    <section id="problem" style={{ padding: "clamp(48px, 7vw, 84px) 0" }}>
+    <section id="problem" style={{ padding: "clamp(64px, 8vw, 96px) 0" }}>
       <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           <motion.h2 variants={fadeUp}
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#F1F5F9", marginBottom: "16px" }}>
+            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#0F172A", marginBottom: "16px" }}>
             Where logistics{" "}<br />
             operations{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>break down.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#94A3B8", maxWidth: "600px", lineHeight: 1.6 }}>
+          <motion.p variants={fadeUp} style={{ fontSize: "clamp(16px, 1.4vw, 20px)", color: "#475569", maxWidth: "600px", lineHeight: 1.6 }}>
             Growing logistics businesses hit the same ceiling. Manual processes that were manageable at small scale become the constraint at every level of growth.
           </motion.p>
         </motion.div>
@@ -74,10 +73,10 @@ export function Problem() {
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
-                  ...glassStyle,
+                  ...lightCardStyle,
                   borderRadius: "20px",
-                  border: isHovered ? "1px solid rgba(107,143,168,0.25)" : "1px solid rgba(255,255,255,0.06)",
-                  boxShadow: isHovered ? "0 10px 48px rgba(107,143,168,0.08), inset 0 1px 0 rgba(255,255,255,0.08)" : glassStyle.boxShadow,
+                  border: isHovered ? "1px solid rgba(37, 99, 235, 0.3)" : "1px solid rgba(0,0,0,0.05)",
+                  boxShadow: isHovered ? "0 12px 36px rgba(0, 0, 0, 0.08)" : lightCardStyle.boxShadow,
                   padding: "clamp(28px, 4vw, 40px)",
                   cursor: "default",
                   transition: "border-color 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1)",
@@ -86,18 +85,17 @@ export function Problem() {
                 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "20px" }}>
                   <div>
-                    {/* Step number — editorial weight */}
-                    <span style={{ display: "block", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#334155", marginBottom: "10px" }}>{c.num}</span>
-                    <h3 style={{ fontSize: "clamp(1.25rem, 1.8vw, 1.6rem)", fontWeight: 600, color: "#F1F5F9", letterSpacing: "-0.01em", marginBottom: "8px" }}>{c.title}</h3>
-                    <p style={{ fontSize: "clamp(14px, 1.2vw, 15px)", color: "#8b9ab0" }}>{c.desc}</p>
+                    <span style={{ display: "block", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#2563EB", marginBottom: "10px" }}>{c.num}</span>
+                    <h3 style={{ fontSize: "clamp(1.25rem, 1.8vw, 1.6rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.01em", marginBottom: "8px" }}>{c.title}</h3>
+                    <p style={{ fontSize: "clamp(14px, 1.2vw, 15px)", color: "#475569" }}>{c.desc}</p>
                   </div>
 
                   <div style={{
                     width: "36px", height: "36px", borderRadius: "50%",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    backgroundColor: isHovered ? "rgba(107,143,168,0.15)" : "rgba(255,255,255,0.03)",
-                    border: isHovered ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.1)",
-                    color: isHovered ? "#6B8FA8" : "#F1F5F9",
+                    backgroundColor: isHovered ? "#EFF6FF" : "#F8FAFC",
+                    border: isHovered ? "1px solid #BFDBFE" : "1px solid #E2E8F0",
+                    color: isHovered ? "#2563EB" : "#0F172A",
                     transition: "all 0.3s ease",
                     flexShrink: 0
                   }}>
@@ -113,11 +111,11 @@ export function Problem() {
                   {isHovered && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }} style={{ overflow: "hidden" }}>
-                      <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.05)", margin: "20px 0" }} />
+                      <div style={{ height: "1px", backgroundColor: "#E2E8F0", margin: "20px 0" }} />
                       <ul style={{ listStyle: "none", padding: 0 }}>
                         {c.items.map((item, idx) => (
-                          <li key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "16px", fontSize: "clamp(14px, 1.2vw, 16px)", color: "#cbd5e1", lineHeight: 1.6, marginBottom: "16px" }}>
-                            <span style={{ marginTop: "10px", width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#6B8FA8", flexShrink: 0, boxShadow: "0 0 10px #6B8FA8" }} />
+                          <li key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "16px", fontSize: "clamp(14px, 1.2vw, 16px)", color: "#334155", lineHeight: 1.6, marginBottom: "16px" }}>
+                            <span style={{ marginTop: "10px", width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#2563EB", flexShrink: 0 }} />
                             {item}
                           </li>
                         ))}

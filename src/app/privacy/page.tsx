@@ -27,9 +27,8 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main style={{ position: "relative" }}>
-      {/* Locked screen background matching Home layout */}
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -1, background: "radial-gradient(ellipse at 50% 40%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.05) 40%, transparent 70%)" }} />
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -2, backgroundColor: "#05070A" }} />
+      {/* Background */}
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, pointerEvents: "none", zIndex: -2, backgroundColor: "#F5F4F0" }} />
 
       <Navbar />
 
@@ -38,11 +37,11 @@ export default function PrivacyPage() {
 
           {/* Page Header */}
           <header style={{ textAlign: "center", marginBottom: "clamp(36px, 5vw, 56px)" }}>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#F1F5F9", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
+            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
               Privacy Policy <br />
-              <span style={{ fontStyle: "italic", color: "#94A3B8" }}>for StrideShip</span>
+              <span style={{ fontStyle: "italic", color: "#64748B" }}>for StrideShip</span>
             </h1>
-            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#64748B", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
               Last Updated: April 7, 2026
             </p>
           </header>
@@ -50,10 +49,10 @@ export default function PrivacyPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(28px, 3.5vw, 38px)", maxWidth: "800px", margin: "0 auto" }}>
 
             <section>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "14px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#0F172A", marginBottom: "14px", letterSpacing: "-0.02em" }}>
                 1. Introduction
               </h2>
-              <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "16px" }}>
+              <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "16px" }}>
                 StrideShip ("we," "our," or "us"), operated by Gaarth Godbole and Siddhant Vaidya, is a logistics automation infrastructure provider based in Mumbai, India. We are committed to protecting the integrity and confidentiality of the trade data processed through our platform. This Privacy Policy outlines how we handle data as a Data Fiduciary (for your account info) and a Data Processor (for the logistics documents you automate).
               </p>
             </section>

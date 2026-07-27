@@ -19,15 +19,14 @@ export function FAQContent({ items }: { items: FAQItem[] }) {
           <div
             key={i}
             style={{
-              borderRadius: "14px",
-              backgroundColor: "rgba(10, 15, 30, 0.75)",
-              border: isOpen ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.06)",
+              borderRadius: "20px",
+              backgroundColor: "#FFFFFF", // Pure bright white card matching Raft design
+              border: isOpen ? "1px solid rgba(37, 99, 235, 0.3)" : "1px solid rgba(0, 0, 0, 0.05)",
               boxShadow: isOpen
-                ? "0 10px 40px rgba(107,143,168,0.1), inset 0 1px 0 rgba(255,255,255,0.1)"
-                : "0 10px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)",
+                ? "0 12px 36px rgba(0, 0, 0, 0.08)"
+                : "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
               transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
               overflow: "hidden",
-              transform: "translateZ(0)",
             }}
           >
             <button
@@ -46,8 +45,9 @@ export function FAQContent({ items }: { items: FAQItem[] }) {
               }}
             >
               <h2 style={{
-                fontSize: "clamp(1rem, 1.3vw, 1.2rem)",
-                color: "#F1F5F9",
+                fontSize: "clamp(1.05rem, 1.3vw, 1.25rem)",
+                fontWeight: 700,
+                color: "#0F172A",
                 letterSpacing: "-0.01em",
                 lineHeight: 1.4,
                 margin: 0,
@@ -61,9 +61,9 @@ export function FAQContent({ items }: { items: FAQItem[] }) {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: isOpen ? "rgba(107,143,168,0.15)" : "rgba(255,255,255,0.03)",
-                border: isOpen ? "1px solid rgba(107,143,168,0.3)" : "1px solid rgba(255,255,255,0.1)",
-                color: isOpen ? "#6B8FA8" : "#F1F5F9",
+                backgroundColor: isOpen ? "#EFF6FF" : "#F8FAFC",
+                border: isOpen ? "1px solid #BFDBFE" : "1px solid #E2E8F0",
+                color: isOpen ? "#2563EB" : "#0F172A",
                 transition: "all 0.3s ease",
                 flexShrink: 0,
               }}>
@@ -98,10 +98,10 @@ export function FAQContent({ items }: { items: FAQItem[] }) {
                   <div style={{
                     padding: "0 clamp(20px, 2.5vw, 28px) clamp(20px, 2.5vw, 28px)",
                   }}>
-                    <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.05)", marginBottom: "20px" }} />
+                    <div style={{ height: "1px", backgroundColor: "#E2E8F0", marginBottom: "20px" }} />
                     <p style={{
                       fontSize: "clamp(14px, 1.2vw, 16px)",
-                      color: "#94A3B8",
+                      color: "#475569",
                       lineHeight: 1.8,
                       margin: 0,
                     }}>

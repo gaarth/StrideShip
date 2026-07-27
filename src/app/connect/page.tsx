@@ -7,20 +7,7 @@ import Link from "next/link";
 export default function ConnectPage() {
   return (
     <main style={{ position: "relative" }}>
-      {/* Locked screen gradient — identical to homepage */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          pointerEvents: "none",
-          zIndex: -1,
-          background:
-            "radial-gradient(ellipse at 50% 40%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.05) 40%, transparent 70%)",
-        }}
-      />
+      {/* Locked screen background matching Raft theme */}
       <div
         style={{
           position: "fixed",
@@ -30,7 +17,7 @@ export default function ConnectPage() {
           bottom: 0,
           pointerEvents: "none",
           zIndex: -2,
-          backgroundColor: "#05070A",
+          backgroundColor: "#F5F4F0",
         }}
       />
 
@@ -62,19 +49,20 @@ export default function ConnectPage() {
             <span
               style={{
                 fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
-                color: "#F1F5F9",
+                fontWeight: 700,
+                color: "#0F172A",
                 letterSpacing: "-0.02em",
                 marginBottom: "12px",
               }}
             >
-              Strideship
+              StrideShip
             </span>
 
             {/* Tagline */}
             <p
               style={{
                 fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
-                color: "#94A3B8",
+                color: "#475569",
                 lineHeight: 1.6,
                 marginBottom: "clamp(48px, 8vh, 80px)",
                 maxWidth: "360px",
@@ -104,7 +92,7 @@ export default function ConnectPage() {
                 </StarButton>
               </Link>
 
-              {/* StrideShip: LinkedIn — ghost pill style matching hero */}
+              {/* StrideShip: LinkedIn — Raft light pill style */}
               <a
                 href="https://www.linkedin.com/company/strideship/"
                 target="_blank"
@@ -117,26 +105,24 @@ export default function ConnectPage() {
                   height: "56px",
                   padding: "0 48px",
                   borderRadius: "9999px",
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  background: "rgba(10, 15, 30, 0.7)",
-                  color: "#F1F5F9",
+                  border: "1px solid rgba(15, 23, 42, 0.15)",
+                  background: "#FFFFFF",
+                  color: "#0F172A",
                   fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
+                  fontWeight: 600,
                   cursor: "pointer",
                   transition: "all 0.25s ease",
                   textDecoration: "none",
                   whiteSpace: "nowrap",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(255, 255, 255, 0.12)";
-                  e.currentTarget.style.borderColor =
-                    "rgba(255,255,255,0.3)";
+                  e.currentTarget.style.backgroundColor = "#F8FAFC";
+                  e.currentTarget.style.borderColor = "#0F172A";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(10, 15, 30, 0.7)";
-                  e.currentTarget.style.borderColor =
-                    "rgba(255,255,255,0.15)";
+                  e.currentTarget.style.backgroundColor = "#FFFFFF";
+                  e.currentTarget.style.borderColor = "rgba(15, 23, 42, 0.15)";
                 }}
               >
                 {/* LinkedIn icon */}
@@ -145,7 +131,7 @@ export default function ConnectPage() {
                   height="18"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  style={{ flexShrink: 0 }}
+                  style={{ flexShrink: 0, color: "#0A66C2" }}
                 >
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>

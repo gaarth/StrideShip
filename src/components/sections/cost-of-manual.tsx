@@ -28,8 +28,6 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number, to: num
       animate(count, to, { duration: 2.5, ease: [0.16, 1, 0.3, 1] });
     };
 
-    // Use IntersectionObserver with no rootMargin so it works
-    // reliably in both portrait and landscape orientations
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -60,7 +58,7 @@ const stats = [
     to: 50000,
     prefix: "₹",
     suffix: "+",
-    value: "₹50,000+", // Fallback
+    value: "₹50,000+",
     label: "lost per container",
     context: "from a single missed customs query",
     source: "Friday at Nhava Sheva",
@@ -76,28 +74,14 @@ const stats = [
     isCurrency: false,
     value: "30-90 days",
     label: "receivables gap",
-    context: "while paying lines upfront",
+    context: "while paying shipping lines upfront",
     source: "The cash flow trap",
   },
 ];
 
 export function CostOfManual() {
   return (
-    <section id="cost-of-manual" style={{ padding: "clamp(24px, 3.5vw, 48px) 0", position: "relative" }}>
-      {/* Background ambient glow to anchor the heavy numerals */}
-      <div style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "100%",
-        maxWidth: "1000px",
-        height: "300px",
-        background: "radial-gradient(ellipse at center, rgba(107,143,168,0.06) 0%, transparent 70%)",
-        pointerEvents: "none",
-        zIndex: -1,
-      }} />
-
+    <section id="cost-of-manual" style={{ padding: "clamp(36px, 5vw, 64px) 0", position: "relative" }}>
       <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
         <motion.div
           initial="hidden"
@@ -106,7 +90,7 @@ export function CostOfManual() {
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-3"
           style={{
-            gap: "clamp(28px, 3.5vw, 48px)",
+            gap: "clamp(20px, 3vw, 28px)",
             position: "relative",
           }}
         >
@@ -115,78 +99,76 @@ export function CostOfManual() {
               key={idx}
               variants={fadeUp}
               style={{
+                backgroundColor: "#FFFFFF", // Pure bright white card matching Raft design schema
+                borderRadius: "20px",
+                padding: "36px 28px",
+                boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
                 display: "flex",
                 flexDirection: "column",
-                position: "relative",
-                transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                justifyContent: "space-between",
+                transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.boxShadow = "0 12px 30px -4px rgba(0, 0, 0, 0.08)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0px)";
+                e.currentTarget.style.boxShadow = "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)";
               }}
             >
-              {/* Sleek separator line with dynamic gradient */}
-              <div style={{
-                height: "1px",
-                width: "100%",
-                background: "linear-gradient(90deg, rgba(107,143,168,0.6) 0%, rgba(255,255,255,0.05) 100%)",
-                marginBottom: "clamp(14px, 1.8vw, 24px)",
-                boxShadow: "0 0 12px rgba(107,143,168,0.4)"
-              }} />
-
-              {/* Massive Tabular Numeral applying Space Grotesk */}
-              <h3 className={spaceGrotesk.className} style={{
-                fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
-                fontWeight: 700,
-                color: "#F8FAFC",
-                lineHeight: 1,
-                letterSpacing: "-0.04em",
-                marginBottom: "clamp(10px, 1.2vw, 14px)",
-                textShadow: "0 10px 30px rgba(0,0,0,0.5)"
-              }}>
-                {stat.isCurrency ? (
-                  <Counter from={stat.from!} to={stat.to!} prefix={stat.prefix} suffix={stat.suffix} />
-                ) : (
-                  stat.value
-                )}
-              </h3>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                <span style={{
-                  fontSize: "clamp(18px, 1.5vw, 22px)",
-                  fontWeight: 600,
-                  color: "#6B8FA8",
-                  letterSpacing: "-0.01em"
+              <div>
+                {/* Massive Numeral in Raft crisp dark style */}
+                <h3 className={spaceGrotesk.className} style={{
+                  fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
+                  fontWeight: 700,
+                  color: "#0F172A",
+                  lineHeight: 1,
+                  letterSpacing: "-0.04em",
+                  marginBottom: "clamp(10px, 1.2vw, 14px)",
                 }}>
-                  {stat.label}
-                </span>
+                  {stat.isCurrency ? (
+                    <Counter from={stat.from!} to={stat.to!} prefix={stat.prefix} suffix={stat.suffix} />
+                  ) : (
+                    stat.value
+                  )}
+                </h3>
 
-                <p style={{
-                  fontSize: "clamp(15px, 1.2vw, 17px)",
-                  color: "#94A3B8",
-                  lineHeight: 1.6,
-                  maxWidth: "95%"
-                }}>
-                  {stat.context}
-                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <span style={{
+                    fontSize: "clamp(17px, 1.3vw, 20px)",
+                    fontWeight: 700,
+                    color: "#2563EB",
+                    letterSpacing: "-0.01em"
+                  }}>
+                    {stat.label}
+                  </span>
 
-                <span style={{
-                  marginTop: "10px",
-                  fontSize: "clamp(11px, 0.9vw, 12px)",
-                  color: "#475569",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  fontWeight: 600,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px"
-                }}>
-                  <div style={{ width: "4px", height: "4px", borderRadius: "50%", backgroundColor: "#475569" }} />
-                  {stat.source}
-                </span>
+                  <p style={{
+                    fontSize: "clamp(14px, 1.1vw, 16px)",
+                    color: "#475569",
+                    lineHeight: 1.5,
+                  }}>
+                    {stat.context}
+                  </p>
+                </div>
               </div>
+
+              <span style={{
+                marginTop: "20px",
+                fontSize: "clamp(11px, 0.9vw, 12px)",
+                color: "#64748B",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 600,
+                display: "flex",
+                alignItems: "center",
+                gap: "8px"
+              }}>
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#2563EB" }} />
+                {stat.source}
+              </span>
             </motion.div>
           ))}
         </motion.div>

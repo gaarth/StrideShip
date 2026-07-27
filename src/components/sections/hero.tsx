@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { StarButton } from "@/components/ui/star-button";
 
-const TOTAL_FRAMES = 192;
+const TOTAL_FRAMES = 96;
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);

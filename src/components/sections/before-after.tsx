@@ -141,10 +141,10 @@ function StatBadge({
       alignItems: "center",
       minWidth: "90px",
     }}>
-      <span style={{ fontSize: "clamp(1.25rem, 2vw, 1.625rem)", fontWeight: 800, color, letterSpacing: "-0.02em", lineHeight: 1 }}>
+      <span style={{ fontSize: "clamp(1.116rem, 1.564vw, 1.27rem)", fontWeight: 800, color, letterSpacing: "-0.02em", lineHeight: 1 }}>
         {item.prefix}{count}{item.suffix}
       </span>
-      <span style={{ fontSize: "clamp(10px, 0.9vw, 12px)", color, opacity: 0.8, marginTop: "4px", textAlign: "center", fontWeight: 600 }}>
+      <span style={{ fontSize: "clamp(8.925px, 0.708vw, 9.775px)", color, opacity: 0.8, marginTop: "4px", textAlign: "center", fontWeight: 600 }}>
         {item.label}
       </span>
     </div>
@@ -156,27 +156,27 @@ export function BeforeAfter() {
   const inView = useInView(ref, { once: false, margin: "-100px" });
 
   return (
-    <section id="before-after" style={{ padding: "clamp(64px, 8vw, 96px) 0", position: "relative" }}>
-      <div className="ba-wrapper" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div style={{ textAlign: "center", marginBottom: "clamp(28px, 3.5vw, 42px)" }}
+    <section id="before-after" style={{ padding: "clamp(57px, 6.256vw, 76px) 0", position: "relative" }}>
+      <div className="ba-wrapper" style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)" }}>
+        <motion.div style={{ textAlign: "center", marginBottom: "clamp(25px, 2.742vw, 33px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
 
           <motion.h2 variants={fadeUp} style={{
-            fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95,
+            fontSize: "clamp(2.231rem, 4.692vw, 3.514rem)", fontWeight: 800, lineHeight: 0.95,
             letterSpacing: "-0.03em", color: "#0F172A",
           }}>
             Before{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>vs After</span>
           </motion.h2>
           <motion.p variants={fadeUp} style={{
-            marginTop: "clamp(16px, 2vw, 24px)", fontSize: "clamp(15px, 1.3vw, 18px)",
-            color: "#475569", maxWidth: "480px", margin: "clamp(16px, 2vw, 24px) auto 0", lineHeight: 1.6,
+            marginTop: "clamp(15px, 1.564vw, 18px)", fontSize: "clamp(14px, 1.012vw, 15px)",
+            color: "#475569", maxWidth: "480px", margin: "clamp(15px, 1.564vw, 18px) auto 0", lineHeight: 1.6,
           }}>
             Logistics teams using StrideShip reclaim 2–3 hours every single day.
           </motion.p>
         </motion.div>
 
-        <div ref={ref} className="ba-grid" style={{ gap: "clamp(16px, 2vw, 24px)" }}>
+        <div ref={ref} className="ba-grid" style={{ gap: "clamp(15px, 1.564vw, 18px)" }}>
           {/* BEFORE card (Bright White Raft Box) */}
           <motion.div variants={slideL} initial="hidden" whileInView="show" viewport={VP}
             style={{
@@ -185,7 +185,7 @@ export function BeforeAfter() {
               border: "1px solid rgba(0, 0, 0, 0.05)",
               backgroundColor: "#FFFFFF",
               boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
-              padding: "clamp(32px, 4vw, 52px)",
+              padding: "clamp(28px, 3.128vw, 40px)",
               overflow: "hidden",
               display: "flex",
               flexDirection: "column",
@@ -193,16 +193,16 @@ export function BeforeAfter() {
             <StockGraph trend="down" />
 
             <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", flexGrow: 1 }}>
-              <div style={{ marginBottom: "clamp(14px, 1.8vw, 22px)" }}>
+              <div style={{ marginBottom: "clamp(13px, 1.408vw, 17px)" }}>
                 <span style={{
-                  display: "inline-block", fontSize: "clamp(10px, 0.85vw, 12px)", fontWeight: 700,
+                  display: "inline-block", fontSize: "clamp(8.925px, 0.662vw, 9.775px)", fontWeight: 700,
                   letterSpacing: "0.1em", textTransform: "uppercase", color: "#DC2626",
                   background: "#FEF2F2", borderRadius: "6px", padding: "4px 10px",
                   marginBottom: "14px",
                   border: "1px solid #FCA5A5",
                 }}>Before StrideShip</span>
                 <h3 style={{
-                  fontSize: "clamp(1.5rem, 2.5vw, 2.125rem)", fontWeight: 800,
+                  fontSize: "clamp(1.339rem, 1.96vw, 1.665rem)", fontWeight: 800,
                   color: "#0F172A", letterSpacing: "-0.02em", lineHeight: 1.2,
                 }}>
                   Manual. Slow.{" "}<br />
@@ -210,7 +210,7 @@ export function BeforeAfter() {
                 </h3>
               </div>
 
-              <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(14px, 1.8vw, 20px)", flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(13px, 1.408vw, 16px)", flexWrap: "wrap" }}>
                 {beforeStats.map((s) => (
                   <StatBadge key={s.label} item={s} inView={inView} color="#DC2626" bg="#FEF2F2" />
                 ))}
@@ -220,12 +220,12 @@ export function BeforeAfter() {
                 {beforeItems.map(({ icon: Icon, text, highlight }, i) => (
                   <li key={i} style={{
                     display: "flex", alignItems: "flex-start", gap: "12px",
-                    marginBottom: i < beforeItems.length - 1 ? "clamp(14px, 1.5vw, 20px)" : 0,
+                    marginBottom: i < beforeItems.length - 1 ? "clamp(13px, 1.168vw, 16px)" : 0,
                   }}>
                     <span style={{ marginTop: "2px", color: "#DC2626", flexShrink: 0, width: "20px", height: "20px" }}>
                       <Icon />
                     </span>
-                    <span style={{ fontSize: "clamp(14px, 1.2vw, 16px)", color: "#475569", lineHeight: 1.65 }}>
+                    <span style={{ fontSize: "clamp(13px, 0.938vw, 14px)", color: "#475569", lineHeight: 1.65 }}>
                       {text.split(highlight).flatMap((part, pi, arr) =>
                         pi < arr.length - 1
                           ? [part, <span key={pi} style={{ color: "#0F172A", fontWeight: 700 }}>{highlight}</span>]
@@ -255,7 +255,7 @@ export function BeforeAfter() {
               border: "1px solid #CBD5E1",
               backgroundColor: "#FFFFFF",
               display: "flex", alignItems: "center", justifyContent: "center",
-              color: "#2563EB",
+              color: "#0F172A",
               boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
             }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -273,10 +273,10 @@ export function BeforeAfter() {
             style={{
               position: "relative",
               borderRadius: "24px",
-              border: "1px solid rgba(37, 99, 235, 0.2)",
+              border: "1px solid rgba(15, 23, 42, 0.2)",
               backgroundColor: "#FFFFFF",
-              boxShadow: "0 8px 30px rgba(37, 99, 235, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02)",
-              padding: "clamp(32px, 4vw, 52px)",
+              boxShadow: "0 8px 30px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02)",
+              padding: "clamp(28px, 3.128vw, 40px)",
               overflow: "hidden",
               display: "flex",
               flexDirection: "column",
@@ -284,24 +284,24 @@ export function BeforeAfter() {
             <StockGraph trend="up" />
 
             <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", flexGrow: 1 }}>
-              <div style={{ marginBottom: "clamp(14px, 1.8vw, 22px)" }}>
+              <div style={{ marginBottom: "clamp(13px, 1.408vw, 17px)" }}>
                 <span style={{
-                  display: "inline-block", fontSize: "clamp(10px, 0.85vw, 12px)", fontWeight: 700,
+                  display: "inline-block", fontSize: "clamp(8.925px, 0.662vw, 9.775px)", fontWeight: 700,
                   letterSpacing: "0.1em", textTransform: "uppercase", color: "#166534",
                   background: "#F0FDF4", borderRadius: "6px", padding: "4px 10px",
                   marginBottom: "14px",
                   border: "1px solid #BBF7D0",
                 }}>With StrideShip</span>
                 <h3 style={{
-                  fontSize: "clamp(1.5rem, 2.5vw, 2.125rem)", fontWeight: 800,
+                  fontSize: "clamp(1.339rem, 1.96vw, 1.665rem)", fontWeight: 800,
                   color: "#0F172A", letterSpacing: "-0.02em", lineHeight: 1.2,
                 }}>
                   Automated. Fast.{" "}<br />
-                  <span style={{ fontWeight: 300, fontStyle: "italic", color: "#2563EB" }}>Always in control.</span>
+                  <span style={{ fontWeight: 300, fontStyle: "italic", color: "#0F172A" }}>Always in control.</span>
                 </h3>
               </div>
 
-              <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(14px, 1.8vw, 20px)", flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: "10px", marginBottom: "clamp(13px, 1.408vw, 16px)", flexWrap: "wrap" }}>
                 {afterStats.map((s) => (
                   <StatBadge key={s.label} item={s} inView={inView} color="#166534" bg="#F0FDF4" />
                 ))}
@@ -311,12 +311,12 @@ export function BeforeAfter() {
                 {afterItems.map(({ icon: Icon, text, highlight }, i) => (
                   <li key={i} style={{
                     display: "flex", alignItems: "flex-start", gap: "12px",
-                    marginBottom: i < afterItems.length - 1 ? "clamp(14px, 1.5vw, 20px)" : 0,
+                    marginBottom: i < afterItems.length - 1 ? "clamp(13px, 1.168vw, 16px)" : 0,
                   }}>
                     <span style={{ marginTop: "2px", color: "#166534", flexShrink: 0, width: "20px", height: "20px" }}>
                       <Icon />
                     </span>
-                    <span style={{ fontSize: "clamp(14px, 1.2vw, 16px)", color: "#334155", lineHeight: 1.65 }}>
+                    <span style={{ fontSize: "clamp(13px, 0.938vw, 14px)", color: "#334155", lineHeight: 1.65 }}>
                       {text.split(highlight).flatMap((part, pi, arr) =>
                         pi < arr.length - 1
                           ? [part, <span key={pi} style={{ color: "#0F172A", fontWeight: 700 }}>{highlight}</span>]

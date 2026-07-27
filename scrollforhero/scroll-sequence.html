@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll-Linked Image Sequence</title>
+<style>
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Filler sections so there's scroll distance before/after the pinned sequence */
+  .filler {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .filler h1, .filler h2 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    max-width: 40ch;
+  }
+
+  .filler p {
+    color: rgba(255,255,255,0.6);
+    max-width: 32ch;
+    margin: 0 auto;
+  }
+
+  /* The scroll-driven sequence section. Its height determines how much scroll
+     distance the animation plays over. Increase/decrease the multiplier in
+     JS (SCROLL_LENGTH_VH) to change scrub speed/feel. */
+  .sequence-section {
+    position: relative;
+    width: 100%;
+    height: 400vh; /* scroll distance the frame-scrub plays across */
+    background: #000;
+  }
+
+  .sequence-pin {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  #sequence-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Loader shown until frames are preloaded */
+  .sequence-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background: #000;
+    z-index: 5;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .sequence-loader.is-hidden {
+    opacity: 0;
+  }
+
+  .loader-ring {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-top-color: #fff;
+    animation: spin 0.9s linear infinite;
+  }
+
+  .loader-progress {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.7);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .loader-bar-track {
+    width: 160px;
+    height: 2px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+    transition: width 0.15s ease-out;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Optional caption overlay that fades with scroll progress */
+  .sequence-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8%;
+    text-align: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .sequence-caption h2 {
+    margin: 0;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+
+  @media (max-width: 768px) {
+    .filler { height: 50vh; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="filler">
+    <div>
+      <h1>Scroll to play the sequence</h1>
+      <p>The canvas below pins in place and scrubs through the frame sequence as you scroll.</p>
+    </div>
+  </section>
+
+  <section class="sequence-section" id="sequence-section">
+    <div class="sequence-pin" id="sequence-pin">
+      <canvas id="sequence-canvas" aria-label="Scroll-driven product animation" role="img"></canvas>
+
+      <div class="sequence-caption">
+        <h2>Every angle, every detail.</h2>
+      </div>
+
+      <div class="sequence-loader" id="sequence-loader">
+        <div class="loader-ring"></div>
+        <div class="loader-bar-track">
+          <div class="loader-bar-fill" id="loader-bar-fill"></div>
+        </div>
+        <div class="loader-progress" id="loader-progress">Loading 0%</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="filler">
+    <div>
+      <h2>Keep scrolling</h2>
+      <p>Content continues normally once the sequence finishes.</p>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    /* =========================================================
+       CONFIG — edit these to match your own frame folder
+       ========================================================= */
+    const FRAME_COUNT = 240;
+    const FRAME_PATH = (i) => `ezgif-frame-${String(i).padStart(3, "0")}.jpg`;
+    // Native frame resolution (used for aspect-ratio-correct, "cover" style drawing)
+    const FRAME_WIDTH = 3840;
+    const FRAME_HEIGHT = 2160;
+
+    const canvas = document.getElementById("sequence-canvas");
+    const ctx = canvas.getContext("2d", { alpha: false });
+    const section = document.getElementById("sequence-section");
+    const pin = document.getElementById("sequence-pin");
+    const loaderEl = document.getElementById("sequence-loader");
+    const loaderBar = document.getElementById("loader-bar-fill");
+    const loaderText = document.getElementById("loader-progress");
+
+    const state = {
+      frame: 0,
+      images: new Array(FRAME_COUNT),
+      loadedCount: 0,
+      ready: false,
+      dpr: Math.min(window.devicePixelRatio || 1, 2) // cap DPR for perf/memory on retina+ mobile
+    };
+
+    /* =========================================================
+       Canvas sizing — always fill the pinned viewport, sharp on
+       HiDPI screens, and cropped like `object-fit: cover`.
+       ========================================================= */
+    function resizeCanvas() {
+      const rect = pin.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      state.dpr = dpr;
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
+      drawFrame(state.frame);
+    }
+
+    /* Draw a given frame index, scaled/cropped to cover the canvas,
+       centered both horizontally and vertically. */
+    function drawFrame(index) {
+      const img = state.images[index];
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (!img || !img.complete || !img.naturalWidth) return;
+
+      const canvasRatio = canvas.width / canvas.height;
+      const imageRatio = FRAME_WIDTH / FRAME_HEIGHT;
+
+      let drawWidth, drawHeight, offsetX, offsetY;
+
+      if (imageRatio > canvasRatio) {
+        // image is wider than canvas -> match height, crop sides
+        drawHeight = canvas.height;
+        drawWidth = drawHeight * imageRatio;
+        offsetX = (canvas.width - drawWidth) / 2;
+        offsetY = 0;
+      } else {
+        // image is taller than canvas -> match width, crop top/bottom
+        drawWidth = canvas.width;
+        drawHeight = drawWidth / imageRatio;
+        offsetX = 0;
+        offsetY = (canvas.height - drawHeight) / 2;
+      }
+
+      ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    }
+
+    /* =========================================================
+       Preload all frames, tracking progress for the loader UI.
+       Sequence only becomes scrub-able once every frame is in.
+       ========================================================= */
+    function preloadFrames() {
+      return new Promise((resolve) => {
+        let settled = 0;
+
+        const onOneSettled = () => {
+          settled += 1;
+          state.loadedCount = settled;
+          const pct = Math.round((settled / FRAME_COUNT) * 100);
+          loaderBar.style.width = pct + "%";
+          loaderText.textContent = `Loading ${pct}%`;
+
+          // Paint as soon as the very first frame lands so there's
+          // never a blank canvas behind the loader.
+          if (settled === 1) drawFrame(0);
+
+          if (settled === FRAME_COUNT) resolve();
+        };
+
+        for (let i = 0; i < FRAME_COUNT; i++) {
+          const img = new Image();
+          img.decoding = "async";
+          img.onload = onOneSettled;
+          img.onerror = onOneSettled; // don't let one bad frame hang the whole sequence
+          img.src = FRAME_PATH(i + 1);
+          state.images[i] = img;
+        }
+      });
+    }
+
+    /* =========================================================
+       GSAP / ScrollTrigger wiring
+       ========================================================= */
+    function initScrollTrigger() {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const frameProxy = { frame: 0 };
+
+      gsap.to(frameProxy, {
+        frame: FRAME_COUNT - 1,
+        ease: "none",
+        snap: "frame", // snap to whole frame indices — avoids sub-pixel/duplicate draws
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.35, // small smoothing factor = smooth catch-up, no visible lag
+          pin: pin,
+          pinSpacing: false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true
+        },
+        onUpdate: () => {
+          state.frame = Math.round(frameProxy.frame);
+          drawFrame(state.frame);
+        }
+      });
+
+      // Recompute sizes/positions on resize & orientation change
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          resizeCanvas();
+          ScrollTrigger.refresh();
+        }, 150);
+      });
+    }
+
+    /* =========================================================
+       Boot sequence
+       ========================================================= */
+    function init() {
+      resizeCanvas();
+      preloadFrames().then(() => {
+        state.ready = true;
+        drawFrame(state.frame);
+        loaderEl.classList.add("is-hidden");
+        setTimeout(() => { loaderEl.style.display = "none"; }, 650);
+        initScrollTrigger();
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+</body>
+</html>

@@ -13,13 +13,13 @@ const lightCardStyle = {
 
 export function CTA() {
   return (
-    <section id="cta" style={{ padding: "clamp(64px, 8vw, 96px) 0" }}>
-      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+    <section id="cta" style={{ padding: "clamp(57px, 6.256vw, 76px) 0" }}>
+      <div className="section-container" style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)" }}>
         <motion.div
           className="cta-glass"
           style={{
             ...lightCardStyle,
-            padding: "clamp(48px, 6vw, 84px) clamp(32px, 5vw, 64px)",
+            padding: "clamp(43px, 4.692vw, 66px) clamp(28px, 3.91vw, 49px)",
             textAlign: "center", position: "relative", overflow: "hidden",
             zIndex: 1,
           }}
@@ -29,7 +29,7 @@ export function CTA() {
           <div style={{
             position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
             width: "800px", height: "500px",
-            background: "radial-gradient(ellipse, rgba(37, 99, 235, 0.04), transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(15, 23, 42, 0.03), transparent 70%)",
             pointerEvents: "none", zIndex: 0
           }} />
 
@@ -45,7 +45,7 @@ export function CTA() {
             userSelect: "none",
             whiteSpace: "nowrap",
             zIndex: 0,
-            fontSize: "clamp(10rem, 18vw, 24rem)",
+            fontSize: "clamp(8.925rem, 14.076vw, 18.768rem)",
             fontFamily: '"Eurostile", "Microgramma", "Arial Black", sans-serif',
             fontStyle: "italic",
             textTransform: "uppercase",
@@ -56,7 +56,7 @@ export function CTA() {
             StrideShip
           </div>
 
-          <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#0F172A", marginBottom: "clamp(14px, 1.8vw, 20px)" }}>
+          <motion.h2 variants={fadeUp} style={{ position: "relative", zIndex: 1, fontSize: "clamp(2.231rem, 4.692vw, 3.514rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#0F172A", marginBottom: "clamp(13px, 1.408vw, 16px)" }}>
             Let&rsquo;s look at{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>your operations.</span>
           </motion.h2>
@@ -64,40 +64,68 @@ export function CTA() {
           <motion.p variants={fadeUp} style={{
             position: "relative",
             zIndex: 1,
-            fontSize: "clamp(16px, 1.5vw, 22px)",
+            fontSize: "clamp(15px, 1.168vw, 17px)",
             color: "#334155",
             maxWidth: "680px",
-            margin: "0 auto clamp(20px, 2.5vw, 30px)",
+            margin: "0 auto clamp(18px, 1.96vw, 24px)",
             lineHeight: 1.6,
           }}>
-            If your team is losing weekends to customs queries, chasing carriers for updates, or living in spreadsheets — that&rsquo;s the conversation.
+            If your team is losing weekends to customs queries, chasing carriers for updates, or living in spreadsheets - that&rsquo;s the conversation.
           </motion.p>
 
           <motion.p variants={fadeUp} style={{
             position: "relative",
             zIndex: 1,
-            fontSize: "clamp(16px, 1.4vw, 20px)",
-            color: "#2563EB",
+            fontSize: "clamp(15px, 1.095vw, 16px)",
+            color: "#0F172A",
             fontWeight: 600,
-            marginBottom: "clamp(24px, 3vw, 34px)",
+            marginBottom: "clamp(21px, 2.346vw, 26px)",
             letterSpacing: "0.02em",
           }}>
             15-minute call · No commitment · Honest assessment
           </motion.p>
 
           <motion.div variants={fadeUp} style={{ position: "relative", zIndex: 1, display: "inline-block" }}>
-            <StarButton href="https://cal.com/gaarth-godbole/audit-call" height={70} paddingX={60} fontSize="clamp(1rem, 1.5vw, 1.125rem)">
+            <a
+              href="https://cal.com/gaarth-godbole/audit-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-demo-btn"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "64px",
+                padding: "0 48px",
+                borderRadius: "9999px",
+                border: "1.5px solid #0F172A",
+                background: "transparent",
+                color: "#0F172A",
+                fontSize: "clamp(0.892rem, 1.168vw, 0.977rem)",
+                fontWeight: 500,
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#0F172A";
+                e.currentTarget.style.color = "#FFFFFF";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#0F172A";
+              }}
+            >
               Book a Demo
-            </StarButton>
+            </a>
           </motion.div>
 
           <motion.p variants={fadeUp} style={{
             position: "relative",
             zIndex: 1,
-            fontSize: "clamp(15px, 1.3vw, 18px)",
+            fontSize: "clamp(14px, 1.012vw, 15px)",
             color: "#64748B",
             maxWidth: "520px",
-            margin: "clamp(20px, 2.5vw, 30px) auto 0",
+            margin: "clamp(18px, 1.96vw, 24px) auto 0",
           }}>
             If there&rsquo;s nothing to fix, we&rsquo;ll tell you.
           </motion.p>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Connect with StrideShip | AI Customs & Logistics Automation",
   description:
-    "Get in touch with StrideShip — explore our AI automation platform for Indian customs brokers and freight forwarders, or connect with us on LinkedIn.",
+    "Get in touch with StrideShip - explore our AI automation platform for Indian customs brokers and freight forwarders, or connect with us on LinkedIn.",
   alternates: {
     canonical: "/connect",
   },

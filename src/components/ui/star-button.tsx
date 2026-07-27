@@ -32,7 +32,7 @@ export function StarButton({
     whiteSpace: "nowrap",
   };
 
-  {/* Inner Capsule Frame — Solid Transparent Blue Tinted Glassmorphism */}
+  {/* Inner Capsule Frame - Solid Transparent Blue Tinted Glassmorphism */}
   const innerStyle: CSSProperties = {
     position: "relative",
     width: "100%",

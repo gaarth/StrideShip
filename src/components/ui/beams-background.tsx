@@ -107,7 +107,7 @@ export function BeamsBackground({
     }
 
     let lastTime = 0;
-    const targetInterval = 1000 / 30; // Cap at 30fps — visually identical for slow-moving beams
+    const targetInterval = 1000 / 30; // Cap at 30fps - visually identical for slow-moving beams
 
     function animate(time: number) {
       if (!canvas || !ctx) return;
@@ -120,7 +120,7 @@ export function BeamsBackground({
       lastTime = time - (delta % targetInterval);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // No ctx.filter blur — this was the #1 performance killer
+      // No ctx.filter blur - this was the #1 performance killer
       const totalBeams = beamsRef.current.length;
       beamsRef.current.forEach((beam, index) => {
         beam.y -= beam.speed;
@@ -148,9 +148,9 @@ export function BeamsBackground({
         WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
       }}
     >
-      {/* Canvas with a soft CSS blur — much cheaper than ctx.filter per frame */}
+      {/* Canvas with a soft CSS blur - much cheaper than ctx.filter per frame */}
       <canvas ref={canvasRef} className="absolute inset-0" style={{ filter: "blur(30px)", willChange: "transform" }} />
-      {/* Static tinted overlay — no backdrop-filter, just a semi-transparent layer */}
+      {/* Static tinted overlay - no backdrop-filter, just a semi-transparent layer */}
       <div
         className="absolute inset-0"
         style={{ backgroundColor: "rgba(6,11,20,0.08)" }}

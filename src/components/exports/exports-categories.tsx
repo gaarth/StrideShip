@@ -12,7 +12,7 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
     if (onSelectCategory) {
       onSelectCategory(category.title);
     }
-    const buyersForm = document.getElementById("for-buyers");
+    const buyersForm = document.getElementById("inquiry-form");
     if (buyersForm) {
       buyersForm.scrollIntoView({ behavior: "smooth" });
     }
@@ -22,23 +22,22 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
     <section
       id="sectors"
       style={{
-        padding: "clamp(80px, 10vh, 120px) 0",
+        padding: "clamp(71px, 7.82vh, 94px) 0",
         backgroundColor: "#F5F4F0",
         borderTop: "1px solid rgba(0, 0, 0, 0.06)",
       }}
     >
       <div
         style={{
-          width: "90%",
-          maxWidth: "1140px",
+          width: "94%",
+          maxWidth: "1320px",
           margin: "0 auto",
         }}
       >
         {/* Header */}
-        <div style={{ marginBottom: "clamp(40px, 6vh, 60px)" }}>
+        <div style={{ marginBottom: "clamp(36px, 4.692vh, 47px)" }}>
           <span
             style={{
-              fontFamily: "Space Grotesk, monospace",
               fontSize: "0.75rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -52,7 +51,7 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
           </span>
           <h2
             style={{
-              fontSize: "clamp(2rem, 3.8vw, 3rem)",
+              fontSize: "clamp(1.785rem, 2.972vw, 2.346rem)",
               fontWeight: 800,
               lineHeight: 1.1,
               color: "#0F172A",
@@ -64,7 +63,7 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
           </h2>
           <p
             style={{
-              fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
+              fontSize: "clamp(0.892rem, 1.095vw, 0.977rem)",
               color: "#475569",
               lineHeight: 1.6,
               marginTop: "12px",
@@ -101,13 +100,12 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
                 justifyContent: "space-between",
               }}
             >
-              <div>
+              <div style={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
                 {/* HS Code tag */}
                 {cat.hsCodes && cat.hsCodes.length > 0 && (
                   <div
                     style={{
                       display: "inline-block",
-                      fontFamily: "Space Grotesk, monospace",
                       fontSize: "0.7rem",
                       fontWeight: 600,
                       color: "#475569",
@@ -142,6 +140,7 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
                     color: "#475569",
                     lineHeight: 1.6,
                     marginBottom: "20px",
+                    flexGrow: 1,
                   }}
                 >
                   {cat.description}
@@ -151,7 +150,7 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
                 <div
                   style={{
                     background: "#F8FAFC",
-                    borderLeft: "3px solid #2563EB",
+                    borderLeft: "3px solid #0F172A",
                     padding: "12px 14px",
                     borderRadius: "0 8px 8px 0",
                     marginBottom: "20px",
@@ -159,10 +158,9 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
                 >
                   <span
                     style={{
-                      fontFamily: "Space Grotesk, monospace",
                       fontSize: "0.7rem",
                       fontWeight: 700,
-                      color: "#2563EB",
+                      color: "#0F172A",
                       textTransform: "uppercase",
                       display: "block",
                       marginBottom: "4px",
@@ -181,7 +179,6 @@ export function ExportsCategories({ onSelectCategory }: ExportsCategoriesProps) 
                 <div style={{ marginBottom: "24px" }}>
                   <span
                     style={{
-                      fontFamily: "Space Grotesk, monospace",
                       fontSize: "0.7rem",
                       fontWeight: 600,
                       color: "#64748B",

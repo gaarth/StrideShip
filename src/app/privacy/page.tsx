@@ -5,13 +5,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | StrideShip",
-  description: "Privacy Policy for StrideShip — how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
+  description: "Privacy Policy for StrideShip - how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
   alternates: {
     canonical: "/privacy",
   },
   openGraph: {
     title: "Privacy Policy | StrideShip",
-    description: "Privacy Policy for StrideShip — how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
+    description: "Privacy Policy for StrideShip - how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
     url: "https://strideship.dev/privacy",
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy | StrideShip",
-    description: "Privacy Policy for StrideShip — how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
+    description: "Privacy Policy for StrideShip - how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
     images: ["/og-image.png"],
   },
 };
@@ -32,24 +32,24 @@ export default function PrivacyPage() {
 
       <Navbar />
 
-      <section style={{ padding: "clamp(100px, 12vw, 140px) 0 clamp(36px, 6vw, 60px)", position: "relative" }}>
-        <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)", maxWidth: "1200px" }}>
+      <section style={{ padding: "clamp(89px, 9.384vw, 109px) 0 clamp(33px, 4.692vw, 47px)", position: "relative" }}>
+        <div style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)", maxWidth: "1200px" }}>
 
           {/* Page Header */}
-          <header style={{ textAlign: "center", marginBottom: "clamp(36px, 5vw, 56px)" }}>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
+          <header style={{ textAlign: "center", marginBottom: "clamp(33px, 3.91vw, 44px)" }}>
+            <h1 style={{ fontSize: "clamp(2.677rem, 4.692vw, 3.514rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
               Privacy Policy <br />
               <span style={{ fontStyle: "italic", color: "#64748B" }}>for StrideShip</span>
             </h1>
-            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "clamp(1.004rem, 1.168vw, 1.099rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
               Last Updated: April 7, 2026
             </p>
           </header>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(28px, 3.5vw, 38px)", maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(25px, 2.742vw, 30px)", maxWidth: "800px", margin: "0 auto" }}>
 
             <section>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#0F172A", marginBottom: "14px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#0F172A", marginBottom: "14px", letterSpacing: "-0.02em" }}>
                 1. Introduction
               </h2>
               <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "16px" }}>
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "20px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 2. Information We Collect
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "14px" }}>
@@ -94,7 +94,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 3. Purpose of Processing (The "Why")
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
@@ -103,25 +103,25 @@ export default function PrivacyPage() {
 
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", display: "flex", flexDirection: "column", gap: "20px" }}>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(37,99,235,0.12)", border: "1px solid rgba(37,99,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(15, 23, 42,0.12)", border: "1px solid rgba(15, 23, 42,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
                   <p style={{ margin: 0, color: "#94A3B8", lineHeight: 1.7 }}>
                     <strong style={{ color: "#CBD5E1", fontWeight: 500 }}>Extraction & Normalization:</strong> To convert unstructured logistics documents into structured, ERP-ready data.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(37,99,235,0.12)", border: "1px solid rgba(37,99,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(15, 23, 42,0.12)", border: "1px solid rgba(15, 23, 42,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
                   <p style={{ margin: 0, color: "#94A3B8", lineHeight: 1.7 }}>
                     <strong style={{ color: "#CBD5E1", fontWeight: 500 }}>Compliance Validation:</strong> To cross-reference data against government prerequisites (e.g., BIS, LMPC, HSN) as requested by the user.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(37,99,235,0.12)", border: "1px solid rgba(37,99,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(15, 23, 42,0.12)", border: "1px solid rgba(15, 23, 42,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
                   <p style={{ margin: 0, color: "#94A3B8", lineHeight: 1.7 }}>
                     <strong style={{ color: "#CBD5E1", fontWeight: 500 }}>The "Review-Only" Workflow:</strong> To present extracted data back to the user for final audit and submission to their internal systems.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(37,99,235,0.12)", border: "1px solid rgba(37,99,235,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(15, 23, 42,0.12)", border: "1px solid rgba(15, 23, 42,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
                   <p style={{ margin: 0, color: "#94A3B8", lineHeight: 1.7 }}>
                     <strong style={{ color: "#CBD5E1", fontWeight: 500 }}>Zero-Training Guarantee:</strong> StrideShip does NOT use your proprietary trade data, pricing, or client lists to train our internal AI models. Your data is used solely to fulfill your specific automation request.
                   </p>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 4. Legal Basis for Processing
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
@@ -157,7 +157,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 5. Data Retention & Deletion
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
@@ -184,7 +184,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 6. Data Security
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
@@ -219,7 +219,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 7. Third-Party Disclosures
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
@@ -246,7 +246,7 @@ export default function PrivacyPage() {
             </section>
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 8. Your Rights (DPDP Act Compliance)
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
@@ -282,7 +282,7 @@ export default function PrivacyPage() {
 
             {/* Contact Information */}
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "28px", marginTop: "8px" }}>
-              <h2 style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
                 9. Contact Information
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "20px" }}>

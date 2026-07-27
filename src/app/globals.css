@@ -36,7 +36,7 @@
   background: linear-gradient(
     115deg,
     rgba(15, 23, 42, 0.72) 0%,
-    rgba(37, 99, 235, 0.35) 22%,
+    rgba(15, 23, 42, 0.35) 22%,
     rgba(147, 51, 234, 0.30) 44%,
     rgba(236, 72, 153, 0.25) 66%,
     rgba(16, 185, 129, 0.30) 88%,
@@ -48,21 +48,21 @@
   -webkit-backdrop-filter: blur(24px) saturate(1.8) !important;
 }
 
-/* ── Blue Tinted Glassmorphism CTA ──────────────────────────── */
+/* ── Dark Slate Glassmorphism CTA ──────────────────────────── */
 .blue-glass-cta {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.48) 0%, rgba(29, 78, 216, 0.38) 100%) !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 100%) !important;
   backdrop-filter: blur(16px) saturate(1.8) !important;
   -webkit-backdrop-filter: blur(16px) saturate(1.8) !important;
-  border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(255, 255, 255, 0.05) !important;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .blue-glass-cta:hover {
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(59, 130, 246, 0.75) 100%) !important;
-    border-color: rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0 10px 36px rgba(37, 99, 235, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(30, 41, 59, 0.95) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 10px 36px rgba(15, 23, 42, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
   }
 }
 
@@ -99,7 +99,7 @@ body {
   max-width: 100vw;
 }
 
-/* Subtle fixed noise grain — adds physical texture, applied only to fixed pseudo-element
+/* Subtle fixed noise grain - adds physical texture, applied only to fixed pseudo-element
    so it never causes GPU repaints on scroll */
 body::before {
   content: "";
@@ -114,7 +114,7 @@ body::before {
 }
 
 ::selection {
-  background-color: rgba(37, 99, 235, 0.2);
+  background-color: rgba(15, 23, 42, 0.2);
   color: #0F172A;
 }
 
@@ -144,12 +144,75 @@ i, em {
   animation: star-btn-sweep calc(var(--duration, 3) * 1s) linear infinite;
 }
 
-/* CTA press feedback — scale(0.97) on active, matches Emil's press-state doctrine */
+/* CTA press feedback - scale(0.97) on active, matches Emil's press-state doctrine */
 @media (hover: hover) and (pointer: fine) {
   .star-btn-press:active {
     transform: scale(0.97);
     transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
   }
+}
+
+/* ── Outline Buttons ────────────────────────────── */
+.hero-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  padding: 0 38px;
+  border-radius: 9999px;
+  border: 1.5px solid #FFFFFF;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: clamp(0.781rem, 1.168vw, 0.856rem);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.hero-demo-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.navbar-demo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 9999px;
+  border: 1.5px solid #FFFFFF;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.navbar-demo-btn.pill-mode {
+  height: 42px;
+  padding: 0 22px;
+  font-size: 0.85rem;
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+}
+.navbar-demo-btn.mobile-mode {
+  height: 44px;
+  padding: 0 24px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+.navbar-demo-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+.navbar-demo-btn.pill-mode:hover {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+.cta-demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 /* Marquee */
@@ -167,8 +230,8 @@ i, em {
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 
 /* ── Capability card SVG breathing animations ──────────────────────────────
-   CSS keyframes run off the main thread — safe for continuous loops.
-   Only transform/opacity animated — no layout, no filter changes.
+   CSS keyframes run off the main thread - safe for continuous loops.
+   Only transform/opacity animated - no layout, no filter changes.
    prefers-reduced-motion: all motion removed entirely.
 ────────────────────────────────────────────────────────────────────────── */
 
@@ -249,6 +312,37 @@ i, em {
   height: 100vh;
   overflow: hidden;
   z-index: 0;
+  /* Ultra-smooth exponential mask fade so it blends flawlessly without a hard line */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 65%,
+    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0.8) 85%,
+    rgba(0, 0, 0, 0.4) 94%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 65%,
+    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0.8) 85%,
+    rgba(0, 0, 0, 0.4) 94%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.hero-media::after {
+  display: none;
+}
+
+.hero-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* light dull emphasis */
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero-video {
@@ -280,28 +374,26 @@ i, em {
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 960px;
-  padding: 0 clamp(24px, 5vw, 64px);
-  margin-top: 4vh;
+  max-width: 1400px;
+  padding: 0 clamp(21px, 3.91vw, 49px);
+  margin-top: -12vh; /* Adjust for more zoomed out look */
 }
 
 .hero-h1 {
-  font-size: clamp(2.5rem, 6vw, 5.25rem) !important;
+  font-size: clamp(2.1rem, 4.37vw, 4.83rem) !important;
   font-weight: 500 !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.04em !important;
-  color: #F1F5F9 !important;
-  margin: 0 0 clamp(20px, 2.5vw, 32px) 0 !important;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
+  line-height: 1.08 !important;
+  letter-spacing: -0.03em !important;
+  color: #FFFFFF !important;
+  margin: 0 0 clamp(18px, 1.96vw, 22px) 0 !important;
 }
 
 .hero-p {
-  font-size: clamp(1.05rem, 1.4vw, 1.3rem) !important;
-  color: #CBD5E1 !important;
-  max-width: 760px !important;
+  font-size: clamp(0.892rem, 0.975vw, 0.977rem) !important;
+  color: #F1F5F9 !important;
+  max-width: 720px !important;
   line-height: 1.6 !important;
-  margin: 0 0 clamp(32px, 3.5vw, 48px) 0 !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.9);
+  margin: 0 0 clamp(28px, 2.742vw, 38px) 0 !important;
 }
 
 .hero-cta {
@@ -321,7 +413,7 @@ i, em {
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
   color: #FFFFFF;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-size: clamp(0.781rem, 1.168vw, 0.856rem);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -361,12 +453,12 @@ i, em {
   }
 
   .hero-h1 {
-    font-size: clamp(2rem, 8vw, 2.75rem) !important;
+    font-size: clamp(1.785rem, 6.256vw, 2.153rem) !important;
     line-height: 1.1 !important;
   }
 
   .hero-h1 br { display: none; }
-  .hero-p { font-size: clamp(0.95rem, 4vw, 1.1rem) !important; }
+  .hero-p { font-size: clamp(0.847rem, 3.128vw, 0.928rem) !important; }
 
   .hero-cta {
     flex-direction: column !important;
@@ -382,30 +474,30 @@ i, em {
     justify-content: center !important;
   }
 
-  #cost-of-manual h3 { font-size: clamp(1.75rem, 7vw, 2.25rem) !important; }
+  #cost-of-manual h3 { font-size: clamp(1.562rem, 5.474vw, 1.757rem) !important; }
 
-  #problem h2 { font-size: clamp(2rem, 8vw, 2.5rem) !important; line-height: 1.1 !important; }
+  #problem h2 { font-size: clamp(1.785rem, 6.256vw, 1.96rem) !important; line-height: 1.1 !important; }
   #problem h2 br { display: none; }
 
-  #capabilities h2 { font-size: clamp(2rem, 8vw, 2.5rem) !important; line-height: 1.1 !important; }
+  #capabilities h2 { font-size: clamp(1.785rem, 6.256vw, 1.96rem) !important; line-height: 1.1 !important; }
   #capabilities h2 br { display: none; }
-  #capabilities h3 { font-size: clamp(1.25rem, 5vw, 1.5rem) !important; }
+  #capabilities h3 { font-size: clamp(1.116rem, 3.91vw, 1.222rem) !important; }
   #capabilities .grid { grid-template-columns: 1fr !important; }
   #capabilities .md\:col-span-2 { grid-column: span 1 !important; }
   #capabilities .md\:col-span-2 > div:first-child { flex: 1 1 100% !important; }
 
-  #process h2 { font-size: clamp(2rem, 8vw, 2.5rem) !important; line-height: 1.1 !important; }
+  #process h2 { font-size: clamp(1.785rem, 6.256vw, 1.96rem) !important; line-height: 1.1 !important; }
   #process h2 br { display: none; }
 
   #positioning { height: 200vh !important; }
-  #positioning h3 { font-size: clamp(1.75rem, 7vw, 2.5rem) !important; line-height: 1.15 !important; }
-  #positioning p { font-size: clamp(1rem, 4vw, 1.25rem) !important; }
+  #positioning h3 { font-size: clamp(1.562rem, 5.474vw, 1.96rem) !important; line-height: 1.15 !important; }
+  #positioning p { font-size: clamp(0.892rem, 3.128vw, 0.977rem) !important; }
   .pos-text { width: 100% !important; padding-left: 20px !important; padding-right: 20px !important; }
 
-  #who-we-help h2 { font-size: clamp(1.75rem, 7vw, 2.25rem) !important; line-height: 1.1 !important; }
+  #who-we-help h2 { font-size: clamp(1.562rem, 5.474vw, 1.757rem) !important; line-height: 1.1 !important; }
   #who-we-help h2 br { display: none; }
 
-  #before-after h2 { font-size: clamp(2rem, 8vw, 2.5rem) !important; line-height: 1.1 !important; }
+  #before-after h2 { font-size: clamp(1.785rem, 6.256vw, 1.96rem) !important; line-height: 1.1 !important; }
   #before-after h2 br { display: none; }
   #before-after h3 br { display: none; }
 
@@ -413,11 +505,11 @@ i, em {
   .ba-arrow { flex-direction: row !important; justify-content: center !important; padding: 8px 0 !important; }
   .ba-arrow svg { transform: rotate(90deg); }
 
-  #use-cases h2 { font-size: clamp(2rem, 8vw, 2.5rem) !important; line-height: 1.1 !important; }
+  #use-cases h2 { font-size: clamp(1.785rem, 6.256vw, 1.96rem) !important; line-height: 1.1 !important; }
   #use-cases h2 br { display: none; }
   #use-cases .grid { grid-template-columns: 1fr !important; }
 
-  #cta h2 { font-size: clamp(1.75rem, 7vw, 2.5rem) !important; line-height: 1.1 !important; }
+  #cta h2 { font-size: clamp(1.562rem, 5.474vw, 1.96rem) !important; line-height: 1.1 !important; }
   #cta h2 br { display: none; }
   .cta-watermark { display: none !important; }
   .cta-glass { padding: 36px 20px !important; }
@@ -437,15 +529,15 @@ i, em {
 }
 
 @media (max-width: 400px) {
-  #hero h1 { font-size: clamp(1.75rem, 9vw, 2.25rem) !important; }
+  #hero h1 { font-size: clamp(1.562rem, 7.038vw, 1.757rem) !important; }
 
   #problem h2, #capabilities h2, #process h2,
   #before-after h2, #use-cases h2, #who-we-help h2 {
-    font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+    font-size: clamp(1.562rem, 6.256vw, 1.757rem) !important;
   }
 
-  #positioning h3 { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
-  #cta h2 { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+  #positioning h3 { font-size: clamp(1.339rem, 5.474vw, 1.564rem) !important; }
+  #cta h2 { font-size: clamp(1.339rem, 5.474vw, 1.564rem) !important; }
 
   .section-container, .ba-wrapper {
     padding-left: 16px !important;

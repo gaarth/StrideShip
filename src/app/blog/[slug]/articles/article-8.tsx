@@ -1,16 +1,16 @@
 import Link from "next/link";
 
 const H2 = ({ children }: { children: React.ReactNode }) => (
-  <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#F1F5F9", letterSpacing: "-0.02em", marginTop: "48px", marginBottom: "16px", lineHeight: 1.2 }}>{children}</h2>
+  <h2 style={{ fontSize: "clamp(1.339rem, 1.96vw, 1.564rem)", color: "#F1F5F9", letterSpacing: "-0.02em", marginTop: "48px", marginBottom: "16px", lineHeight: 1.2 }}>{children}</h2>
 );
 const H3 = ({ children }: { children: React.ReactNode }) => (
-  <h3 style={{ fontSize: "clamp(1.15rem, 1.5vw, 1.35rem)", color: "#CBD5E1", marginTop: "36px", marginBottom: "12px", lineHeight: 1.3 }}>{children}</h3>
+  <h3 style={{ fontSize: "clamp(1.026rem, 1.168vw, 1.124rem)", color: "#CBD5E1", marginTop: "36px", marginBottom: "12px", lineHeight: 1.3 }}>{children}</h3>
 );
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ fontSize: "clamp(15px, 1.2vw, 17px)", color: "#94A3B8", lineHeight: 1.8, marginBottom: "20px" }}>{children}</p>
+  <p style={{ fontSize: "clamp(14px, 0.938vw, 15px)", color: "#94A3B8", lineHeight: 1.8, marginBottom: "20px" }}>{children}</p>
 );
 const Li = ({ children }: { children: React.ReactNode }) => (
-  <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "clamp(15px, 1.2vw, 17px)", color: "#94A3B8", lineHeight: 1.7, marginBottom: "12px" }}>
+  <li style={{ display: "flex", gap: "12px", alignItems: "flex-start", fontSize: "clamp(14px, 0.938vw, 15px)", color: "#94A3B8", lineHeight: 1.7, marginBottom: "12px" }}>
     <span style={{ color: "#6B8FA8", flexShrink: 0, marginTop: "2px" }}>▸</span>
     <span>{children}</span>
   </li>
@@ -20,10 +20,10 @@ export function Article8() {
   return (
     <div>
       <P>
-        ICEGATE — the Indian Customs Electronic Gateway — is the backbone of every import and export clearance operation in India. Every Bill of Entry, every Shipping Bill, every duty payment, and every compliance certificate flows through this system. Yet most CHAs and freight forwarders interact with ICEGATE through painfully manual processes: typing data into ERP fields, copying values from invoices, and manually validating format requirements before submission.
+        ICEGATE - the Indian Customs Electronic Gateway - is the backbone of every import and export clearance operation in India. Every Bill of Entry, every Shipping Bill, every duty payment, and every compliance certificate flows through this system. Yet most CHAs and freight forwarders interact with ICEGATE through painfully manual processes: typing data into ERP fields, copying values from invoices, and manually validating format requirements before submission.
       </P>
       <P>
-        This article breaks down how ICEGATE filing actually works, where the manual bottlenecks are, and how automation creates a seamless pipeline from source document to filed Bill of Entry — without changing your existing ERP.
+        This article breaks down how ICEGATE filing actually works, where the manual bottlenecks are, and how automation creates a seamless pipeline from source document to filed Bill of Entry - without changing your existing ERP.
       </P>
 
       <H2>How ICEGATE Filing Works: The Technical Stack</H2>
@@ -41,7 +41,7 @@ export function Article8() {
 
       <H3>1. Data Entry from Source Documents</H3>
       <P>
-        The most obvious bottleneck. Your operator receives a PDF commercial invoice and manually types every field — importer details, consignment details, and 20–60 line items with descriptions, quantities, values, and HSN codes — into the ERP&apos;s BOE module. At 2 minutes per line item, a 40-item invoice consumes 80 minutes of typing time. This is pure <Link href="/blog/manual-entry-trap-logistics-india" style={{ color: "#6B8FA8", textDecoration: "underline" }}>Manual Entry Trap</Link> territory.
+        The most obvious bottleneck. Your operator receives a PDF commercial invoice and manually types every field - importer details, consignment details, and 20–60 line items with descriptions, quantities, values, and HSN codes - into the ERP&apos;s BOE module. At 2 minutes per line item, a 40-item invoice consumes 80 minutes of typing time. This is pure <Link href="/blog/manual-entry-trap-logistics-india" style={{ color: "#6B8FA8", textDecoration: "underline" }}>Manual Entry Trap</Link> territory.
       </P>
 
       <H3>2. HSN-to-Duty Mapping</H3>
@@ -66,7 +66,7 @@ export function Article8() {
 
       <H2>How Automation Eliminates Each Bottleneck</H2>
       <div style={{ overflowX: "auto", margin: "0 0 32px 0" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "clamp(13px, 1.1vw, 15px)" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "clamp(12px, 0.865vw, 13px)" }}>
           <thead>
             <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
               <th style={{ textAlign: "left", padding: "12px 16px", color: "#F1F5F9" }}>Bottleneck</th>
@@ -95,7 +95,7 @@ export function Article8() {
 
       <H2>ERP Integration Patterns for Indian Logistics</H2>
       <P>
-        The key design principle is that automation enhances your existing ERP — it does not replace it. Here are the common integration patterns for major Indian logistics ERPs:
+        The key design principle is that automation enhances your existing ERP - it does not replace it. Here are the common integration patterns for major Indian logistics ERPs:
       </P>
       <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0" }}>
         <Li><strong style={{ color: "#CBD5E1" }}>Softlink Global:</strong> API-based data push into the BOE preparation module. Extracted and validated data flows directly into Softlink&apos;s ICEGATE filing queue</Li>
@@ -106,7 +106,7 @@ export function Article8() {
       </ul>
 
       <P>
-        ICEGATE filing automation is not about bypassing the customs system — it is about eliminating the manual data entry that sits between your source documents and the filing portal. Your operators stop being typists and become auditors. The result: faster filing, fewer queries, and more shipments processed per day.
+        ICEGATE filing automation is not about bypassing the customs system - it is about eliminating the manual data entry that sits between your source documents and the filing portal. Your operators stop being typists and become auditors. The result: faster filing, fewer queries, and more shipments processed per day.
       </P>
       <P>
         Read our <Link href="/blog/automate-bill-of-entry-processing-india" style={{ color: "#6B8FA8", textDecoration: "underline" }}>complete BOE automation guide</Link> or learn how <Link href="/blog/ai-for-customs-brokers-india" style={{ color: "#6B8FA8", textDecoration: "underline" }}>AI is changing customs brokerage in India</Link>.

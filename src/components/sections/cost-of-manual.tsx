@@ -81,8 +81,8 @@ const stats = [
 
 export function CostOfManual() {
   return (
-    <section id="cost-of-manual" style={{ padding: "clamp(36px, 5vw, 64px) 0", position: "relative" }}>
-      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
+    <section id="cost-of-manual" style={{ padding: "clamp(33px, 3.91vw, 49px) 0", position: "relative" }}>
+      <div className="section-container" style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)" }}>
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -90,7 +90,7 @@ export function CostOfManual() {
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-3"
           style={{
-            gap: "clamp(20px, 3vw, 28px)",
+            gap: "clamp(18px, 2.346vw, 22px)",
             position: "relative",
           }}
         >
@@ -121,12 +121,12 @@ export function CostOfManual() {
               <div>
                 {/* Massive Numeral in Raft crisp dark style */}
                 <h3 className={spaceGrotesk.className} style={{
-                  fontSize: "clamp(2.25rem, 3.5vw, 3.25rem)",
+                  fontSize: "clamp(2.008rem, 2.742vw, 2.539rem)",
                   fontWeight: 700,
                   color: "#0F172A",
                   lineHeight: 1,
                   letterSpacing: "-0.04em",
-                  marginBottom: "clamp(10px, 1.2vw, 14px)",
+                  marginBottom: "clamp(8.925px, 0.938vw, 11.5px)",
                 }}>
                   {stat.isCurrency ? (
                     <Counter from={stat.from!} to={stat.to!} prefix={stat.prefix} suffix={stat.suffix} />
@@ -137,16 +137,16 @@ export function CostOfManual() {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                   <span style={{
-                    fontSize: "clamp(17px, 1.3vw, 20px)",
+                    fontSize: "clamp(15px, 1.012vw, 16px)",
                     fontWeight: 700,
-                    color: "#2563EB",
+                    color: "#0F172A",
                     letterSpacing: "-0.01em"
                   }}>
                     {stat.label}
                   </span>
 
                   <p style={{
-                    fontSize: "clamp(14px, 1.1vw, 16px)",
+                    fontSize: "clamp(13px, 0.865vw, 14px)",
                     color: "#475569",
                     lineHeight: 1.5,
                   }}>
@@ -157,7 +157,7 @@ export function CostOfManual() {
 
               <span style={{
                 marginTop: "20px",
-                fontSize: "clamp(11px, 0.9vw, 12px)",
+                fontSize: "clamp(9.45px, 0.708vw, 10.35px)",
                 color: "#64748B",
                 textTransform: "uppercase",
                 letterSpacing: "0.08em",
@@ -166,7 +166,7 @@ export function CostOfManual() {
                 alignItems: "center",
                 gap: "8px"
               }}>
-                <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#2563EB" }} />
+                <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: "#0F172A" }} />
                 {stat.source}
               </span>
             </motion.div>

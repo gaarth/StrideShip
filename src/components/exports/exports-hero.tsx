@@ -74,36 +74,36 @@ export function ExportsHero() {
     <section
       style={{
         position: "relative",
-        paddingTop: "clamp(130px, 16vh, 180px)",
-        paddingBottom: "clamp(64px, 8vh, 96px)",
+        paddingTop: "clamp(117px, 12.512vh, 140px)",
+        paddingBottom: "clamp(57px, 6.256vh, 76px)",
         backgroundColor: "#F5F4F0", // Raft warm off-white
       }}
     >
       <div
         style={{
-          width: "90%",
-          maxWidth: "1140px",
+          width: "94%",
+          maxWidth: "1320px",
           margin: "0 auto",
         }}
       >
         {/* Hero Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          style={{
-            fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)",
-            fontWeight: 800,
-            lineHeight: 1.05,
-            letterSpacing: "-0.035em",
-            color: "#0F172A",
-            maxWidth: "960px",
-            marginBottom: "24px",
-          }}
-        >
-          Connecting Indian manufacturers with vetted international buyers through{" "}
-          <span style={{ color: "#2563EB" }}>structured joint ventures</span>.
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            style={{
+              fontSize: "clamp(2.1rem, 4.37vw, 4.83rem)",
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: "-0.035em",
+              color: "#0F172A",
+              maxWidth: "1120px",
+              marginBottom: "24px",
+            }}
+          >
+            Connecting Indian manufacturers with vetted international buyers through{" "}
+            <span style={{ color: "#0F172A" }}>structured joint ventures</span>.
+          </motion.h1>
 
         {/* Subtitle */}
         <motion.p
@@ -111,7 +111,7 @@ export function ExportsHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{
-            fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
+            fontSize: "clamp(0.937rem, 1.408vw, 1.026rem)",
             fontWeight: 400,
             lineHeight: 1.6,
             color: "#475569",
@@ -136,10 +136,9 @@ export function ExportsHero() {
             marginBottom: "64px",
           }}
         >
-          {/* CTA 1: Sleek Glass Pill */}
+          {/* CTA 1: Solid Dark Pill */}
           <button
-            onClick={() => scrollTo("for-manufacturers")}
-            className="navbar-glass-hover"
+            onClick={() => scrollTo("inquiry-form")}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -148,16 +147,21 @@ export function ExportsHero() {
               height: "52px",
               padding: "0 32px",
               borderRadius: "9999px",
-              border: "1px solid rgba(255, 255, 255, 0.28)",
-              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(10, 15, 30, 0.4) 100%)",
-              backdropFilter: "blur(20px) saturate(1.8)",
-              WebkitBackdropFilter: "blur(20px) saturate(1.8)",
+              border: "1.5px solid #0F172A",
+              background: "#0F172A",
               color: "#FFFFFF",
               fontSize: "0.95rem",
-              fontWeight: 600,
+              fontWeight: 500,
               cursor: "pointer",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.35)",
-              textShadow: "0 2px 10px rgba(0,0,0,0.4)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,23,42,0.2)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
             I&apos;m an Indian Manufacturer
@@ -167,10 +171,9 @@ export function ExportsHero() {
             </svg>
           </button>
 
-          {/* CTA 2: Translucent White Glass Pill */}
+          {/* CTA 2: Outline Transparent Pill */}
           <button
-            onClick={() => scrollTo("for-buyers")}
-            className="navbar-glass-hover"
+            onClick={() => scrollTo("inquiry-form")}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -179,15 +182,21 @@ export function ExportsHero() {
               height: "52px",
               padding: "0 32px",
               borderRadius: "9999px",
-              border: "1px solid rgba(15, 23, 42, 0.22)",
-              background: "linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.2) 100%)",
-              backdropFilter: "blur(20px) saturate(1.8)",
-              WebkitBackdropFilter: "blur(20px) saturate(1.8)",
+              border: "1.5px solid #0F172A",
+              background: "transparent",
               color: "#0F172A",
               fontSize: "0.95rem",
-              fontWeight: 600,
+              fontWeight: 500,
               cursor: "pointer",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,23,42,0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
             I&apos;m an International Buyer
@@ -198,7 +207,7 @@ export function ExportsHero() {
           </button>
         </motion.div>
 
-        {/* STAT CARDS ROW — Counting Up & Stopping Animation */}
+        {/* STAT CARDS ROW - Counting Up & Stopping Animation */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -207,6 +216,7 @@ export function ExportsHero() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: "20px",
+            transformOrigin: "top center",
           }}
         >
           {statCards.map((c, i) => (
@@ -227,7 +237,7 @@ export function ExportsHero() {
             >
               <div
                 style={{
-                  fontSize: "clamp(2.2rem, 3.5vw, 3rem)",
+                  fontSize: "clamp(1.964rem, 2.742vw, 2.346rem)",
                   fontWeight: 800,
                   letterSpacing: "-0.03em",
                   color: "#0F172A",

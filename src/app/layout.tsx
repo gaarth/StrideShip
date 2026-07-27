@@ -59,7 +59,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "StrideShip — AI Automation for Indian Customs & Logistics",
+        alt: "StrideShip - AI Automation for Indian Customs & Logistics",
       },
     ],
   },
@@ -106,7 +106,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Organization schema — entity extraction for knowledge graph
+// Organization schema - entity extraction for knowledge graph
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -115,7 +115,7 @@ const organizationSchema = {
   url: "https://strideship.dev",
   logo: "https://strideship.dev/og-image.png",
   description:
-    "StrideShip builds custom AI automation systems for logistics operations in India — customs documentation, freight forwarding workflows, Bill of Entry processing, and operational intelligence for CHAs, freight forwarders, and 3PL providers.",
+    "StrideShip builds custom AI automation systems for logistics operations in India - customs documentation, freight forwarding workflows, Bill of Entry processing, and operational intelligence for CHAs, freight forwarders, and 3PL providers.",
   foundingDate: "2026",
   address: {
     "@type": "PostalAddress",

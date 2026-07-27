@@ -24,7 +24,7 @@ const SvgDefs = () => (
         <stop offset="100%" stopColor="#64748B" />
       </linearGradient>
       <linearGradient id="accentMatte" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#2563EB" />
+        <stop offset="0%" stopColor="#0F172A" />
         <stop offset="100%" stopColor="#1E40AF" />
       </linearGradient>
     </defs>
@@ -33,35 +33,35 @@ const SvgDefs = () => (
 
 export function Capabilities() {
   return (
-    <section id="capabilities" style={{ padding: "clamp(64px, 8vw, 96px) 0", position: 'relative' }}>
+    <section id="capabilities" style={{ padding: "clamp(57px, 6.256vw, 76px) 0", position: 'relative' }}>
       <SvgDefs />
-      <div className="section-container" style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)" }}>
-        <motion.div style={{ marginBottom: "clamp(32px, 4vw, 48px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
-          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#0F172A" }}>
+      <div className="section-container" style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)" }}>
+        <motion.div style={{ marginBottom: "clamp(28px, 3.128vw, 38px)" }} initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
+          <motion.h2 variants={fadeUp} style={{ fontSize: "clamp(2.231rem, 4.692vw, 3.514rem)", fontWeight: 800, lineHeight: 0.95, letterSpacing: "-0.03em", color: "#0F172A" }}>
             We don&rsquo;t add tools.{" "}<br />
             <span style={{ fontWeight: 300, fontStyle: "italic", color: "#64748B" }}>We replace manual systems.</span>
           </motion.h2>
         </motion.div>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "clamp(20px, 2.5vw, 24px)" }}
+        <motion.div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "clamp(18px, 1.96vw, 20px)" }}
           initial="hidden" whileInView="show" viewport={VP} variants={stagger}>
           
           {/* Card 1: Large (Workflow Automation) */}
           <motion.div variants={fadeUp} className="md:col-span-2" style={{
             ...lightCardStyle,
             borderRadius: "24px",
-            minHeight: "clamp(180px, 16vw, 240px)",
+            minHeight: "clamp(161px, 12.512vw, 187px)",
             position: "relative",
             overflow: "hidden",
             display: "flex",
             flexDirection: "row",
           }}>
-            <div style={{ padding: "clamp(24px, 3vw, 40px)", flex: "1 1 60%", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", zIndex: 10 }}>
-              <h3 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "20px" }}>
+            <div style={{ padding: "clamp(21px, 2.346vw, 31px)", flex: "1 1 60%", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", zIndex: 10 }}>
+              <h3 style={{ fontSize: "clamp(1.562rem, 2.346vw, 1.96rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "20px" }}>
                 Workflow Automation
               </h3>
-              <p style={{ fontSize: "clamp(16px, 1.4vw, 19px)", color: "#475569", lineHeight: 1.7, maxWidth: "680px" }}>
-                Replace repetitive processes with intelligent automation. From RFQ pipelines to shipment coordination — custom systems that run end-to-end without manual intervention.
+              <p style={{ fontSize: "clamp(15px, 1.095vw, 16px)", color: "#475569", lineHeight: 1.7, maxWidth: "680px" }}>
+                Replace repetitive processes with intelligent automation. From RFQ pipelines to shipment coordination - custom systems that run end-to-end without manual intervention.
               </p>
             </div>
             <div style={{ position: "absolute", top: "50%", right: "-10%", transform: "translateY(-50%)", width: "60%", height: "150%", pointerEvents: "none", zIndex: 1, display: "flex", alignItems: "center", opacity: 0.25 }}>
@@ -82,28 +82,28 @@ export function Capabilities() {
           <motion.div variants={fadeUp} style={{
             ...lightCardStyle,
             borderRadius: "24px",
-            minHeight: "clamp(180px, 16vw, 240px)",
+            minHeight: "clamp(161px, 12.512vw, 187px)",
             position: "relative",
             overflow: "hidden",
             display: "flex", flexDirection: "column",
           }}>
-            <div style={{ padding: "clamp(24px, 2.5vw, 32px)", position: "relative", zIndex: 10 }}>
-              <h3 style={{ fontSize: "clamp(1.5rem, 2vw, 1.875rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "16px" }}>
+            <div style={{ padding: "clamp(21px, 1.96vw, 25px)", position: "relative", zIndex: 10 }}>
+              <h3 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.466rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "16px" }}>
                 System Integration
               </h3>
-              <p style={{ fontSize: "clamp(15px, 1.3vw, 18px)", color: "#475569", lineHeight: 1.7 }}>
-                Connect your existing tools into a unified operational layer. CRM, ERP, carrier APIs — one system of record.
+              <p style={{ fontSize: "clamp(14px, 1.012vw, 15px)", color: "#475569", lineHeight: 1.7 }}>
+                Connect your existing tools into a unified operational layer. CRM, ERP, carrier APIs - one system of record.
               </p>
               <div style={{ marginTop: "24px" }}>
                 {["CRM / ERP", "Carrier APIs", "Internal Tools"].map((label) => (
                   <div key={label} style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
-                    <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#2563EB" }} />
-                    <span style={{ fontSize: "clamp(13px, 1.1vw, 15px)", fontWeight: 600, color: "#0F172A" }}>{label}</span>
+                    <div style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#0F172A" }} />
+                    <span style={{ fontSize: "clamp(12px, 0.865vw, 13px)", fontWeight: 600, color: "#0F172A" }}>{label}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div style={{ position: "absolute", bottom: "-15%", right: "-10%", width: "80%", height: "80%", pointerEvents: "none", zIndex: 1, opacity: 0.25 }}>
+            <div style={{ position: "absolute", bottom: "-15%", right: "-10%", width: "92%", height: "80%", pointerEvents: "none", zIndex: 1, opacity: 0.25 }}>
               <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <rect x="40" y="40" width="110" height="110" rx="30" fill="url(#matte1)"
                   style={{ transformOrigin: "100px 100px", animation: "cap-tilt-cw 7s ease-in-out infinite" }} />
@@ -119,12 +119,12 @@ export function Capabilities() {
           <motion.div variants={fadeUp} style={{
             ...lightCardStyle,
             borderRadius: "24px",
-            minHeight: "clamp(180px, 16vw, 240px)",
+            minHeight: "clamp(161px, 12.512vw, 187px)",
             position: "relative",
             overflow: "hidden",
             display: "flex", alignItems: "flex-end",
           }}>
-            <div style={{ position: "absolute", top: "0", right: "-10%", width: "90%", height: "90%", pointerEvents: "none", zIndex: 1, opacity: 0.25 }}>
+            <div style={{ position: "absolute", top: "0", right: "-10%", width: "94%", height: "90%", pointerEvents: "none", zIndex: 1, opacity: 0.25 }}>
               <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="100" cy="100" r="80" fill="url(#matte1)"
                   style={{ transformOrigin: "100px 100px", animation: "cap-circle-pulse 5s ease-in-out infinite" }} />
@@ -135,11 +135,11 @@ export function Capabilities() {
               </svg>
             </div>
             
-            <div style={{ padding: "clamp(24px, 2.5vw, 32px)", position: "relative", zIndex: 10, width: "100%", background: "linear-gradient(to top, #FFFFFF 70%, transparent 100%)" }}>
-              <h3 style={{ fontSize: "clamp(1.5rem, 2vw, 1.875rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "16px" }}>
+            <div style={{ padding: "clamp(21px, 1.96vw, 25px)", position: "relative", zIndex: 10, width: "100%", background: "linear-gradient(to top, #FFFFFF 70%, transparent 100%)" }}>
+              <h3 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.466rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "16px" }}>
                 Operational Dashboards
               </h3>
-              <p style={{ fontSize: "clamp(15px, 1.3vw, 18px)", color: "#475569", lineHeight: 1.7 }}>
+              <p style={{ fontSize: "clamp(14px, 1.012vw, 15px)", color: "#475569", lineHeight: 1.7 }}>
                 Real-time visibility into every operation. No more chasing updates or waiting for reports.
               </p>
             </div>
@@ -149,18 +149,18 @@ export function Capabilities() {
           <motion.div variants={fadeUp} className="md:col-span-2" style={{
             ...lightCardStyle,
             borderRadius: "24px",
-            minHeight: "clamp(180px, 16vw, 240px)",
+            minHeight: "clamp(161px, 12.512vw, 187px)",
             position: "relative",
             overflow: "hidden",
             display: "flex",
             flexDirection: "row-reverse", 
           }}>
-            <div style={{ padding: "clamp(24px, 3vw, 40px)", flex: "1 1 50%", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", zIndex: 10 }}>
-              <h3 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "20px" }}>
+            <div style={{ padding: "clamp(21px, 2.346vw, 31px)", flex: "1 1 50%", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", zIndex: 10 }}>
+              <h3 style={{ fontSize: "clamp(1.339rem, 1.96vw, 1.564rem)", fontWeight: 700, color: "#0F172A", letterSpacing: "-0.02em", marginBottom: "20px" }}>
                 Every system is custom-built
               </h3>
-              <p style={{ fontSize: "clamp(16px, 1.4vw, 19px)", color: "#475569", lineHeight: 1.7, maxWidth: "700px" }}>
-                No templates. No off-the-shelf automations. We study your operations and architect systems that fit precisely — built for your workflows, your data, your scale.
+              <p style={{ fontSize: "clamp(15px, 1.095vw, 16px)", color: "#475569", lineHeight: 1.7, maxWidth: "700px" }}>
+                No templates. No off-the-shelf automations. We study your operations and architect systems that fit precisely - built for your workflows, your data, your scale.
               </p>
             </div>
             <div style={{ position: "absolute", top: "0", left: "-5%", bottom: "0", width: "60%", pointerEvents: "none", zIndex: 1, display: "flex", alignItems: "center", opacity: 0.25 }}>

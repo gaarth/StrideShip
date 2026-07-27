@@ -8,32 +8,31 @@ export function ExportsModel() {
     <section
       id="how-it-works"
       style={{
-        padding: "clamp(80px, 10vh, 120px) 0",
+        padding: "clamp(71px, 7.82vh, 94px) 0",
         backgroundColor: "#F5F4F0", // Raft warm cream off-white
         borderTop: "1px solid rgba(0, 0, 0, 0.06)",
       }}
     >
       <div
         style={{
-          width: "90%",
-          maxWidth: "1140px",
+          width: "94%",
+          maxWidth: "1320px",
           margin: "0 auto",
         }}
       >
-        {/* Section Header — Asymmetric Raft Layout (Left Headline, Right Narrative) */}
+        {/* Section Header - Asymmetric Raft Layout (Left Headline, Right Narrative) */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
             gap: "40px",
             alignItems: "flex-end",
-            marginBottom: "clamp(48px, 6vh, 64px)",
+            marginBottom: "clamp(43px, 4.692vh, 49px)",
           }}
         >
           <div>
             <span
               style={{
-                fontFamily: "Space Grotesk, monospace",
                 fontSize: "0.75rem",
                 fontWeight: 600,
                 letterSpacing: "0.08em",
@@ -47,7 +46,7 @@ export function ExportsModel() {
             </span>
             <h2
               style={{
-                fontSize: "clamp(2rem, 3.8vw, 3rem)",
+                fontSize: "clamp(1.785rem, 2.972vw, 2.346rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
                 color: "#0F172A",
@@ -61,7 +60,7 @@ export function ExportsModel() {
           <div>
             <p
               style={{
-                fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
+                fontSize: "clamp(0.892rem, 1.095vw, 0.977rem)",
                 color: "#475569",
                 lineHeight: 1.6,
                 marginBottom: "20px",
@@ -122,10 +121,9 @@ export function ExportsModel() {
               <div>
                 <div
                   style={{
-                    fontFamily: "Space Grotesk, monospace",
                     fontSize: "1.25rem",
                     fontWeight: 800,
-                    color: "#2563EB",
+                    color: "#0F172A",
                     marginBottom: "16px",
                     letterSpacing: "0.04em",
                   }}
@@ -161,7 +159,7 @@ export function ExportsModel() {
                   marginTop: "24px",
                   height: "2px",
                   width: "36px",
-                  backgroundColor: "#2563EB",
+                  backgroundColor: "#0F172A",
                   borderRadius: "2px",
                 }}
               />

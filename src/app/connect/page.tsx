@@ -38,7 +38,7 @@ export default function ConnectPage() {
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
-              width: "90%",
+              width: "94%",
               maxWidth: "520px",
               padding: "0 24px",
               position: "relative",
@@ -48,7 +48,7 @@ export default function ConnectPage() {
             {/* Logo / Brand */}
             <span
               style={{
-                fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+                fontSize: "clamp(0.982rem, 1.564vw, 1.095rem)",
                 fontWeight: 700,
                 color: "#0F172A",
                 letterSpacing: "-0.02em",
@@ -61,38 +61,38 @@ export default function ConnectPage() {
             {/* Tagline */}
             <p
               style={{
-                fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
+                fontSize: "clamp(0.758rem, 0.938vw, 0.83rem)",
                 color: "#475569",
                 lineHeight: 1.6,
-                marginBottom: "clamp(48px, 8vh, 80px)",
+                marginBottom: "clamp(43px, 6.256vh, 62px)",
                 maxWidth: "360px",
               }}
             >
               Automating the manual infrastructure of global trade.
             </p>
 
-            {/* Buttons — stacked vertically */}
+            {/* Buttons - stacked vertically */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "clamp(20px, 4vh, 32px)",
+                gap: "clamp(18px, 3.128vh, 25px)",
                 width: "100%",
               }}
             >
-              {/* Explore Website — primary StarButton */}
+              {/* Explore Website - primary StarButton */}
               <Link href="/" style={{ textDecoration: "none" }}>
                 <StarButton
                   height={56}
                   paddingX={48}
-                  fontSize="clamp(0.9rem, 1.5vw, 1.05rem)"
+                  fontSize="clamp(0.803rem, 1.168vw, 0.88rem)"
                 >
                   Explore Website
                 </StarButton>
               </Link>
 
-              {/* StrideShip: LinkedIn — Raft light pill style */}
+              {/* StrideShip: LinkedIn - Raft light pill style */}
               <a
                 href="https://www.linkedin.com/company/strideship/"
                 target="_blank"
@@ -108,7 +108,7 @@ export default function ConnectPage() {
                   border: "1px solid rgba(15, 23, 42, 0.15)",
                   background: "#FFFFFF",
                   color: "#0F172A",
-                  fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
+                  fontSize: "clamp(0.803rem, 1.168vw, 0.88rem)",
                   fontWeight: 600,
                   cursor: "pointer",
                   transition: "all 0.25s ease",

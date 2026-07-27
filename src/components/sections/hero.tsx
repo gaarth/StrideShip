@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { StarButton } from "@/components/ui/star-button";
 
-const TOTAL_FRAMES = 96;
+const TOTAL_FRAMES = 240;
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -22,7 +21,7 @@ export function Hero() {
 
     // Load frame 1 immediately
     const firstImg = new Image();
-    firstImg.src = "/assets/hero-frames/frame_001.webp";
+    firstImg.src = "/assets/hero-frames/ezgif-frame-001.jpg";
     firstImg.onload = () => {
       imagesRef.current[0] = firstImg;
       drawFrame(0);
@@ -31,7 +30,7 @@ export function Hero() {
     // Preload remaining frames asynchronously
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const img = new Image();
-      img.src = `/assets/hero-frames/frame_${String(i).padStart(3, "0")}.webp`;
+      img.src = `/assets/hero-frames/ezgif-frame-${String(i).padStart(3, "0")}.jpg`;
       img.onload = () => {
         imagesRef.current[i - 1] = img;
         if (i === 1) drawFrame(0);
@@ -118,27 +117,24 @@ export function Hero() {
     <section ref={heroRef} className="hero" id="hero">
       <div className="hero-media">
         <canvas ref={canvasRef} className="hero-video" />
+        <div className="hero-mask" />
       </div>
 
       <div className="hero-content">
         <div className="hero-inner">
           <h1 className="hero-h1">
-            The AI Operator for Customs &amp; Logistics
+            Automating the manual infrastructure of global trade
           </h1>
 
-          <p className="hero-p">
-            Automating the manual infrastructure of global trade. We build custom automation for the manual side of logistics, making your documentation automated and your workflows faster.
-          </p>
-
           <div className="hero-cta">
-            <StarButton
+            <a
               href="https://cal.com/gaarth-godbole/audit-call"
-              height={54}
-              paddingX={38}
-              fontSize="clamp(0.875rem, 1.5vw, 1rem)"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-demo-btn"
             >
               Book a Demo
-            </StarButton>
+            </a>
             <button
               onClick={() =>
                 document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })

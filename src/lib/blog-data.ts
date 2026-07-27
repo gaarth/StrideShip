@@ -23,7 +23,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "automate-bill-of-entry-processing-india",
     title: "How to Automate Bill of Entry Processing: A Complete Guide for Indian Customs Agents",
-    description: "Step-by-step guide to automating BOE preparation in India — from commercial invoice parsing to ICEGATE filing, with error prevention and compliance validation.",
+    description: "Step-by-step guide to automating BOE preparation in India - from commercial invoice parsing to ICEGATE filing, with error prevention and compliance validation.",
     date: "2026-05-08",
     readTime: "11 min read",
     author: "Gaarth Godbole",
@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-for-freight-forwarding-india",
     title: "AI for Freight Forwarding: Automating RFQs, Documentation, and Tracking in Indian Logistics",
-    description: "How AI automates freight forwarding operations in India — from RFQ processing and packing list parsing to shipment tracking and client communication.",
+    description: "How AI automates freight forwarding operations in India - from RFQ processing and packing list parsing to shipment tracking and client communication.",
     date: "2026-05-06",
     readTime: "10 min read",
     author: "Gaarth Godbole",
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "ai-for-customs-clearance-india",
     title: "AI for Customs Clearance: Complete Guide to Automating Import Clearance in India",
-    description: "How AI automates the 9-step Indian customs clearance workflow — from IGM filing to Out of Charge, covering ICEGATE, RMS channels, and port-specific operations.",
+    description: "How AI automates the 9-step Indian customs clearance workflow - from IGM filing to Out of Charge, covering ICEGATE, RMS channels, and port-specific operations.",
     date: "2026-05-05",
     readTime: "12 min read",
     author: "Gaarth Godbole",
@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "manual-entry-trap-logistics-india",
     title: "The Manual Entry Trap: Why Indian Logistics Firms Stop Growing at 50 Shipments a Month",
-    description: "Why manual data entry creates a growth ceiling for Indian logistics firms — the cost of errors, the headcount trap, and the ROI of automation.",
+    description: "Why manual data entry creates a growth ceiling for Indian logistics firms - the cost of errors, the headcount trap, and the ROI of automation.",
     date: "2026-05-04",
     readTime: "8 min read",
     author: "Gaarth Godbole",
@@ -73,7 +73,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "icegate-filing-automation",
     title: "ICEGATE Filing Automation: Eliminating Manual Bottlenecks in Indian Customs EDI",
-    description: "How automation eliminates the 5 manual bottlenecks in ICEGATE Bill of Entry filing — from data entry to ERP integration for Softlink, Logi-Sys, and SAP.",
+    description: "How automation eliminates the 5 manual bottlenecks in ICEGATE Bill of Entry filing - from data entry to ERP integration for Softlink, Logi-Sys, and SAP.",
     date: "2026-05-02",
     readTime: "10 min read",
     author: "Gaarth Godbole",
@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "custom-house-agent-software-india",
     title: "Custom House Agent Software: What to Look for and What to Avoid in 2026",
-    description: "A buyer's guide to CHA software in India — comparing off-the-shelf tools vs custom-built systems, key features, red flags, and questions to ask vendors.",
+    description: "A buyer's guide to CHA software in India - comparing off-the-shelf tools vs custom-built systems, key features, red flags, and questions to ask vendors.",
     date: "2026-05-01",
     readTime: "10 min read",
     author: "Gaarth Godbole",
@@ -93,7 +93,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "logistics-automation-roi-calculator",
     title: "Logistics Automation ROI: The Complete Framework for Indian Customs and Freight Operations",
-    description: "How to calculate the true ROI of logistics automation — direct labor savings, error cost elimination, capacity expansion, and client retention value for Indian CHAs.",
+    description: "How to calculate the true ROI of logistics automation - direct labor savings, error cost elimination, capacity expansion, and client retention value for Indian CHAs.",
     date: "2026-04-28",
     readTime: "11 min read",
     author: "Gaarth Godbole",
@@ -103,7 +103,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "nhava-sheva-jnpt-customs-automation",
     title: "Nhava Sheva JNPT Customs Automation: A Port-Specific Guide for CHAs",
-    description: "JNPT-specific guide to customs automation — free-time windows, CFS coordination, LCL splitting, RMS scrutiny, and detention cost analysis for India's busiest port.",
+    description: "JNPT-specific guide to customs automation - free-time windows, CFS coordination, LCL splitting, RMS scrutiny, and detention cost analysis for India's busiest port.",
     date: "2026-04-25",
     readTime: "11 min read",
     author: "Gaarth Godbole",

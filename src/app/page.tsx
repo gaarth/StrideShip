@@ -50,7 +50,7 @@ const serviceSchemas = [
     name: "RFQ & Quote Automation for Freight Forwarders",
     provider: { "@id": "https://strideship.dev/#organization" },
     description:
-      "AI-powered automation of freight forwarding RFQ processing — extract data from unstructured emails, generate accurate quotes instantly, and structure outputs into formatted Excel files with full audit trail.",
+      "AI-powered automation of freight forwarding RFQ processing - extract data from unstructured emails, generate accurate quotes instantly, and structure outputs into formatted Excel files with full audit trail.",
     areaServed: { "@type": "Country", name: "India" },
     serviceType: "Freight Forwarding Automation",
   },
@@ -83,7 +83,7 @@ const howToSchema = {
   "@type": "HowTo",
   name: "How StrideShip Automates Your Logistics Operations",
   description:
-    "A five-phase engagement to replace manual logistics workflows with custom AI automation — from audit call to full deployment in 3–6 weeks.",
+    "A five-phase engagement to replace manual logistics workflows with custom AI automation - from audit call to full deployment in 3–6 weeks.",
   totalTime: "P42D",
   step: [
     {
@@ -96,7 +96,7 @@ const howToSchema = {
       "@type": "HowToStep",
       position: 2,
       name: "Bottleneck Mapping",
-      text: "Full operational map of your business — every manual touchpoint, every system gap, every handoff delay. Prioritized list of time and cost leakages with estimated impact.",
+      text: "Full operational map of your business - every manual touchpoint, every system gap, every handoff delay. Prioritized list of time and cost leakages with estimated impact.",
     },
     {
       "@type": "HowToStep",
@@ -187,9 +187,9 @@ export default function Home() {
       
       <Navbar />
 
-      {/* Semantic article wrapper for AI crawlers — visible content with entity-rich structure */}
+      {/* Semantic article wrapper for AI crawlers - visible content with entity-rich structure */}
       <article itemScope itemType="https://schema.org/WebPage">
-        <meta itemProp="name" content="StrideShip — AI Customs Automation & Logistics Software for India" />
+        <meta itemProp="name" content="StrideShip - AI Customs Automation & Logistics Software for India" />
         <meta itemProp="description" content="Custom AI automation for Indian customs brokers, freight forwarders, and logistics firms. Bill of Entry automation, ICEGATE filing, RFQ processing, and shipment tracking." />
         <meta itemProp="url" content="https://strideship.dev" />
         

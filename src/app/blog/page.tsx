@@ -6,14 +6,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | StrideShip — Logistics Automation Insights",
+  title: "Blog | StrideShip - Logistics Automation Insights",
   description:
     "Articles on AI for customs brokers, Bill of Entry automation, freight forwarding AI, and logistics automation in India. By Gaarth Godbole, StrideShip.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Blog | StrideShip — Logistics Automation Insights",
+    title: "Blog | StrideShip - Logistics Automation Insights",
     description:
       "Articles on AI for customs brokers, Bill of Entry automation, freight forwarding AI, and logistics automation in India.",
     url: "https://strideship.dev/blog",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog | StrideShip — Logistics Automation Insights",
+    title: "Blog | StrideShip - Logistics Automation Insights",
     description:
       "Articles on AI for customs brokers, Bill of Entry automation, freight forwarding AI, and logistics automation in India.",
     images: ["/og-image.png"],
@@ -47,19 +47,19 @@ export default function BlogIndex() {
 
       <Navbar />
 
-      <section style={{ padding: "clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px)", position: "relative" }}>
-        <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)", maxWidth: "1200px" }}>
-          <header style={{ textAlign: "center", marginBottom: "clamp(48px, 6vw, 72px)" }}>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
+      <section style={{ padding: "clamp(107px, 11.73vw, 140px) 0 clamp(54px, 7.82vw, 78px)", position: "relative" }}>
+        <div style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)", maxWidth: "1200px" }}>
+          <header style={{ textAlign: "center", marginBottom: "clamp(43px, 4.692vw, 56px)" }}>
+            <h1 style={{ fontSize: "clamp(2.677rem, 4.692vw, 3.514rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
               Blog &{" "}<br />
               <span style={{ fontStyle: "italic", color: "#64748B" }}>Insights</span>
             </h1>
-            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "clamp(1.004rem, 1.168vw, 1.099rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
               Deep dives into logistics automation, customs AI, and the future of Indian EXIM operations.
             </p>
           </header>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(16px, 2vw, 24px)", maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(15px, 1.564vw, 18px)", maxWidth: "800px", margin: "0 auto" }}>
             {blogPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
                 <BlogCard

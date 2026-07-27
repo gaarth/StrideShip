@@ -5,14 +5,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About StrideShip | Logistics Automation Experts in Mumbai",
   description:
-    "Meet the team behind StrideShip — Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+    "Meet the team behind StrideShip - Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
     title: "About StrideShip | Logistics Automation Experts in Mumbai",
     description:
-      "Meet the team behind StrideShip — Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+      "Meet the team behind StrideShip - Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
     url: "https://strideship.dev/about",
     type: "website",
     images: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "About StrideShip — Logistics Automation Experts",
+        alt: "About StrideShip - Logistics Automation Experts",
       },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About StrideShip | Logistics Automation Experts in Mumbai",
     description:
-      "Meet the team behind StrideShip — Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+      "Meet the team behind StrideShip - Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
     images: ["/og-image.png"],
   },
 };
@@ -71,34 +71,34 @@ export default function AboutPage() {
 
       <Navbar />
 
-      <section style={{ padding: "clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px)", position: "relative" }}>
-        <div style={{ width: "80%", margin: "0 auto", padding: "0 clamp(24px, 5vw, 64px)", maxWidth: "1200px" }}>
+      <section style={{ padding: "clamp(107px, 11.73vw, 140px) 0 clamp(54px, 7.82vw, 78px)", position: "relative" }}>
+        <div style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)", maxWidth: "1200px" }}>
 
           {/* Page Header */}
-          <header style={{ textAlign: "center", marginBottom: "clamp(64px, 8vw, 96px)" }}>
-            <h1 style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
+          <header style={{ textAlign: "center", marginBottom: "clamp(57px, 6.256vw, 76px)" }}>
+            <h1 style={{ fontSize: "clamp(2.677rem, 4.692vw, 3.514rem)", color: "#0F172A", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "20px" }}>
               The Engine Behind <br />
               <span style={{ fontStyle: "italic", color: "#64748B" }}>Global Trade</span>
             </h1>
-            <p style={{ fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "clamp(1.004rem, 1.168vw, 1.099rem)", color: "#475569", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
               We&rsquo;re taking logistics off paper and transforming it into a high-precision, tech-first sector.
             </p>
           </header>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(64px, 8vw, 96px)", maxWidth: "800px", margin: "0 auto" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "clamp(57px, 6.256vw, 76px)", maxWidth: "800px", margin: "0 auto" }}>
 
             {/* Leadership Section */}
             <section>
-              <h2 style={{ fontSize: "clamp(2rem, 3vw, 2.5rem)", color: "#0F172A", marginBottom: "48px", letterSpacing: "-0.02em" }}>
+              <h2 style={{ fontSize: "clamp(1.785rem, 2.346vw, 1.96rem)", color: "#0F172A", marginBottom: "48px", letterSpacing: "-0.02em" }}>
                 The Leadership Team
               </h2>
 
               {/* Gaarth */}
               <div style={{ paddingBottom: "48px" }}>
-                <h3 style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)", color: "#0F172A", marginBottom: "6px" }}>
+                <h3 style={{ fontSize: "clamp(1.116rem, 1.168vw, 1.222rem)", color: "#0F172A", marginBottom: "6px" }}>
                   Gaarth Godbole
                 </h3>
-                <p style={{ color: "#2563EB", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, marginBottom: "24px" }}>
+                <p style={{ color: "#0F172A", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, marginBottom: "24px" }}>
                   Co-Founder & Chief Executive Officer
                 </p>
                 <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem" }}>
@@ -114,29 +114,29 @@ export default function AboutPage() {
 
               {/* Siddhant */}
               <div>
-                <h3 style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)", color: "#0F172A", marginBottom: "6px" }}>
+                <h3 style={{ fontSize: "clamp(1.116rem, 1.168vw, 1.222rem)", color: "#0F172A", marginBottom: "6px" }}>
                   Siddhant Vaidya
                 </h3>
-                <p style={{ color: "#2563EB", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, marginBottom: "24px" }}>
+                <p style={{ color: "#0F172A", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700, marginBottom: "24px" }}>
                   Co-Founder & Chief Technical Officer
                 </p>
                 <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem" }}>
                   The architect of the StrideShip technical ecosystem, Siddhant Vaidya leads the development of the proprietary &ldquo;Logic Layer&rdquo; and automation infrastructure. He is responsible for the end-to-end technical roadmap, focusing on high-performance data extraction, secure multi-tenant architecture, and server-side reliability.
                 </p>
                 <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem", marginTop: "16px" }}>
-                  Siddhant&rsquo;s work ensures that the inherent chaos of global trade documentation—ranging from non-standardized PDFs to cluttered spreadsheets—is converted into 99.9% accurate, system-ready data. His mission is to build robust, scalable infrastructure that allows logistics firms to automate their most complex data pipelines without compromising on security or accuracy.
+                  Siddhant&rsquo;s work ensures that the inherent chaos of global trade documentation - ranging from non-standardized PDFs to cluttered spreadsheets - is converted into 99.9% accurate, system-ready data. His mission is to build robust, scalable infrastructure that allows logistics firms to automate their most complex data pipelines without compromising on security or accuracy.
                 </p>
               </div>
             </section>
 
             {/* The Story Section */}
-            <section style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "clamp(48px, 6vw, 72px)" }}>
-              <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)", color: "#0F172A", marginBottom: "24px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+            <section style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "clamp(43px, 4.692vw, 56px)" }}>
+              <h2 style={{ fontSize: "clamp(1.785rem, 2.742vw, 2.346rem)", color: "#0F172A", marginBottom: "24px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
                 The StrideShip Story <br />
                 <span style={{ fontStyle: "italic", color: "#64748B" }}>Solving the Data Crisis</span>
               </h2>
 
-              <h3 style={{ fontSize: "clamp(1.1rem, 1.3vw, 1.3rem)", color: "#0F172A", margin: "40px 0 16px" }}>
+              <h3 style={{ fontSize: "clamp(0.982rem, 1.012vw, 1.075rem)", color: "#0F172A", margin: "40px 0 16px" }}>
                 The Infrastructure of Information
               </h3>
               <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "20px" }}>
@@ -146,23 +146,23 @@ export default function AboutPage() {
                 StrideShip was established in Mumbai to solve the most persistent bottleneck in the supply chain: The Manual Entry Trap. We recognized that even the most successful freight forwarders and CHAs are forced to use their most talented operations experts as data entry clerks. When elite logistics professionals spend the majority of their day re-typing packing lists and invoices into an ERP, the business loses its ability to scale, innovate, and respond to market shifts.
               </p>
 
-              <h3 style={{ fontSize: "clamp(1.1rem, 1.3vw, 1.3rem)", color: "#0F172A", margin: "48px 0 16px" }}>
+              <h3 style={{ fontSize: "clamp(0.982rem, 1.012vw, 1.075rem)", color: "#0F172A", margin: "48px 0 16px" }}>
                 Building for the Reality of Trade
               </h3>
               <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "20px" }}>
-                Most automation platforms fail because they are built for &ldquo;clean&rdquo; data environments that simply do not exist in international trade. They assume every invoice is formatted perfectly and every spreadsheet is standardized. In the real-world environment of Mumbai logistics—from the ports of Nhava Sheva to the offices of Ballard Estate—data is inherently messy.
+                Most automation platforms fail because they are built for &ldquo;clean&rdquo; data environments that simply do not exist in international trade. They assume every invoice is formatted perfectly and every spreadsheet is standardized. In the real-world environment of Mumbai logistics - from the ports of Nhava Sheva to the offices of Ballard Estate - data is inherently messy.
               </p>
               <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem" }}>
-                StrideShip is engineered specifically for this reality. We don&rsquo;t just &ldquo;scrape&rdquo; text; we understand the underlying logic of logistics. Our platform is designed to handle the &ldquo;Khich-Khich&rdquo;—the diverse global document formats, the project-specific packing lists, and the fragmented communication channels that define daily operations.
+                StrideShip is engineered specifically for this reality. We don&rsquo;t just &ldquo;scrape&rdquo; text; we understand the underlying logic of logistics. Our platform is designed to handle the &ldquo;Khich-Khich&rdquo; - the diverse global document formats, the project-specific packing lists, and the fragmented communication channels that define daily operations.
               </p>
             </section>
 
             {/* Core Philosophy */}
-            <section style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "clamp(48px, 6vw, 72px)" }}>
-              <h2 style={{ fontSize: "clamp(1.75rem, 2.5vw, 2.5rem)", color: "#0F172A", marginBottom: "8px", letterSpacing: "-0.02em" }}>
+            <section style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "clamp(43px, 4.692vw, 56px)" }}>
+              <h2 style={{ fontSize: "clamp(1.562rem, 1.96vw, 1.96rem)", color: "#0F172A", marginBottom: "8px", letterSpacing: "-0.02em" }}>
                 Our Core Philosophy
               </h2>
-              <h3 style={{ fontSize: "clamp(1.1rem, 1.3vw, 1.3rem)", color: "#64748B", marginBottom: "32px", fontStyle: "italic" }}>
+              <h3 style={{ fontSize: "clamp(0.982rem, 1.012vw, 1.075rem)", color: "#64748B", marginBottom: "32px", fontStyle: "italic" }}>
                 The &ldquo;Review-Only&rdquo; Workflow
               </h3>
 
@@ -174,21 +174,21 @@ export default function AboutPage() {
               <h4 style={{ fontSize: "1rem", color: "#0F172A", marginBottom: "24px", fontWeight: 700 }}>Our Logic Layer handles the intensive heavy lifting:</h4>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 40px 0", display: "flex", flexDirection: "column", gap: "20px" }}>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "#EFF6FF", border: "1px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", color: "#2563EB", fontSize: "11px", marginTop: "3px", fontWeight: 700 }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "#F8FAFC", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", color: "#0F172A", fontSize: "11px", marginTop: "3px", fontWeight: 700 }}>✓</div>
                   <p style={{ margin: 0, color: "#475569", lineHeight: 1.7 }}>
-                    Ingestion & Extraction — Pulling precise line-item data from any unstructured source, whether it&rsquo;s a PDF invoice, a body-of-email text, or a cluttered Excel file.
+                    Ingestion & Extraction - Pulling precise line-item data from any unstructured source, whether it&rsquo;s a PDF invoice, a body-of-email text, or a cluttered Excel file.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "#EFF6FF", border: "1px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", color: "#2563EB", fontSize: "11px", marginTop: "3px", fontWeight: 700 }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "#F8FAFC", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", color: "#0F172A", fontSize: "11px", marginTop: "3px", fontWeight: 700 }}>✓</div>
                   <p style={{ margin: 0, color: "#475569", lineHeight: 1.7 }}>
-                    Normalization — Automatically cleaning, re-formatting, and standardizing that data to match the specific requirements of your internal ERP or filing system.
+                    Normalization - Automatically cleaning, re-formatting, and standardizing that data to match the specific requirements of your internal ERP or filing system.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "#EFF6FF", border: "1px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", color: "#2563EB", fontSize: "11px", marginTop: "3px", fontWeight: 700 }}>✓</div>
+                  <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "#F8FAFC", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", color: "#0F172A", fontSize: "11px", marginTop: "3px", fontWeight: 700 }}>✓</div>
                   <p style={{ margin: 0, color: "#475569", lineHeight: 1.7 }}>
-                    Intelligent Validation — Running background checks on compliance prerequisites, HSN codes, and regulatory lists to ensure the data is accurate before it is ever filed.
+                    Intelligent Validation - Running background checks on compliance prerequisites, HSN codes, and regulatory lists to ensure the data is accurate before it is ever filed.
                   </p>
                 </li>
               </ul>
@@ -199,14 +199,14 @@ export default function AboutPage() {
             </section>
 
             {/* The Advantage */}
-            <section style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "clamp(48px, 6vw, 72px)" }}>
-              <h2 style={{ fontSize: "clamp(2rem, 3vw, 2.5rem)", color: "#0F172A", marginBottom: "48px", letterSpacing: "-0.02em" }}>
+            <section style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "clamp(43px, 4.692vw, 56px)" }}>
+              <h2 style={{ fontSize: "clamp(1.785rem, 2.346vw, 1.96rem)", color: "#0F172A", marginBottom: "48px", letterSpacing: "-0.02em" }}>
                 The StrideShip Advantage
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
                 <div>
                   <h4 style={{ fontSize: "1.1rem", color: "#0F172A", marginBottom: "12px", display: "flex", alignItems: "center", gap: "12px", fontWeight: 700 }}>
-                    <span style={{ color: "#2563EB" }}>✦</span> Scalability Without Friction
+                    <span style={{ color: "#0F172A" }}>✦</span> Scalability Without Friction
                   </h4>
                   <p style={{ color: "#475569", lineHeight: 1.7, fontSize: "1.05rem", paddingLeft: "30px" }}>
                     Our infrastructure is built to let your firm grow. You can double your tonnage and increase your shipment throughput without the need to hire, train, or manage additional staff for manual data entry.
@@ -214,7 +214,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 style={{ fontSize: "1.1rem", color: "#0F172A", marginBottom: "12px", display: "flex", alignItems: "center", gap: "12px", fontWeight: 700 }}>
-                    <span style={{ color: "#2563EB" }}>✦</span> Legacy System Preservation
+                    <span style={{ color: "#0F172A" }}>✦</span> Legacy System Preservation
                   </h4>
                   <p style={{ color: "#475569", lineHeight: 1.7, fontSize: "1.05rem", paddingLeft: "30px" }}>
                     We believe in enhancing what works. StrideShip does not require you to replace your trusted ERPs or abandon your decades of established expertise. We provide the &ldquo;Logic Bridge&rdquo; that makes your existing systems 10x more powerful.
@@ -222,18 +222,18 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 style={{ fontSize: "1.1rem", color: "#0F172A", marginBottom: "12px", display: "flex", alignItems: "center", gap: "12px", fontWeight: 700 }}>
-                    <span style={{ color: "#2563EB" }}>✦</span> Risk Mitigation & Accuracy
+                    <span style={{ color: "#0F172A" }}>✦</span> Risk Mitigation & Accuracy
                   </h4>
                   <p style={{ color: "#475569", lineHeight: 1.7, fontSize: "1.05rem", paddingLeft: "30px" }}>
-                    Manual entry is the single largest source of expensive errors—the typos and mismatches that lead to customs queries, port detention, and lost client trust. StrideShip removes human fatigue from the equation, ensuring your data is right the first time, every time.
+                    Manual entry is the single largest source of expensive errors - the typos and mismatches that lead to customs queries, port detention, and lost client trust. StrideShip removes human fatigue from the equation, ensuring your data is right the first time, every time.
                   </p>
                 </div>
               </div>
             </section>
 
             {/* Closing statement */}
-            <div style={{ textAlign: "center", padding: "clamp(40px, 6vw, 80px) 0" }}>
-              <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#0F172A", letterSpacing: "-0.02em", fontStyle: "italic" }}>
+            <div style={{ textAlign: "center", padding: "clamp(36px, 4.692vw, 62px) 0" }}>
+              <h2 style={{ fontSize: "clamp(1.785rem, 3.128vw, 2.346rem)", color: "#0F172A", letterSpacing: "-0.02em", fontStyle: "italic" }}>
                 Stop reading, start scaling.
               </h2>
             </div>

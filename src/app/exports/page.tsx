@@ -4,10 +4,7 @@ import { Footer } from "@/components/sections/footer";
 import { ExportsHero } from "@/components/exports/exports-hero";
 import { ExportsModel } from "@/components/exports/exports-model";
 import { ExportsCategories } from "@/components/exports/exports-categories";
-import { ExportsManufacturers } from "@/components/exports/exports-manufacturers";
-import { ExportsBuyers } from "@/components/exports/exports-buyers";
-import { ExportsProofStrip } from "@/components/exports/exports-proof-strip";
-import { ExportsContact } from "@/components/exports/exports-contact";
+import { ExportsInquiryForm } from "@/components/exports/exports-inquiry-form";
 
 export const metadata: Metadata = {
   title: "StrideShip Exports | Indian Manufacturer Joint Venture & Sourcing Partner",
@@ -41,7 +38,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "StrideShip Exports — Indian Manufacturer JV & Sourcing Partner",
+        alt: "StrideShip Exports - Indian Manufacturer JV & Sourcing Partner",
       },
     ],
   },
@@ -139,10 +136,7 @@ export default function ExportsPage() {
         <ExportsHero />
         <ExportsModel />
         <ExportsCategories />
-        <ExportsManufacturers />
-        <ExportsBuyers />
-        <ExportsProofStrip />
-        <ExportsContact />
+        <ExportsInquiryForm />
       </article>
 
       <Footer />

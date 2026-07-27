@@ -1,63 +1,95 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY || "re_12345");
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { inquiryType, companyName, email, contactPerson } = body;
+    const { 
+      inquiryType, 
+      name, 
+      email, 
+      companyName, 
+      profileLink, 
+      address, 
+      yearsInBusiness, 
+      productOfInterest, 
+      customProduct 
+    } = body;
 
     // Basic validation
-    if (!inquiryType || !companyName || !email || !contactPerson) {
+    if (!inquiryType || !companyName || !email || !name) {
       return NextResponse.json(
         {
           success: false,
-          error: "Missing required fields (inquiryType, companyName, contactPerson, email)",
+          error: "Missing required fields.",
         },
         { status: 400 }
       );
     }
 
-    if (inquiryType !== "manufacturer" && inquiryType !== "buyer") {
-      return NextResponse.json(
-        { success: false, error: "Invalid inquiryType. Must be 'manufacturer' or 'buyer'" },
-        { status: 400 }
-      );
+    const isBuyer = inquiryType === "buyer";
+    const product = productOfInterest === "Other" ? customProduct : productOfInterest;
+
+    const htmlContent = `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
+        <h2 style="color: #0f172a; border-bottom: 2px solid #0f172a; padding-bottom: 10px;">New ${isBuyer ? 'Buyer' : 'Manufacturer'} Inquiry</h2>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold; width: 35%;">Name</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${name}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Email</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${email}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Company Name</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${companyName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Profile Link</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;"><a href="${profileLink}" target="_blank">${profileLink || 'N/A'}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Product ${isBuyer ? 'of Interest' : 'Manufactured'}</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${product || 'N/A'}</td>
+          </tr>
+          ${!isBuyer ? `
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Address</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${address || 'N/A'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Years in Business</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${yearsInBusiness || 'N/A'}</td>
+          </tr>
+          ` : ''}
+        </table>
+        
+        <p style="margin-top: 30px; font-size: 12px; color: #64748b; text-align: center;">
+          Sent from StrideShip Exports Form
+        </p>
+      </div>
+    `;
+
+    // Only attempt to send email if API key is actually set, otherwise just log to prevent 500 error
+    if (process.env.RESEND_API_KEY) {
+      await resend.emails.send({
+        from: "StrideShip Exports <inquiries@strideship.dev>",
+        to: ["ceo@strideship.dev"],
+        subject: `New ${isBuyer ? 'Buyer' : 'Manufacturer'} Inquiry - ${companyName}`,
+        html: htmlContent,
+      });
+    } else {
+      console.log("Mock Email Sent (No RESEND_API_KEY):", htmlContent);
     }
-
-    // Stub payload structure ready for CRM / Email service integration (e.g. Resend, SendGrid, Webhook)
-    const processedSubmission = {
-      id: `exp_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-      receivedAt: new Date().toISOString(),
-      inquiryType,
-      companyName: companyName.trim(),
-      contactPerson: contactPerson.trim(),
-      email: email.trim().toLowerCase(),
-      phone: body.phone ? body.phone.trim() : null,
-      message: body.message ? body.message.trim() : null,
-
-      // Target recipients
-      recipients: ["siddhantvaidya70@gmail.com", "gaarth.godbole07@gmail.com"],
-
-      // Manufacturer specific fields
-      category: body.category || null,
-      exportStatus: body.exportStatus || null,
-      monthlyCapacity: body.monthlyCapacity || null,
-
-      // Buyer specific fields
-      country: body.country || null,
-      productsOfInterest: body.productsOfInterest || null,
-      orderVolume: body.orderVolume || null,
-    };
-
-    // Log internally for dev/auditing
-    console.log("[StrideShip Exports Inquiry Submitted]:", JSON.stringify(processedSubmission, null, 2));
 
     return NextResponse.json({
       success: true,
-      message:
-        inquiryType === "manufacturer"
-          ? "Thank you for reaching out. Our export JV team will evaluate your product category and contact you within 24 hours."
-          : "Inquiry received. Our international trade desk will prepare a product specification breakdown and contact you within 24 hours.",
-      referenceId: processedSubmission.id,
+      message: "Form successfully submitted.",
     });
   } catch (error) {
     console.error("[StrideShip Exports API Error]:", error);

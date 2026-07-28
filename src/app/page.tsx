@@ -1,16 +1,38 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
-import { CostOfManual } from "@/components/sections/cost-of-manual";
-import { Problem } from "@/components/sections/problem";
-import { Capabilities } from "@/components/sections/capabilities";
-import { Process } from "@/components/sections/process";
-import { Positioning } from "@/components/sections/positioning";
-import { WhoWeHelp } from "@/components/sections/who-we-help";
-import { BeforeAfter } from "@/components/sections/before-after";
-import { UseCases } from "@/components/sections/use-cases";
-import { CTA } from "@/components/sections/cta";
 import { Footer } from "@/components/sections/footer";
+
+/* Below-the-fold sections: split Framer Motion out of the critical path.
+   SSR stays on so HTML/content is unchanged — only hydration JS is deferred. */
+const CostOfManual = dynamic(
+  () => import("@/components/sections/cost-of-manual").then((m) => ({ default: m.CostOfManual }))
+);
+const Problem = dynamic(
+  () => import("@/components/sections/problem").then((m) => ({ default: m.Problem }))
+);
+const Capabilities = dynamic(
+  () => import("@/components/sections/capabilities").then((m) => ({ default: m.Capabilities }))
+);
+const Process = dynamic(
+  () => import("@/components/sections/process").then((m) => ({ default: m.Process }))
+);
+const Positioning = dynamic(
+  () => import("@/components/sections/positioning").then((m) => ({ default: m.Positioning }))
+);
+const WhoWeHelp = dynamic(
+  () => import("@/components/sections/who-we-help").then((m) => ({ default: m.WhoWeHelp }))
+);
+const BeforeAfter = dynamic(
+  () => import("@/components/sections/before-after").then((m) => ({ default: m.BeforeAfter }))
+);
+const UseCases = dynamic(
+  () => import("@/components/sections/use-cases").then((m) => ({ default: m.UseCases }))
+);
+const CTA = dynamic(
+  () => import("@/components/sections/cta").then((m) => ({ default: m.CTA }))
+);
 
 export const metadata: Metadata = {
   title: "StrideShip | AI Customs Automation & Logistics Software for India",

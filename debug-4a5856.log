@@ -1,0 +1,1 @@
+{"sessionId":"4a5856","timestamp":1785246015268,"location":"lighthouse-compare","message":"post_fix_delta","hypothesisId":"A","runId":"post-fix","data":{"mobileBefore":{"score":0.77,"lcpMs":3857,"obsLcp":446,"tbtMs":457,"bytesMB":105.06,"frames":240},"mobileAfter":{"score":0.88,"lcpMs":3900,"obsLcp":386,"tbtMs":60,"bytesMB":0.46,"frames":1,"frameMB":0.06,"mainThread":"3.6s"}}}

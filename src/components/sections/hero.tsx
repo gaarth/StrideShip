@@ -3,364 +3,203 @@
 import { useEffect, useRef } from "react";
 
 const TOTAL_FRAMES = 240;
-/** How many frames ahead/behind the playhead to keep warm */
-const LOOKAHEAD = 14;
-const LOOKBEHIND = 6;
-const MAX_IN_FLIGHT = 6;
+const FRAME_WIDTH = 3840;
+const FRAME_HEIGHT = 2160;
+const FRAME_PAD = (n: number) => String(n).padStart(3, "0");
+const frameUrl = (n: number) =>
+  `/assets/hero-frames/ezgif-frame-${FRAME_PAD(n)}.jpg`;
 
-function frameSrc(index0: number) {
-  const n = String(index0 + 1).padStart(3, "0");
-  return `/assets/hero-frames/ezgif-frame-${n}.webp`;
-}
+const MAX_CONCURRENT = 10;
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-    const imagesRef = useRef<(HTMLImageElement | undefined)[]>([]);
-  const loadingRef = useRef<Set<number>>(new Set());
+  const imagesRef = useRef<(HTMLImageElement | undefined)[]>([]);
   const targetFrameRef = useRef<number>(0);
   const currentFrameRef = useRef<number>(0);
-  const lastDrawnRef = useRef<number>(-1);
-  const animIdRef = useRef<number>(0);
-  const needsDrawRef = useRef(false);
-  const scrubActiveRef = useRef(false);
+  const loadingRef = useRef<Set<number>>(new Set());
+  const queuedRef = useRef<number[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const hero = heroRef.current;
-    if (!canvas || !hero) return;
+    const media = mediaRef.current;
+    if (!canvas || !hero || !media) return;
 
-    const ctx = canvas.getContext("2d", { alpha: true });
+    let cancelled = false;
+    const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    // #region agent log
-    const perfStart = performance.now();
-    let loadedCount = 0;
-    let drawCount = 0;
-    let scrollHandlerCount = 0;
-    let lastFpsSample = performance.now();
-    let framesSinceSample = 0;
-    let peakCached = 0;
-    const dbg = (message: string, data: Record<string, unknown>, hypothesisId: string) => {
-      if (!new URLSearchParams(window.location.search).has("debugperf")) return;
-      fetch("http://127.0.0.1:7486/ingest/020ac0d2-1f6c-4307-8fbd-75c6be112920", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "4a5856" },
-        body: JSON.stringify({
-          sessionId: "4a5856",
-          location: "hero.tsx",
-          message,
-          data,
-          timestamp: Date.now(),
-          hypothesisId,
-          runId: "post-fix",
-        }),
-      }).catch(() => {});
-    };
-    dbg(
-      "hero_mount",
-      {
-        totalFrames: TOTAL_FRAMES,
-        strategy: "windowed-webp",
-        dpr: window.devicePixelRatio,
-        mem:
-          (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory
-            ?.usedJSHeapSize ?? null,
-      },
-      "A"
-    );
-    // #endregion
-
-    function countCached() {
-      let n = 0;
-      for (let i = 0; i < TOTAL_FRAMES; i++) if (imagesRef.current[i]?.complete) n++;
-      return n;
-    }
-
-    function evictOutsideWindow(center: number) {
-      const lo = Math.max(0, Math.floor(center) - LOOKBEHIND - 4);
-      const hi = Math.min(TOTAL_FRAMES - 1, Math.ceil(center) + LOOKAHEAD + 4);
-      for (let i = 0; i < TOTAL_FRAMES; i++) {
-        if (i >= lo && i <= hi) continue;
-        if (!imagesRef.current[i]) continue;
-        // Drop decoded bitmap reference; HTTP cache keeps bytes for re-fetch
-        imagesRef.current[i] = undefined;
-        loadingRef.current.delete(i);
-      }
-    }
-
-    function ensureFrame(index: number, priority: "high" | "low" = "low") {
-      if (index < 0 || index >= TOTAL_FRAMES) return;
-      if (imagesRef.current[index]?.complete) return;
-      if (loadingRef.current.has(index)) return;
-      if (loadingRef.current.size >= MAX_IN_FLIGHT && priority !== "high") return;
-
-      loadingRef.current.add(index);
-      const img = new Image();
-      img.decoding = "async";
-      img.fetchPriority = priority;
-      const t0 = performance.now();
-      img.onload = () => {
-        imagesRef.current[index] = img;
-        loadingRef.current.delete(index);
-        loadedCount += 1;
-        peakCached = Math.max(peakCached, countCached());
-        needsDrawRef.current = true;
-        kickRenderLoop();
-        // #region agent log
-        if (
-          loadedCount === 1 ||
-          loadedCount === 10 ||
-          loadedCount === 30 ||
-          loadedCount % 50 === 0
-        ) {
-          dbg(
-            "frames_loaded_milestone",
-            {
-              loadedCount,
-              cachedNow: countCached(),
-              peakCached,
-              elapsedMs: Math.round(performance.now() - perfStart),
-              lastDecodeMs: Math.round(performance.now() - t0),
-              mem:
-                (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory
-                  ?.usedJSHeapSize ?? null,
-            },
-            "A"
-          );
-        }
-        // #endregion
-      };
-      img.onerror = () => {
-        loadingRef.current.delete(index);
-      };
-      img.src = frameSrc(index);
-    }
-
-    function warmWindow(center: number) {
-      const c = Math.round(center);
-      ensureFrame(c, "high");
-      // Prefer ahead of playhead (scroll direction typically increases)
-      for (let d = 1; d <= LOOKAHEAD; d++) {
-        ensureFrame(c + d, d <= 3 ? "high" : "low");
-        if (d <= LOOKBEHIND) ensureFrame(c - d, "low");
-      }
-      evictOutsideWindow(center);
-    }
-
-    function nearestReadyFrame(index: number): HTMLImageElement | undefined {
-      const exact = imagesRef.current[index];
-      if (exact?.complete) return exact;
-      for (let d = 1; d <= LOOKAHEAD; d++) {
-        const a = imagesRef.current[index - d];
-        if (a?.complete) return a;
-        const b = imagesRef.current[index + d];
-        if (b?.complete) return b;
-      }
-      return imagesRef.current[0];
-    }
-
     function drawFrame(index: number) {
-      if (!canvas || !ctx) return;
-      const img = nearestReadyFrame(index);
-      if (!img || !img.complete) return;
+      if (!canvas || !ctx || cancelled) return;
+      const img = imagesRef.current[index] || imagesRef.current[0];
 
-      const width = canvas.width;
-      const height = canvas.height;
-      if (width === 0 || height === 0) return;
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const imgRatio = img.width / img.height;
-      const canvasRatio = width / height;
-      let renderW = width;
-      let renderH = height;
-      let x = 0;
-      let y = 0;
+      if (!img || !img.complete || !img.naturalWidth) return;
 
-      if (canvasRatio > imgRatio) {
-        renderH = width / imgRatio;
-        y = (height - renderH) / 2;
+      // Cover math matching scrollforhero/scroll-sequence.html (native 3840×2160)
+      const canvasRatio = canvas.width / canvas.height;
+      const imageRatio = FRAME_WIDTH / FRAME_HEIGHT;
+
+      let drawWidth: number;
+      let drawHeight: number;
+      let offsetX: number;
+      let offsetY: number;
+
+      if (imageRatio > canvasRatio) {
+        drawHeight = canvas.height;
+        drawWidth = drawHeight * imageRatio;
+        offsetX = (canvas.width - drawWidth) / 2;
+        offsetY = 0;
       } else {
-        renderW = height * imgRatio;
-        x = (width - renderW) / 2;
+        drawWidth = canvas.width;
+        drawHeight = drawWidth / imageRatio;
+        offsetX = 0;
+        offsetY = (canvas.height - drawHeight) / 2;
       }
 
-      ctx.clearRect(0, 0, width, height);
-      ctx.drawImage(img, x, y, renderW, renderH);
-      lastDrawnRef.current = index;
+      ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
+
+    function pumpQueue() {
+      if (cancelled) return;
+      while (
+        loadingRef.current.size < MAX_CONCURRENT &&
+        queuedRef.current.length > 0
+      ) {
+        const index = queuedRef.current.shift()!;
+        if (imagesRef.current[index]?.complete || loadingRef.current.has(index)) {
+          continue;
+        }
+        loadingRef.current.add(index);
+        const img = new Image();
+        img.decoding = "async";
+        img.src = frameUrl(index + 1);
+        img.onload = () => {
+          if (cancelled) return;
+          imagesRef.current[index] = img;
+          loadingRef.current.delete(index);
+          if (index === 0) drawFrame(0);
+          else if (Math.abs(index - Math.round(currentFrameRef.current)) <= 1) {
+            drawFrame(Math.round(currentFrameRef.current));
+          }
+          pumpQueue();
+        };
+        img.onerror = () => {
+          if (cancelled) return;
+          loadingRef.current.delete(index);
+          pumpQueue();
+        };
+      }
+    }
+
+    queuedRef.current = [0, ...Array.from({ length: TOTAL_FRAMES - 1 }, (_, i) => i + 1)];
+    pumpQueue();
 
     function resizeCanvas() {
-      if (!canvas) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      canvas.width = Math.max(1, Math.floor(w * dpr));
-      canvas.height = Math.max(1, Math.floor(h * dpr));
-      needsDrawRef.current = true;
-      kickRenderLoop();
+      if (!canvas || !media || cancelled) return;
+
+      const rect = media.getBoundingClientRect();
+      const cssW = Math.max(1, Math.round(rect.width) || window.innerWidth);
+      const cssH = Math.max(1, Math.round(rect.height) || window.innerHeight);
+
+      // Never below 2× — keeps 3840 JPGs sharp on low-DPR / zoomed displays
+      const nativeDpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(Math.max(nativeDpr, 2), 3);
+
+      canvas.style.width = `${cssW}px`;
+      canvas.style.height = `${cssH}px`;
+
+      const bw = Math.round(cssW * dpr);
+      const bh = Math.round(cssH * dpr);
+      if (canvas.width !== bw || canvas.height !== bh) {
+        canvas.width = bw;
+        canvas.height = bh;
+      }
+      drawFrame(Math.round(currentFrameRef.current));
     }
+
+    resizeCanvas();
+    const raf1 = requestAnimationFrame(() => {
+      resizeCanvas();
+      requestAnimationFrame(resizeCanvas);
+    });
+
+    const ro = new ResizeObserver(() => resizeCanvas());
+    ro.observe(media);
+    window.addEventListener("resize", resizeCanvas, { passive: true });
 
     function updateScrub() {
       if (!heroRef.current) return;
       const rect = heroRef.current.getBoundingClientRect();
       const scrollableDistance = heroRef.current.offsetHeight - window.innerHeight;
       if (scrollableDistance <= 0) return;
-
-      const rawProgress = -rect.top / scrollableDistance;
-      const progress = Math.min(Math.max(rawProgress, 0), 1);
-
-      // Defer canvas scrub + frame network until the user actually scrolls the hero.
-      // Keeps the lightweight poster as the early paint / LCP candidate.
-      if (!scrubActiveRef.current) {
-        if (progress <= 0.002 && Math.abs(rect.top) < 8) return;
-        scrubActiveRef.current = true;
-        ensureFrame(0, "high");
-        for (let i = 1; i <= 4; i++) ensureFrame(i, "low");
-        if (canvas) canvas.style.opacity = "1";
-        // #region agent log
-        dbg("scrub_activated", { progress: Number(progress.toFixed(3)), elapsedMs: Math.round(performance.now() - perfStart) }, "A");
-        // #endregion
-      }
-
+      const progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1);
       targetFrameRef.current = progress * (TOTAL_FRAMES - 1);
-      warmWindow(targetFrameRef.current);
-      needsDrawRef.current = true;
-      kickRenderLoop();
-      // #region agent log
-      scrollHandlerCount += 1;
-      if (scrollHandlerCount === 1 || scrollHandlerCount % 30 === 0) {
-        dbg(
-          "scroll_scrub",
-          {
-            scrollHandlerCount,
-            progress: Number(progress.toFixed(3)),
-            targetFrame: Number(targetFrameRef.current.toFixed(1)),
-            loadedCount,
-            cachedNow: countCached(),
-            inFlight: loadingRef.current.size,
-          },
-          "B"
-        );
-      }
-      // #endregion
     }
 
+    let animId: number;
     function renderLoop() {
-      animIdRef.current = 0;
-      framesSinceSample += 1;
       const diff = targetFrameRef.current - currentFrameRef.current;
-      let keepGoing = false;
-
       if (Math.abs(diff) > 0.001) {
         currentFrameRef.current += diff * 0.35;
-        keepGoing = true;
-        needsDrawRef.current = true;
-      }
-
-      if (needsDrawRef.current) {
-        const frameToDraw = Math.min(
-          Math.max(Math.round(currentFrameRef.current), 0),
-          TOTAL_FRAMES - 1
+        drawFrame(
+          Math.min(Math.max(Math.round(currentFrameRef.current), 0), TOTAL_FRAMES - 1)
         );
-        if (frameToDraw !== lastDrawnRef.current || keepGoing) {
-          drawFrame(frameToDraw);
-          drawCount += 1;
-        }
-        needsDrawRef.current = keepGoing;
       }
-
-      // #region agent log
-      const now = performance.now();
-      if (now - lastFpsSample >= 1000) {
-        dbg(
-          "raf_fps_sample",
-          {
-            fps: framesSinceSample,
-            drawsLastSec: drawCount,
-            loadedCount,
-            cachedNow: countCached(),
-            peakCached,
-            currentFrame: Number(currentFrameRef.current.toFixed(1)),
-            looping: keepGoing,
-            mem:
-              (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory
-                ?.usedJSHeapSize ?? null,
-          },
-          "B"
-        );
-        framesSinceSample = 0;
-        drawCount = 0;
-        lastFpsSample = now;
-      }
-      // #endregion
-
-      if (keepGoing || needsDrawRef.current || loadingRef.current.size > 0) {
-        animIdRef.current = requestAnimationFrame(renderLoop);
-      }
+      animId = requestAnimationFrame(renderLoop);
     }
 
-    function kickRenderLoop() {
-      if (!animIdRef.current) {
-        animIdRef.current = requestAnimationFrame(renderLoop);
-      }
-    }
-
-    // Do NOT prefetch scrub frames on mount — poster handles first paint / LCP.
-    // Frame loading starts on first hero scroll (see updateScrub).
-    if (canvas) canvas.style.opacity = "0";
-
-    // #region agent log
-    dbg("first_frame_deferred", { strategy: "poster-lcp-defer-canvas", poster: "ezgif-frame-001-poster.webp" }, "A");
-    const firstCheck = window.setInterval(() => {
-      if (imagesRef.current[0]?.complete) {
-        dbg(
-          "first_frame_ready",
-          {
-            elapsedMs: Math.round(performance.now() - perfStart),
-            w: imagesRef.current[0]!.naturalWidth,
-            h: imagesRef.current[0]!.naturalHeight,
-            src: "webp-1600",
-          },
-          "A"
-        );
-        window.clearInterval(firstCheck);
-      }
-    }, 50);
-    // #endregion
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas, { passive: true });
     window.addEventListener("scroll", updateScrub, { passive: true });
     updateScrub();
-    // No rAF until scrub activates
+    animId = requestAnimationFrame(renderLoop);
 
     return () => {
-      window.clearInterval(firstCheck);
+      cancelled = true;
+      cancelAnimationFrame(raf1);
+      ro.disconnect();
       window.removeEventListener("scroll", updateScrub);
       window.removeEventListener("resize", resizeCanvas);
-      if (animIdRef.current) cancelAnimationFrame(animIdRef.current);
+      cancelAnimationFrame(animId);
     };
   }, []);
 
   return (
     <section ref={heroRef} className="hero" id="hero">
-      <div className="hero-media">
-        {/* Static poster prevents blank canvas before first frame paints (CLS + LCP) */}
+      <div ref={mediaRef} className="hero-media">
+        {/* LCP poster — same cover crop as canvas */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/hero-frames/ezgif-frame-001-poster.webp"
+          src="/assets/hero-frames/ezgif-frame-001.jpg"
           alt=""
           aria-hidden="true"
           fetchPriority="high"
           decoding="async"
-          width={1280}
-          height={720}
-          className="hero-video hero-poster"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
         />
         <canvas
           ref={canvasRef}
-          className="hero-video"
-          style={{ position: "relative", zIndex: 1, opacity: 0, transition: "opacity 120ms linear" }}
+          aria-label="Scroll-driven hero sequence"
+          role="img"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 1,
+            display: "block",
+          }}
         />
         <div className="hero-mask" />
       </div>

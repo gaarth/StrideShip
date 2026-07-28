@@ -4,19 +4,16 @@ import "./globals.css";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
   variable: "--font-worksans",
-  adjustFontFallback: true,
 });
 
 const libreBaskerville = Libre_Baskerville({
-  weight: ["400"],
-  style: ["italic"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-libre",
-  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -202,16 +199,16 @@ export default function RootLayout({
     <html lang="en" className={`${workSans.variable} ${libreBaskerville.variable} antialiased dark`} style={{ fontFamily: "var(--font-worksans)" }}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        {/* LCP: preload first hero scrollytelling frame (1920 WebP) */}
+        {/* Preconnect to external domains for performance */}
+        {/* LCP: first hero frame (JPG 3840×2160) */}
         <link
           rel="preload"
           as="image"
-          href="/assets/hero-frames/ezgif-frame-001-poster.webp"
-          type="image/webp"
+          href="/assets/hero-frames/ezgif-frame-001.jpg"
           fetchPriority="high"
         />
-        {/* DNS prefetch for analytics/third-party (fonts are self-hosted via next/font) */}
         <link rel="preconnect" href="https://cal.com" />
+        {/* DNS prefetch for analytics/third-party */}
         <link rel="dns-prefetch" href="https://www.linkedin.com" />
         {/* Author and humans.txt reference */}
         <link rel="author" href="/humans.txt" />

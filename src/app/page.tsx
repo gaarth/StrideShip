@@ -2,36 +2,47 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
-import { Footer } from "@/components/sections/footer";
 
-/* Below-the-fold sections: split Framer Motion out of the critical path.
-   SSR stays on so HTML/content is unchanged — only hydration JS is deferred. */
+// Below-fold sections: code-split so Framer Motion / section JS is not in the critical path
 const CostOfManual = dynamic(
-  () => import("@/components/sections/cost-of-manual").then((m) => ({ default: m.CostOfManual }))
+  () => import("@/components/sections/cost-of-manual").then((m) => m.CostOfManual),
+  { ssr: true }
 );
 const Problem = dynamic(
-  () => import("@/components/sections/problem").then((m) => ({ default: m.Problem }))
+  () => import("@/components/sections/problem").then((m) => m.Problem),
+  { ssr: true }
 );
 const Capabilities = dynamic(
-  () => import("@/components/sections/capabilities").then((m) => ({ default: m.Capabilities }))
+  () => import("@/components/sections/capabilities").then((m) => m.Capabilities),
+  { ssr: true }
 );
 const Process = dynamic(
-  () => import("@/components/sections/process").then((m) => ({ default: m.Process }))
+  () => import("@/components/sections/process").then((m) => m.Process),
+  { ssr: true }
 );
 const Positioning = dynamic(
-  () => import("@/components/sections/positioning").then((m) => ({ default: m.Positioning }))
+  () => import("@/components/sections/positioning").then((m) => m.Positioning),
+  { ssr: true }
 );
 const WhoWeHelp = dynamic(
-  () => import("@/components/sections/who-we-help").then((m) => ({ default: m.WhoWeHelp }))
+  () => import("@/components/sections/who-we-help").then((m) => m.WhoWeHelp),
+  { ssr: true }
 );
 const BeforeAfter = dynamic(
-  () => import("@/components/sections/before-after").then((m) => ({ default: m.BeforeAfter }))
+  () => import("@/components/sections/before-after").then((m) => m.BeforeAfter),
+  { ssr: true }
 );
 const UseCases = dynamic(
-  () => import("@/components/sections/use-cases").then((m) => ({ default: m.UseCases }))
+  () => import("@/components/sections/use-cases").then((m) => m.UseCases),
+  { ssr: true }
 );
 const CTA = dynamic(
-  () => import("@/components/sections/cta").then((m) => ({ default: m.CTA }))
+  () => import("@/components/sections/cta").then((m) => m.CTA),
+  { ssr: true }
+);
+const Footer = dynamic(
+  () => import("@/components/sections/footer").then((m) => m.Footer),
+  { ssr: true }
 );
 
 export const metadata: Metadata = {

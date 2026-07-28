@@ -2,11 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { Space_Grotesk } from "next/font/google";
 import { fadeUp, stagger, VP } from "@/lib/motion-variants";
-
-// Use a highly impactful, modern typeface for the massive numbers
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "700"] });
 
 function Counter({ from, to, prefix = "", suffix = "" }: { from: number, to: number, prefix?: string, suffix?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -83,6 +79,21 @@ export function CostOfManual() {
   return (
     <section id="cost-of-manual" style={{ padding: "clamp(33px, 3.91vw, 49px) 0", position: "relative" }}>
       <div className="section-container" style={{ width: "92%", margin: "0 auto", padding: "0 clamp(21px, 3.91vw, 49px)" }}>
+        <h2
+          style={{
+            position: "absolute",
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: "hidden",
+            clip: "rect(0, 0, 0, 0)",
+            whiteSpace: "nowrap",
+            border: 0,
+          }}
+        >
+          The cost of manual logistics operations
+        </h2>
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -120,20 +131,21 @@ export function CostOfManual() {
             >
               <div>
                 {/* Massive Numeral in Raft crisp dark style */}
-                <h3 className={spaceGrotesk.className} style={{
+                <div style={{
                   fontSize: "clamp(2.008rem, 2.742vw, 2.539rem)",
                   fontWeight: 700,
                   color: "#0F172A",
                   lineHeight: 1,
                   letterSpacing: "-0.04em",
                   marginBottom: "clamp(8.925px, 0.938vw, 11.5px)",
+                  fontFamily: "var(--font-worksans), system-ui, sans-serif",
                 }}>
                   {stat.isCurrency ? (
                     <Counter from={stat.from!} to={stat.to!} prefix={stat.prefix} suffix={stat.suffix} />
                   ) : (
                     stat.value
                   )}
-                </h3>
+                </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                   <span style={{

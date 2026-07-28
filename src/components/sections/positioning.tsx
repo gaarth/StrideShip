@@ -92,7 +92,7 @@ export function Positioning() {
         </div>
 
         <motion.div
-          animate={{ y: [0, 8, 0], opacity: [0.4, 0.8, 0.4] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, ease: "easeInOut", repeat: Infinity }}
           style={{
             position: "absolute",
@@ -101,11 +101,11 @@ export function Positioning() {
             flexDirection: "column",
             alignItems: "center",
             gap: "10px",
-            color: "#64748B",
+            color: "#334155",
             pointerEvents: "none",
           }}
         >
-          <span style={{ fontSize: "clamp(0.781rem, 1.168vw, 0.856rem)", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 600 }}>Scroll</span>
+          <span style={{ fontSize: "clamp(0.781rem, 1.168vw, 0.856rem)", letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 600, color: "#334155" }}>Scroll</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <polyline points="19 12 12 19 5 12"></polyline>

@@ -9,7 +9,10 @@ const FRAME_PAD = (n: number) => String(n).padStart(3, "0");
 const frameUrl = (n: number) =>
   `/assets/hero-frames/ezgif-frame-${FRAME_PAD(n)}.jpg`;
 
-const MAX_CONCURRENT = 10;
+/** Same full-res JPGs — only the *schedule* changes (critical path first). */
+const MAX_CONCURRENT_CRITICAL = 2;
+const MAX_CONCURRENT_BG = 4;
+const PREFETCH_RADIUS = 20;
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -20,6 +23,8 @@ export function Hero() {
   const currentFrameRef = useRef<number>(0);
   const loadingRef = useRef<Set<number>>(new Set());
   const queuedRef = useRef<number[]>([]);
+  const maxConcurrentRef = useRef(MAX_CONCURRENT_CRITICAL);
+  const bgStartedRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -31,6 +36,20 @@ export function Hero() {
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
+    // #region agent log
+    const __dbg = (message: string, data: Record<string, unknown>, hypothesisId: string) => {
+      fetch('http://127.0.0.1:7486/ingest/020ac0d2-1f6c-4307-8fbd-75c6be112920',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4a5856'},body:JSON.stringify({sessionId:'4a5856',location:'hero.tsx',message,data,timestamp:Date.now(),hypothesisId,runId:'post-fix'})}).catch(()=>{});
+    };
+    let loadedCount = 0;
+    const t0 = performance.now();
+    __dbg('hero_boot', {
+      strategy: 'lcp-first-then-windowed-same-jpg',
+      qualityUnchanged: true,
+      frameW: FRAME_WIDTH,
+      frameH: FRAME_HEIGHT,
+    }, 'A');
+    // #endregion
+
     function drawFrame(index: number) {
       if (!canvas || !ctx || cancelled) return;
       const img = imagesRef.current[index] || imagesRef.current[0];
@@ -40,7 +59,6 @@ export function Hero() {
 
       if (!img || !img.complete || !img.naturalWidth) return;
 
-      // Cover math matching scrollforhero/scroll-sequence.html (native 3840×2160)
       const canvasRatio = canvas.width / canvas.height;
       const imageRatio = FRAME_WIDTH / FRAME_HEIGHT;
 
@@ -64,10 +82,24 @@ export function Hero() {
       ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
 
+    function enqueue(index: number, priority = false) {
+      if (index < 0 || index >= TOTAL_FRAMES) return;
+      if (imagesRef.current[index]?.complete || loadingRef.current.has(index)) return;
+      if (queuedRef.current.includes(index)) {
+        if (priority) {
+          queuedRef.current = queuedRef.current.filter((i) => i !== index);
+          queuedRef.current.unshift(index);
+        }
+        return;
+      }
+      if (priority) queuedRef.current.unshift(index);
+      else queuedRef.current.push(index);
+    }
+
     function pumpQueue() {
       if (cancelled) return;
       while (
-        loadingRef.current.size < MAX_CONCURRENT &&
+        loadingRef.current.size < maxConcurrentRef.current &&
         queuedRef.current.length > 0
       ) {
         const index = queuedRef.current.shift()!;
@@ -77,11 +109,24 @@ export function Hero() {
         loadingRef.current.add(index);
         const img = new Image();
         img.decoding = "async";
+        // Identical assets — no recompression, no resize
         img.src = frameUrl(index + 1);
         img.onload = () => {
           if (cancelled) return;
           imagesRef.current[index] = img;
           loadingRef.current.delete(index);
+          // #region agent log
+          loadedCount++;
+          if (loadedCount === 1 || loadedCount === 10 || loadedCount === 40 || loadedCount === TOTAL_FRAMES) {
+            __dbg('frame_loaded', {
+              loadedCount,
+              index,
+              ms: Math.round(performance.now() - t0),
+              naturalW: img.naturalWidth,
+              naturalH: img.naturalHeight,
+            }, 'A');
+          }
+          // #endregion
           if (index === 0) drawFrame(0);
           else if (Math.abs(index - Math.round(currentFrameRef.current)) <= 1) {
             drawFrame(Math.round(currentFrameRef.current));
@@ -96,8 +141,56 @@ export function Hero() {
       }
     }
 
-    queuedRef.current = [0, ...Array.from({ length: TOTAL_FRAMES - 1 }, (_, i) => i + 1)];
+    function prioritizeAround(center: number) {
+      const c = Math.round(center);
+      queuedRef.current = queuedRef.current.filter(
+        (i) => Math.abs(i - c) <= PREFETCH_RADIUS + 8 || i === 0
+      );
+      for (let d = 0; d <= PREFETCH_RADIUS; d++) {
+        enqueue(c + d, true);
+        if (d > 0) enqueue(c - d, true);
+      }
+      pumpQueue();
+    }
+
+    function startBackgroundFill() {
+      if (cancelled || bgStartedRef.current) return;
+      bgStartedRef.current = true;
+      maxConcurrentRef.current = MAX_CONCURRENT_BG;
+      // #region agent log
+      __dbg('bg_fill_start', { ms: Math.round(performance.now() - t0), loadedCount, mode: 'scroll-window-only' }, 'A');
+      // #endregion
+      // Do NOT enqueue all 240 — only scrub window (same full-res JPGs on demand)
+      prioritizeAround(currentFrameRef.current);
+    }
+
+    // Critical path only: frame 0 (poster already in HTML + preload)
+    enqueue(0, true);
     pumpQueue();
+
+    // #region agent log
+    const summaryTimer = window.setTimeout(() => {
+      const resources = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
+      const frames = resources.filter((r) => r.name.includes("/assets/hero-frames/"));
+      const transfer = frames.reduce((s, r) => s + (r.transferSize || 0), 0);
+      __dbg("network_2s", {
+        frameEntries: frames.length,
+        frameTransferKB: Math.round(transfer / 1024),
+        loadedCount,
+        bgStarted: bgStartedRef.current,
+        queuedRemaining: queuedRef.current.length,
+      }, "A");
+    }, 2000);
+    new PerformanceObserver((list) => {
+      for (const e of list.getEntries()) {
+        __dbg("lcp", {
+          startTime: Math.round(e.startTime),
+          size: (e as PerformanceEntry & { size?: number }).size ?? null,
+          el: (e as PerformanceEntry & { element?: Element }).element?.tagName ?? null,
+        }, "B");
+      }
+    }).observe({ type: "largest-contentful-paint", buffered: true });
+    // #endregion
 
     function resizeCanvas() {
       if (!canvas || !media || cancelled) return;
@@ -105,8 +198,6 @@ export function Hero() {
       const rect = media.getBoundingClientRect();
       const cssW = Math.max(1, Math.round(rect.width) || window.innerWidth);
       const cssH = Math.max(1, Math.round(rect.height) || window.innerHeight);
-
-      // Never below 2× — keeps 3840 JPGs sharp on low-DPR / zoomed displays
       const nativeDpr = window.devicePixelRatio || 1;
       const dpr = Math.min(Math.max(nativeDpr, 2), 3);
 
@@ -139,9 +230,14 @@ export function Hero() {
       if (scrollableDistance <= 0) return;
       const progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1);
       targetFrameRef.current = progress * (TOTAL_FRAMES - 1);
+      if (bgStartedRef.current || progress > 0.01) {
+        startBackgroundFill();
+        prioritizeAround(targetFrameRef.current);
+      }
+      if (!animId) animId = requestAnimationFrame(renderLoop);
     }
 
-    let animId: number;
+    let animId = 0;
     function renderLoop() {
       const diff = targetFrameRef.current - currentFrameRef.current;
       if (Math.abs(diff) > 0.001) {
@@ -149,28 +245,31 @@ export function Hero() {
         drawFrame(
           Math.min(Math.max(Math.round(currentFrameRef.current), 0), TOTAL_FRAMES - 1)
         );
+        animId = requestAnimationFrame(renderLoop);
+      } else {
+        animId = 0;
       }
-      animId = requestAnimationFrame(renderLoop);
     }
 
     window.addEventListener("scroll", updateScrub, { passive: true });
     updateScrub();
-    animId = requestAnimationFrame(renderLoop);
 
     return () => {
       cancelled = true;
+      // #region agent log
+      window.clearTimeout(summaryTimer);
+      // #endregion
       cancelAnimationFrame(raf1);
       ro.disconnect();
       window.removeEventListener("scroll", updateScrub);
       window.removeEventListener("resize", resizeCanvas);
-      cancelAnimationFrame(animId);
+      if (animId) cancelAnimationFrame(animId);
     };
   }, []);
 
   return (
     <section ref={heroRef} className="hero" id="hero">
       <div ref={mediaRef} className="hero-media">
-        {/* LCP poster — same cover crop as canvas */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets/hero-frames/ezgif-frame-001.jpg"
@@ -178,6 +277,8 @@ export function Hero() {
           aria-hidden="true"
           fetchPriority="high"
           decoding="async"
+          width={FRAME_WIDTH}
+          height={FRAME_HEIGHT}
           style={{
             position: "absolute",
             inset: 0,

@@ -30,9 +30,18 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Long-term caching for static assets
+      // Long-term caching for static assets (incl. JS/CSS chunks)
       {
-        source: "/(.*)\\.(ico|svg|png|jpg|jpeg|webp|avif|woff|woff2)",
+        source: "/(.*)\\.(ico|svg|png|jpg|jpeg|webp|avif|woff|woff2|js|css)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/assets/hero-frames/:path*",
         headers: [
           {
             key: "Cache-Control",

@@ -9,18 +9,19 @@ const FRAME_PAD = (n: number) => String(n).padStart(3, "0");
 const frameUrl = (n: number) =>
   `/assets/hero-frames/ezgif-frame-${FRAME_PAD(n)}.jpg`;
 
-/** Same full-res JPGs — only the *schedule* changes (critical path first). */
+/** Same full-res JPGs — only the load schedule changes (critical path first). */
 const MAX_CONCURRENT_CRITICAL = 2;
 const MAX_CONCURRENT_BG = 4;
-const PREFETCH_RADIUS = 20;
+const PREFETCH_RADIUS = 24;
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<(HTMLImageElement | undefined)[]>([]);
-  const targetFrameRef = useRef<number>(0);
-  const currentFrameRef = useRef<number>(0);
+  const targetFrameRef = useRef(0);
+  const currentFrameRef = useRef(0);
+  const lastDrawnRef = useRef(-1);
   const loadingRef = useRef<Set<number>>(new Set());
   const queuedRef = useRef<number[]>([]);
   const maxConcurrentRef = useRef(MAX_CONCURRENT_CRITICAL);
@@ -33,31 +34,37 @@ export function Hero() {
     if (!canvas || !hero || !media) return;
 
     let cancelled = false;
-    const ctx = canvas.getContext("2d", { alpha: false });
-    if (!ctx) return;
+    // alpha:true so the poster image shows through until the first frame paints (no black flash)
+    const rawCtx = canvas.getContext("2d", { alpha: true });
+    if (!rawCtx) return;
+    const ctx = rawCtx;
 
-    // #region agent log
-    const __dbg = (message: string, data: Record<string, unknown>, hypothesisId: string) => {
-      fetch('http://127.0.0.1:7486/ingest/020ac0d2-1f6c-4307-8fbd-75c6be112920',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4a5856'},body:JSON.stringify({sessionId:'4a5856',location:'hero.tsx',message,data,timestamp:Date.now(),hypothesisId,runId:'post-fix'})}).catch(()=>{});
-    };
-    let loadedCount = 0;
-    const t0 = performance.now();
-    __dbg('hero_boot', {
-      strategy: 'lcp-first-then-windowed-same-jpg',
-      qualityUnchanged: true,
-      frameW: FRAME_WIDTH,
-      frameH: FRAME_HEIGHT,
-    }, 'A');
-    // #endregion
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+
+    /** Find nearest loaded frame so we never paint black mid-scrub. */
+    function resolveImage(index: number): HTMLImageElement | undefined {
+      const exact = imagesRef.current[index];
+      if (exact?.complete && exact.naturalWidth) return exact;
+
+      for (let d = 1; d <= PREFETCH_RADIUS; d++) {
+        const ahead = imagesRef.current[index + d];
+        if (ahead?.complete && ahead.naturalWidth) return ahead;
+        const behind = imagesRef.current[index - d];
+        if (behind?.complete && behind.naturalWidth) return behind;
+      }
+
+      const first = imagesRef.current[0];
+      if (first?.complete && first.naturalWidth) return first;
+      return undefined;
+    }
 
     function drawFrame(index: number) {
       if (!canvas || !ctx || cancelled) return;
-      const img = imagesRef.current[index] || imagesRef.current[0];
 
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      if (!img || !img.complete || !img.naturalWidth) return;
+      const img = resolveImage(index);
+      // Never clear to black without a drawable frame — keeps poster/last frame visible
+      if (!img) return;
 
       const canvasRatio = canvas.width / canvas.height;
       const imageRatio = FRAME_WIDTH / FRAME_HEIGHT;
@@ -80,6 +87,7 @@ export function Hero() {
       }
 
       ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+      lastDrawnRef.current = index;
     }
 
     function enqueue(index: number, priority = false) {
@@ -109,27 +117,15 @@ export function Hero() {
         loadingRef.current.add(index);
         const img = new Image();
         img.decoding = "async";
-        // Identical assets — no recompression, no resize
         img.src = frameUrl(index + 1);
         img.onload = () => {
           if (cancelled) return;
           imagesRef.current[index] = img;
           loadingRef.current.delete(index);
-          // #region agent log
-          loadedCount++;
-          if (loadedCount === 1 || loadedCount === 10 || loadedCount === 40 || loadedCount === TOTAL_FRAMES) {
-            __dbg('frame_loaded', {
-              loadedCount,
-              index,
-              ms: Math.round(performance.now() - t0),
-              naturalW: img.naturalWidth,
-              naturalH: img.naturalHeight,
-            }, 'A');
-          }
-          // #endregion
-          if (index === 0) drawFrame(0);
-          else if (Math.abs(index - Math.round(currentFrameRef.current)) <= 1) {
-            drawFrame(Math.round(currentFrameRef.current));
+
+          const current = Math.round(currentFrameRef.current);
+          if (index === 0 || Math.abs(index - current) <= 1) {
+            drawFrame(current);
           }
           pumpQueue();
         };
@@ -157,40 +153,30 @@ export function Hero() {
       if (cancelled || bgStartedRef.current) return;
       bgStartedRef.current = true;
       maxConcurrentRef.current = MAX_CONCURRENT_BG;
-      // #region agent log
-      __dbg('bg_fill_start', { ms: Math.round(performance.now() - t0), loadedCount, mode: 'scroll-window-only' }, 'A');
-      // #endregion
-      // Do NOT enqueue all 240 — only scrub window (same full-res JPGs on demand)
       prioritizeAround(currentFrameRef.current);
     }
 
-    // Critical path only: frame 0 (poster already in HTML + preload)
+    // Critical path: frame 0 only (poster already in HTML + preload)
     enqueue(0, true);
     pumpQueue();
 
-    // #region agent log
-    const summaryTimer = window.setTimeout(() => {
-      const resources = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
-      const frames = resources.filter((r) => r.name.includes("/assets/hero-frames/"));
-      const transfer = frames.reduce((s, r) => s + (r.transferSize || 0), 0);
-      __dbg("network_2s", {
-        frameEntries: frames.length,
-        frameTransferKB: Math.round(transfer / 1024),
-        loadedCount,
-        bgStarted: bgStartedRef.current,
-        queuedRemaining: queuedRef.current.length,
-      }, "A");
-    }, 2000);
-    new PerformanceObserver((list) => {
-      for (const e of list.getEntries()) {
-        __dbg("lcp", {
-          startTime: Math.round(e.startTime),
-          size: (e as PerformanceEntry & { size?: number }).size ?? null,
-          el: (e as PerformanceEntry & { element?: Element }).element?.tagName ?? null,
-        }, "B");
-      }
-    }).observe({ type: "largest-contentful-paint", buffered: true });
-    // #endregion
+    // Warm a small forward window after idle so first scroll feels filled-in
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    let idleId = 0;
+    let idleTimeout = 0;
+    const warmNearby = () => {
+      if (cancelled || bgStartedRef.current) return;
+      for (let i = 1; i <= 12; i++) enqueue(i, false);
+      pumpQueue();
+    };
+    if (typeof w.requestIdleCallback === "function") {
+      idleId = w.requestIdleCallback(warmNearby, { timeout: 1200 });
+    } else {
+      idleTimeout = window.setTimeout(warmNearby, 600);
+    }
 
     function resizeCanvas() {
       if (!canvas || !media || cancelled) return;
@@ -209,8 +195,11 @@ export function Hero() {
       if (canvas.width !== bw || canvas.height !== bh) {
         canvas.width = bw;
         canvas.height = bh;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        // Re-draw after resize (canvas clear is inherent to size change)
+        drawFrame(Math.round(currentFrameRef.current));
       }
-      drawFrame(Math.round(currentFrameRef.current));
     }
 
     resizeCanvas();
@@ -222,6 +211,33 @@ export function Hero() {
     const ro = new ResizeObserver(() => resizeCanvas());
     ro.observe(media);
     window.addEventListener("resize", resizeCanvas, { passive: true });
+
+    let animId = 0;
+
+    function renderLoop() {
+      const prev = Math.round(currentFrameRef.current);
+      const diff = targetFrameRef.current - currentFrameRef.current;
+
+      if (Math.abs(diff) > 0.001) {
+        currentFrameRef.current += diff * 0.35;
+        const next = Math.min(
+          Math.max(Math.round(currentFrameRef.current), 0),
+          TOTAL_FRAMES - 1
+        );
+        // Only paint when the displayed frame index changes
+        if (next !== prev || next !== lastDrawnRef.current) {
+          drawFrame(next);
+        }
+        animId = requestAnimationFrame(renderLoop);
+      } else {
+        const final = Math.min(
+          Math.max(Math.round(targetFrameRef.current), 0),
+          TOTAL_FRAMES - 1
+        );
+        if (final !== lastDrawnRef.current) drawFrame(final);
+        animId = 0;
+      }
+    }
 
     function updateScrub() {
       if (!heroRef.current) return;
@@ -237,28 +253,15 @@ export function Hero() {
       if (!animId) animId = requestAnimationFrame(renderLoop);
     }
 
-    let animId = 0;
-    function renderLoop() {
-      const diff = targetFrameRef.current - currentFrameRef.current;
-      if (Math.abs(diff) > 0.001) {
-        currentFrameRef.current += diff * 0.35;
-        drawFrame(
-          Math.min(Math.max(Math.round(currentFrameRef.current), 0), TOTAL_FRAMES - 1)
-        );
-        animId = requestAnimationFrame(renderLoop);
-      } else {
-        animId = 0;
-      }
-    }
-
     window.addEventListener("scroll", updateScrub, { passive: true });
     updateScrub();
 
     return () => {
       cancelled = true;
-      // #region agent log
-      window.clearTimeout(summaryTimer);
-      // #endregion
+      if (idleId && typeof w.cancelIdleCallback === "function") {
+        w.cancelIdleCallback(idleId);
+      }
+      if (idleTimeout) window.clearTimeout(idleTimeout);
       cancelAnimationFrame(raf1);
       ro.disconnect();
       window.removeEventListener("scroll", updateScrub);
@@ -300,6 +303,8 @@ export function Hero() {
             height: "100%",
             zIndex: 1,
             display: "block",
+            // Transparent until first paint so poster shows through (no black flash)
+            backgroundColor: "transparent",
           }}
         />
         <div className="hero-mask" />

@@ -34,12 +34,6 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // #region agent log
-  useEffect(() => {
-    fetch('http://127.0.0.1:7486/ingest/020ac0d2-1f6c-4307-8fbd-75c6be112920',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4a5856'},body:JSON.stringify({sessionId:'4a5856',location:'smooth-scroll.tsx',message:'lenis_deferred_state',data:{mounted:!!Lenis},timestamp:Date.now(),hypothesisId:'B',runId:'post-fix'})}).catch(()=>{});
-  }, [Lenis]);
-  // #endregion
-
   if (!Lenis) return <>{children}</>;
 
   return (

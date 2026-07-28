@@ -8,26 +8,26 @@ export function ExportsModel() {
     <section
       id="how-it-works"
       style={{
-        padding: "clamp(71px, 7.82vh, 94px) 0",
-        backgroundColor: "#F5F4F0", // Raft warm cream off-white
+        padding: "clamp(60px, 8vh, 100px) 0",
+        backgroundColor: "#F5F4F0", 
         borderTop: "1px solid rgba(0, 0, 0, 0.06)",
       }}
     >
       <div
         style={{
-          width: "94%",
-          maxWidth: "1320px",
+          width: "92%",
+          maxWidth: "1200px",
           margin: "0 auto",
         }}
       >
-        {/* Section Header - Asymmetric Raft Layout (Left Headline, Right Narrative) */}
+        {/* Section Header - Tighter, more editorial layout */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "40px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "32px",
             alignItems: "flex-end",
-            marginBottom: "clamp(43px, 4.692vh, 49px)",
+            marginBottom: "clamp(32px, 5vh, 48px)",
           }}
         >
           <div>
@@ -46,123 +46,143 @@ export function ExportsModel() {
             </span>
             <h2
               style={{
-                fontSize: "clamp(1.785rem, 2.972vw, 2.346rem)",
+                fontSize: "clamp(2rem, 3.5vw, 2.8rem)",
                 fontWeight: 800,
-                lineHeight: 1.1,
+                lineHeight: 1.05,
                 color: "#0F172A",
-                letterSpacing: "-0.03em",
+                letterSpacing: "-0.04em",
               }}
             >
               How StrideShip Exports Works
             </h2>
           </div>
 
-          <div>
+          <div style={{ maxWidth: "500px" }}>
             <p
               style={{
-                fontSize: "clamp(0.892rem, 1.095vw, 0.977rem)",
+                fontSize: "0.95rem",
                 color: "#475569",
                 lineHeight: 1.6,
-                marginBottom: "20px",
+                marginBottom: "16px",
               }}
             >
               One structured execution partner designed to deliver lasting export growth to your business. We centralize buyer access, trade documentation, customs clearance, and global sales workflows so your team can focus on production excellence.
             </p>
 
             <a
-              href="#for-manufacturers"
+              href="#inquiry-form"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                padding: "10px 20px",
+                padding: "8px 16px",
                 borderRadius: "9999px",
-                backgroundColor: "#E2E8F0",
+                border: "1px solid rgba(15, 23, 42, 0.15)",
                 color: "#0F172A",
-                fontSize: "0.88rem",
+                fontSize: "0.85rem",
                 fontWeight: 600,
                 textDecoration: "none",
-                transition: "background-color 0.2s",
+                transition: "all 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#CBD5E1")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#E2E8F0")}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(15, 23, 42, 0.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
             >
               Explore Manufacturer JV &rarr;
             </a>
           </div>
         </div>
 
-        {/* 4-Step Process Grid in Bright White Cards */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "24px",
-          }}
-        >
+        {/* Horizontal Staggered Process List (Fixes humungous mobile grids) */}
+        <div className="process-scroll-container">
+          <style dangerouslySetInnerHTML={{__html: `
+            .process-scroll-container {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 16px;
+            }
+            @media (max-width: 900px) {
+              .process-scroll-container {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding-bottom: 16px;
+                margin-right: -4vw; /* Bleed off edge */
+                padding-right: 4vw;
+              }
+              .process-scroll-container::-webkit-scrollbar {
+                display: none;
+              }
+              .process-card {
+                min-width: 280px;
+                scroll-snap-align: start;
+              }
+            }
+          `}} />
+
           {JV_MODEL_STEPS.map((step, idx) => (
             <motion.div
               key={step.number}
+              className="process-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                backgroundColor: "#FFFFFF", // Pure bright white card box
-                borderRadius: "20px",
-                padding: "36px 28px",
-                boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
-                border: "1px solid rgba(0, 0, 0, 0.05)",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "16px",
+                padding: "24px",
+                border: "1px solid rgba(0, 0, 0, 0.08)", // No shadow, flat editorial look
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
+                position: "relative",
+                overflow: "hidden",
               }}
             >
-              <div>
-                <div
-                  style={{
-                    fontSize: "1.25rem",
-                    fontWeight: 800,
-                    color: "#0F172A",
-                    marginBottom: "16px",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {step.number}
-                </div>
-
-                <h3
-                  style={{
-                    fontSize: "1.2rem",
-                    fontWeight: 700,
-                    color: "#0F172A",
-                    marginBottom: "12px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {step.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: "0.92rem",
-                    color: "#475569",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {step.summary}
-                </p>
-              </div>
+              {/* Subtle top accent line instead of a divider at the bottom */}
+              <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "3px", backgroundColor: "#0F172A", opacity: 0.1 }} />
 
               <div
                 style={{
-                  marginTop: "24px",
-                  height: "2px",
-                  width: "36px",
-                  backgroundColor: "#0F172A",
-                  borderRadius: "2px",
+                  fontSize: "0.85rem",
+                  fontWeight: 700,
+                  color: "#0F172A",
+                  marginBottom: "12px",
+                  letterSpacing: "0.05em",
+                  fontFamily: "var(--font-worksans), Space Grotesk, sans-serif",
                 }}
-              />
+              >
+                PHASE {step.number}
+              </div>
+
+              <h3
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 700,
+                  color: "#0F172A",
+                  marginBottom: "12px",
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.3,
+                }}
+              >
+                {step.title}
+              </h3>
+
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: "#475569",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                {step.summary}
+              </p>
             </motion.div>
           ))}
         </div>

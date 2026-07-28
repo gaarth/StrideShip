@@ -48,7 +48,7 @@ function AnimatedCountUp({ target, suffix = "", duration = 1600 }: { target: num
   }, [started, target, duration]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} style={{ fontFamily: "var(--font-worksans), Space Grotesk, monospace", fontVariantNumeric: "tabular-nums" }}>
       {count}
       {suffix}
     </span>
@@ -64,59 +64,59 @@ export function ExportsHero() {
   };
 
   const statCards = [
-    { target: 250, suffix: "+", label: "Audited Indian Processing Plants" },
-    { target: 30, suffix: "+", label: "Active Global Target Markets" },
-    { target: 24, suffix: " Hours", label: "Technical Sourcing Response Commitment" },
-    { target: 100, suffix: "%", label: "Production & Quality Control Retained" },
+    { target: 250, suffix: "+", label: "Audited Processing Plants" },
+    { target: 30, suffix: "+", label: "Active Global Markets" },
+    { target: 24, suffix: "h", label: "Sourcing Response Time" },
+    { target: 100, suffix: "%", label: "Production Authority Retained" },
   ];
 
   return (
     <section
       style={{
         position: "relative",
-        paddingTop: "clamp(117px, 12.512vh, 140px)",
-        paddingBottom: "clamp(57px, 6.256vh, 76px)",
-        backgroundColor: "#F5F4F0", // Raft warm off-white
+        paddingTop: "clamp(100px, 12vh, 140px)",
+        paddingBottom: "clamp(40px, 6vh, 60px)",
+        backgroundColor: "#F5F4F0", // Kept original cream theme
       }}
     >
       <div
         style={{
-          width: "94%",
-          maxWidth: "1320px",
+          width: "92%",
+          maxWidth: "1200px", // Reduced from 1320px for a tighter, more readable block
           margin: "0 auto",
         }}
       >
         {/* Hero Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            style={{
-              fontSize: "clamp(2.1rem, 4.37vw, 4.83rem)",
-              fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: "-0.035em",
-              color: "#0F172A",
-              maxWidth: "1120px",
-              marginBottom: "24px",
-            }}
-          >
-            Connecting Indian manufacturers with vetted international buyers through{" "}
-            <span style={{ color: "#0F172A" }}>structured joint ventures</span>.
-          </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            fontSize: "clamp(2rem, 4.5vw, 4.2rem)",
+            fontWeight: 800,
+            lineHeight: 1.05,
+            letterSpacing: "-0.04em",
+            color: "#0F172A",
+            maxWidth: "960px",
+            marginBottom: "20px",
+          }}
+        >
+          Connecting Indian manufacturers with vetted buyers through{" "}
+          <span style={{ color: "#0F172A" }}>structured joint ventures</span>.
+        </motion.h1>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            fontSize: "clamp(0.937rem, 1.408vw, 1.026rem)",
+            fontSize: "clamp(0.95rem, 1.2vw, 1.05rem)",
             fontWeight: 400,
             lineHeight: 1.6,
             color: "#475569",
-            maxWidth: "760px",
-            marginBottom: "40px",
+            maxWidth: "680px",
+            marginBottom: "48px",
           }}
         >
           Not a trading middleman. An execution and growth partner handling international sales,
@@ -127,12 +127,12 @@ export function ExportsHero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           style={{
             display: "flex",
             alignItems: "center",
             flexWrap: "wrap",
-            gap: "16px",
+            gap: "12px",
             marginBottom: "64px",
           }}
         >
@@ -143,29 +143,27 @@ export function ExportsHero() {
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "8px",
-              height: "52px",
-              padding: "0 32px",
+              gap: "10px",
+              height: "48px",
+              padding: "0 28px",
               borderRadius: "9999px",
-              border: "1.5px solid #0F172A",
+              border: "1px solid #0F172A",
               background: "#0F172A",
               color: "#FFFFFF",
-              fontSize: "0.95rem",
-              fontWeight: 500,
+              fontSize: "0.9rem",
+              fontWeight: 600,
               cursor: "pointer",
-              transition: "all 0.3s ease",
+              transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,23,42,0.2)";
+              e.currentTarget.style.backgroundColor = "#1E293B";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.backgroundColor = "#0F172A";
             }}
           >
-            I&apos;m an Indian Manufacturer
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            I'm an Indian Manufacturer
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
@@ -178,71 +176,90 @@ export function ExportsHero() {
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "8px",
-              height: "52px",
-              padding: "0 32px",
+              gap: "10px",
+              height: "48px",
+              padding: "0 28px",
               borderRadius: "9999px",
-              border: "1.5px solid #0F172A",
+              border: "1px solid rgba(15, 23, 42, 0.2)",
               background: "transparent",
               color: "#0F172A",
-              fontSize: "0.95rem",
-              fontWeight: 500,
+              fontSize: "0.9rem",
+              fontWeight: 600,
               cursor: "pointer",
-              transition: "all 0.3s ease",
+              transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(15,23,42,0.1)";
+              e.currentTarget.style.backgroundColor = "rgba(15, 23, 42, 0.05)";
+              e.currentTarget.style.borderColor = "rgba(15, 23, 42, 0.4)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.borderColor = "rgba(15, 23, 42, 0.2)";
             }}
           >
-            I&apos;m an International Buyer
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            I'm an International Buyer
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </button>
         </motion.div>
 
-        {/* STAT CARDS ROW - Counting Up & Stopping Animation */}
+        {/* STAT CARDS ROW - Clean, flat, border-driven, no heavy drop shadows */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "20px",
-            transformOrigin: "top center",
-          }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="stat-cards-container"
         >
+          <style dangerouslySetInnerHTML={{__html: `
+            .stat-cards-container {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 16px;
+            }
+            @media (max-width: 768px) {
+              .stat-cards-container {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none;  /* IE and Edge */
+                padding-bottom: 8px; /* For scroll area */
+              }
+              .stat-cards-container::-webkit-scrollbar {
+                display: none;
+              }
+              .stat-card {
+                min-width: 220px;
+                scroll-snap-align: start;
+              }
+            }
+          `}} />
+          
           {statCards.map((c, i) => (
             <div
               key={i}
+              className="stat-card"
               style={{
-                backgroundColor: "#FFFFFF", // Pure bright white card box
+                backgroundColor: "#FFFFFF",
                 borderRadius: "16px",
-                padding: "36px 28px",
-                textAlign: "center",
-                boxShadow: "0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
-                border: "1px solid rgba(0, 0, 0, 0.05)",
+                padding: "24px 20px",
+                border: "1px solid rgba(0, 0, 0, 0.08)", // Crisp thin border, no shadow
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
+                alignItems: "flex-start",
                 justifyContent: "center",
               }}
             >
               <div
                 style={{
-                  fontSize: "clamp(1.964rem, 2.742vw, 2.346rem)",
+                  fontSize: "clamp(1.75rem, 2.5vw, 2.2rem)",
                   fontWeight: 800,
-                  letterSpacing: "-0.03em",
+                  letterSpacing: "-0.04em",
                   color: "#0F172A",
                   lineHeight: 1,
-                  marginBottom: "12px",
+                  marginBottom: "8px",
                 }}
               >
                 <AnimatedCountUp target={c.target} suffix={c.suffix} />
@@ -253,7 +270,6 @@ export function ExportsHero() {
                   fontWeight: 500,
                   color: "#64748B",
                   lineHeight: 1.4,
-                  maxWidth: "180px",
                 }}
               >
                 {c.label}

@@ -162,7 +162,7 @@ export function ExportsHero() {
               e.currentTarget.style.backgroundColor = "#0F172A";
             }}
           >
-            I'm an Indian Manufacturer
+            I&apos;m an Indian Manufacturer
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -197,7 +197,7 @@ export function ExportsHero() {
               e.currentTarget.style.borderColor = "rgba(15, 23, 42, 0.2)";
             }}
           >
-            I'm an International Buyer
+            I&apos;m an International Buyer
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />

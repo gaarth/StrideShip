@@ -65,7 +65,7 @@ export function Article1() {
 
       <H3>Layer 2: Intelligent Extraction</H3>
       <P>
-        The AI model reads the entire document and identifies the semantic meaning of each element. It does not just "see text" - it understands that "Description of Goods" is a column header, that "STAINLESS STEEL BOLTS M8x40" is a product description, that "7318.15.00" is an HSN code, and that the number next to it is a quantity, not a price. This contextual understanding is what separates AI extraction from template-based OCR. The model handles multi-format invoices, mixed languages, handwritten annotations, and non-standard layouts.
+        The AI model reads the entire document and identifies the semantic meaning of each element. It does not just &quot;see text&quot; - it understands that &quot;Description of Goods&quot; is a column header, that &quot;STAINLESS STEEL BOLTS M8x40&quot; is a product description, that &quot;7318.15.00&quot; is an HSN code, and that the number next to it is a quantity, not a price. This contextual understanding is what separates AI extraction from template-based OCR. The model handles multi-format invoices, mixed languages, handwritten annotations, and non-standard layouts.
       </P>
 
       <H3>Layer 3: Normalization and Validation</H3>
@@ -96,18 +96,18 @@ export function Article1() {
 
       <H2>HSN Code Validation: Where Most Tools Fail</H2>
       <P>
-        HSN code classification is the single most error-prone step in BOE preparation. India uses an 8-digit HSN system derived from the international HS nomenclature, with India-specific sub-headings. A product like "stainless steel bolts" could fall under multiple headings depending on material grade, thread type, and intended application.
+        HSN code classification is the single most error-prone step in BOE preparation. India uses an 8-digit HSN system derived from the international HS nomenclature, with India-specific sub-headings. A product like &quot;stainless steel bolts&quot; could fall under multiple headings depending on material grade, thread type, and intended application.
       </P>
       <P>
-        Generic OCR tools extract the HSN code printed on the invoice and pass it through unchanged. The problem: suppliers frequently print incorrect or outdated HSN codes. A Chinese supplier's HS code does not always map directly to the Indian customs tariff at the 8-digit level.
+        Generic OCR tools extract the HSN code printed on the invoice and pass it through unchanged. The problem: suppliers frequently print incorrect or outdated HSN codes. A Chinese supplier&apos;s HS code does not always map directly to the Indian customs tariff at the 8-digit level.
       </P>
       <P>
-        StrideShip's systems validate extracted HSN codes against the current Indian Customs Tariff database, flag mismatches between the product description and the stated HSN, and suggest corrections based on product characteristics. This single feature prevents the customs queries that cost CHAs thousands of rupees in detention charges and days of clearance delays.
+        StrideShip&apos;s systems validate extracted HSN codes against the current Indian Customs Tariff database, flag mismatches between the product description and the stated HSN, and suggest corrections based on product characteristics. This single feature prevents the customs queries that cost CHAs thousands of rupees in detention charges and days of clearance delays.
       </P>
 
       <H2>Specific Examples from Nhava Sheva / JNPT Operations</H2>
       <P>
-        At Nhava Sheva - India's busiest container port handling over 50% of the country's containerized cargo - the operational pressure on CHAs is relentless. Here is what AI automation changes in practice:
+        At Nhava Sheva - India&apos;s busiest container port handling over 50% of the country&apos;s containerized cargo - the operational pressure on CHAs is relentless. Here is what AI automation changes in practice:
       </P>
       <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0" }}>
         <Li><strong style={{ color: "#CBD5E1" }}>Multi-consignment shipments:</strong> A single container from China with 5 different consignees, each with their own invoice, packing list, and BOE. Manual processing: 8–10 hours. AI-assisted: 30 minutes of review time.</Li>
@@ -117,7 +117,7 @@ export function Article1() {
 
       <H2>How to Evaluate an Automation Vendor for Your CHA</H2>
       <P>
-        Not every "AI for customs" tool delivers what it promises. Here is what to look for and what questions to ask:
+        Not every &quot;AI for customs&quot; tool delivers what it promises. Here is what to look for and what questions to ask:
       </P>
 
       <H3>Questions to Ask</H3>

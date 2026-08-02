@@ -18,14 +18,14 @@ export const metadata: Metadata = {
       "Articles on AI for customs brokers, Bill of Entry automation, freight forwarding AI, and logistics automation in India.",
     url: "https://strideship.dev/blog",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Blog | StrideShip - Logistics Automation Insights",
     description:
       "Articles on AI for customs brokers, Bill of Entry automation, freight forwarding AI, and logistics automation in India.",
-    images: ["/og-image.png"],
+    images: ["/og.png"],
   },
 };
 

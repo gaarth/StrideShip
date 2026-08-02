@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { StarButton } from "@/components/ui/star-button";
 import { fadeUp, stagger, VP } from "@/lib/motion-variants";
 
 const lightCardStyle = {

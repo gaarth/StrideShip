@@ -89,6 +89,8 @@ export function ExportsInquiryForm() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
+    // handleNextClick is stable enough for Enter-to-advance; avoid rebinding each render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, formData, totalSteps]);
 
   const productOptions = PRODUCT_CATEGORIES.map((c) => c.title);
@@ -113,7 +115,7 @@ export function ExportsInquiryForm() {
       } else {
         alert("Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch {
       alert("Error submitting the form.");
     }
     setIsSubmitting(false);

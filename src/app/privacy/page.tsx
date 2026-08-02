@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     description: "Privacy Policy for StrideShip - how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
     url: "https://strideship.dev/privacy",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy | StrideShip",
     description: "Privacy Policy for StrideShip - how we handle trade data, our Ephemeral Processing Model, and DPDP Act compliance for logistics automation.",
-    images: ["/og-image.png"],
+    images: ["/og.png"],
   },
 };
 
@@ -53,7 +53,7 @@ export default function PrivacyPage() {
                 1. Introduction
               </h2>
               <p style={{ color: "#475569", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "16px" }}>
-                StrideShip ("we," "our," or "us"), operated by Gaarth Godbole and Siddhant Vaidya, is a logistics automation infrastructure provider based in Mumbai, India. We are committed to protecting the integrity and confidentiality of the trade data processed through our platform. This Privacy Policy outlines how we handle data as a Data Fiduciary (for your account info) and a Data Processor (for the logistics documents you automate).
+                StrideShip (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), operated by Gaarth Godbole and Siddhant Vaidya, is a logistics automation infrastructure provider based in Mumbai, India. We are committed to protecting the integrity and confidentiality of the trade data processed through our platform. This Privacy Policy outlines how we handle data as a Data Fiduciary (for your account info) and a Data Processor (for the logistics documents you automate).
               </p>
             </section>
 
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
                 </div>
                 <div>
                   <h4 style={{ fontSize: "1.1rem", color: "#CBD5E1", marginBottom: "8px", display: "flex", alignItems: "center", gap: "12px" }}>
-                    <span style={{ color: "#60A5FA" }}>✦</span> Operational Trade Data (The "Automation Input")
+                    <span style={{ color: "#60A5FA" }}>✦</span> Operational Trade Data (The &quot;Automation Input&quot;)
                   </h4>
                   <p style={{ color: "#94A3B8", lineHeight: 1.7, fontSize: "1.05rem", paddingLeft: "30px" }}>
                     When using our services, you may provide unstructured data in the form of PDF invoices, Excel packing lists, and email text. This data often contains third-party information such as consignee details, HSN codes, and commercial values.
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
 
             <section style={{ borderTop: "1px solid rgba(148,163,184,0.1)", paddingTop: "32px" }}>
               <h2 style={{ fontSize: "clamp(1.339rem, 1.564vw, 1.564rem)", color: "#E2E8F0", marginBottom: "24px", letterSpacing: "-0.02em" }}>
-                3. Purpose of Processing (The "Why")
+                3. Purpose of Processing (The &quot;Why&quot;)
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
                 We process information strictly for the following purposes:
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
                   <div style={{ flexShrink: 0, width: "22px", height: "22px", borderRadius: "50%", background: "rgba(15, 23, 42,0.12)", border: "1px solid rgba(15, 23, 42,0.25)", display: "flex", alignItems: "center", justifyContent: "center", color: "#60A5FA", fontSize: "11px", marginTop: "3px" }}>✓</div>
                   <p style={{ margin: 0, color: "#94A3B8", lineHeight: 1.7 }}>
-                    <strong style={{ color: "#CBD5E1", fontWeight: 500 }}>The "Review-Only" Workflow:</strong> To present extracted data back to the user for final audit and submission to their internal systems.
+                    <strong style={{ color: "#CBD5E1", fontWeight: 500 }}>The &quot;Review-Only&quot; Workflow:</strong> To present extracted data back to the user for final audit and submission to their internal systems.
                   </p>
                 </li>
                 <li style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
@@ -250,7 +250,7 @@ export default function PrivacyPage() {
                 8. Your Rights (DPDP Act Compliance)
               </h2>
               <p style={{ color: "#94A3B8", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "24px" }}>
-                As a "Data Principal" under Indian law, you have the right to:
+                As a &quot;Data Principal&quot; under Indian law, you have the right to:
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <div>

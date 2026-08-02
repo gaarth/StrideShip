@@ -4,9 +4,14 @@
   "description": "AI Automation for Indian Logistics — Customs Brokers and Freight Forwarders",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#05070A",
-  "theme_color": "#05070A",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F5F4F0",
   "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",

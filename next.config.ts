@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
-  // Fix workspace root detection
+  // Fix workspace root detection (must be absolute)
   turbopack: {
-    root: ".",
+    root: path.resolve(__dirname),
   },
   compress: true,
 
@@ -27,6 +28,16 @@ const nextConfig: NextConfig = {
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+      // OG / social preview images — shorter cache so Google/LinkedIn can refresh
+      {
+        source: "/og.png",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, must-revalidate",
           },
         ],
       },
@@ -67,6 +78,21 @@ const nextConfig: NextConfig = {
       {
         source: "/resources",
         destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/connect",
+        permanent: true,
+      },
+      {
+        source: "/contact-us",
+        destination: "/connect",
+        permanent: true,
+      },
+      {
+        source: "/about-us",
+        destination: "/about",
         permanent: true,
       },
     ];

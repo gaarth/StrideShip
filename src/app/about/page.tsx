@@ -3,33 +3,33 @@ import { Footer } from "@/components/sections/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About StrideShip | Logistics Automation Experts in Mumbai",
+  title: "About Us | Logistics Automation Experts in Mumbai",
   description:
-    "Meet the team behind StrideShip - Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+    "About Us — meet the Mumbai-based founders behind StrideShip. We automate customs documentation and freight forwarding workflows for Indian logistics firms.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About StrideShip | Logistics Automation Experts in Mumbai",
+    title: "About Us | Logistics Automation Experts in Mumbai",
     description:
-      "Meet the team behind StrideShip - Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
+      "About Us — meet the Mumbai-based founders behind StrideShip. We automate customs documentation and freight forwarding workflows for Indian logistics firms.",
     url: "https://strideship.dev/about",
     type: "website",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "About StrideShip - Logistics Automation Experts",
+        alt: "About Us — StrideShip Logistics Automation Experts",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About StrideShip | Logistics Automation Experts in Mumbai",
+    title: "About Us | Logistics Automation Experts in Mumbai",
     description:
-      "Meet the team behind StrideShip - Mumbai-based founders automating customs documentation and freight forwarding workflows for Indian logistics firms. Learn our story.",
-    images: ["/og-image.png"],
+      "About Us — meet the Mumbai-based founders behind StrideShip. We automate customs documentation and freight forwarding workflows for Indian logistics firms.",
+    images: ["/og.png"],
   },
 };
 

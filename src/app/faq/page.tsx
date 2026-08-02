@@ -4,26 +4,26 @@ import type { Metadata } from "next";
 import { FAQContent } from "./faq-content";
 
 export const metadata: Metadata = {
-  title: "FAQ | StrideShip - Logistics Automation Questions Answered",
+  title: "FAQ | Customs & Logistics Automation Questions Answered",
   description:
-    "Answers to common questions about customs house agent automation, Bill of Entry processing, freight forwarding AI, and logistics automation in India. By StrideShip, Mumbai.",
+    "FAQ — answers on customs house agent automation, Bill of Entry processing, freight forwarding AI, and logistics automation in India. By StrideShip, Mumbai.",
   alternates: {
     canonical: "/faq",
   },
   openGraph: {
-    title: "FAQ | StrideShip - Logistics Automation Questions Answered",
+    title: "FAQ | Customs & Logistics Automation Questions Answered",
     description:
-      "Answers to common questions about customs house agent automation, Bill of Entry processing, freight forwarding AI, and logistics automation in India.",
+      "FAQ — answers on customs house agent automation, Bill of Entry processing, freight forwarding AI, and logistics automation in India.",
     url: "https://strideship.dev/faq",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FAQ | StrideShip - Logistics Automation Questions Answered",
+    title: "FAQ | Customs & Logistics Automation Questions Answered",
     description:
-      "Answers to common questions about customs house agent automation, Bill of Entry processing, freight forwarding AI, and logistics automation in India.",
-    images: ["/og-image.png"],
+      "FAQ — answers on customs house agent automation, Bill of Entry processing, freight forwarding AI, and logistics automation in India.",
+    images: ["/og.png"],
   },
 };
 

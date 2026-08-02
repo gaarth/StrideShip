@@ -92,7 +92,7 @@ export function Article2() {
         The errors that cause the most damage in BOE preparation are systematic, not random. AI automation prevents each category:
       </P>
       <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0" }}>
-        <Li><strong style={{ color: "#CBD5E1" }}>Transcription errors:</strong> Typing "1,250" as "12,500" or swapping two digits in a quantity. AI extraction eliminates manual typing entirely.</Li>
+        <Li><strong style={{ color: "#CBD5E1" }}>Transcription errors:</strong> Typing &quot;1,250&quot; as &quot;12,500&quot; or swapping two digits in a quantity. AI extraction eliminates manual typing entirely.</Li>
         <Li><strong style={{ color: "#CBD5E1" }}>HSN misclassification:</strong> Using the supplier&apos;s HS code without verifying against Indian tariff. AI validates every code against the current Indian Customs Tariff.</Li>
         <Li><strong style={{ color: "#CBD5E1" }}>Missing compliance flags:</strong> Overlooking that a product requires BIS certification. AI checks every line item against all applicable compliance databases.</Li>
         <Li><strong style={{ color: "#CBD5E1" }}>Duty calculation errors:</strong> Using outdated duty rates or missing applicable FTA benefits. AI uses current tariff rates and checks trade agreement eligibility.</Li>

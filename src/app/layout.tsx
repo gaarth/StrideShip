@@ -56,10 +56,11 @@ export const metadata: Metadata = {
     locale: "en_IN",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "StrideShip - AI Automation for Indian Customs & Logistics",
+        type: "image/png",
       },
     ],
   },
@@ -68,14 +69,25 @@ export const metadata: Metadata = {
     title: "StrideShip | AI Customs Automation for India",
     description:
       "Custom AI automation for Indian customs brokers and freight forwarders. Bill of Entry automation, ICEGATE filing, shipment tracking.",
-    images: ["/og-image.png"],
+    images: ["/og.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      {
+        url: "/favicon-light.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/favicon-dark.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
       { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
   robots: {
@@ -113,7 +125,8 @@ const organizationSchema = {
   "@id": "https://strideship.dev/#organization",
   name: "StrideShip",
   url: "https://strideship.dev",
-  logo: "https://strideship.dev/og-image.png",
+  logo: "https://strideship.dev/android-chrome-512x512.png",
+  image: "https://strideship.dev/og.png",
   description:
     "StrideShip builds custom AI automation systems for logistics operations in India - customs documentation, freight forwarding workflows, Bill of Entry processing, and operational intelligence for CHAs, freight forwarders, and 3PL providers.",
   foundingDate: "2026",
@@ -164,16 +177,67 @@ const organizationSchema = {
   ],
 };
 
-// WebSite schema with SearchAction for sitelinks search box
+// WebSite schema — helps Google associate brand + primary URLs
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://strideship.dev/#website",
   name: "StrideShip",
+  alternateName: ["StrideShip AI", "Stride Ship"],
   url: "https://strideship.dev",
   description: "AI-powered customs and logistics automation for Indian businesses",
   publisher: { "@id": "https://strideship.dev/#organization" },
   inLanguage: "en-IN",
+};
+
+// SiteNavigationElement — signals primary sitelink candidates to crawlers
+const siteNavigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://strideship.dev/#sitenavigation",
+  name: "StrideShip primary navigation",
+  itemListElement: [
+    {
+      "@type": "SiteNavigationElement",
+      position: 1,
+      name: "About Us",
+      description:
+        "Meet the Mumbai-based founders behind StrideShip logistics automation.",
+      url: "https://strideship.dev/about",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 2,
+      name: "Contact Us",
+      description:
+        "Book a demo or reach the StrideShip team for customs automation projects.",
+      url: "https://strideship.dev/connect",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 3,
+      name: "Exports JV",
+      description:
+        "Joint-venture export partnerships connecting Indian manufacturers with buyers.",
+      url: "https://strideship.dev/exports",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 4,
+      name: "Blog & Insights",
+      description:
+        "Guides on customs automation, BOE processing, and Indian logistics AI.",
+      url: "https://strideship.dev/blog",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 5,
+      name: "FAQ",
+      description:
+        "Answers on CHA automation, ICEGATE filing, and freight forwarding AI.",
+      url: "https://strideship.dev/faq",
+    },
+  ],
 };
 
 // BreadcrumbList for homepage
@@ -198,7 +262,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${workSans.variable} ${libreBaskerville.variable} antialiased dark`} style={{ fontFamily: "var(--font-worksans)" }}>
       <head>
+        {/* Transparent boat favicons — light/dark chrome; SVG first so tabs stay sharp */}
+        <link rel="icon" href="/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+        <link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
         {/* Preconnect to external domains for performance */}
         {/* LCP: first hero frame (JPG 3840×2160) */}
         <link
@@ -221,6 +289,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        {/* Primary navigation for sitelink eligibility */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
         />
         {/* BreadcrumbList schema */}
         <script

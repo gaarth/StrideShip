@@ -45,31 +45,59 @@ export default function ConnectPage() {
               zIndex: 5,
             }}
           >
-            {/* Logo / Brand */}
-            <span
+            <p
               style={{
-                fontSize: "clamp(0.982rem, 1.564vw, 1.095rem)",
-                fontWeight: 700,
-                color: "#0F172A",
-                letterSpacing: "-0.02em",
-                marginBottom: "12px",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                color: "#64748B",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: "10px",
               }}
             >
               StrideShip
-            </span>
+            </p>
 
-            {/* Tagline */}
-            <p
+            <h1
               style={{
-                fontSize: "clamp(0.758rem, 0.938vw, 0.83rem)",
-                color: "#475569",
-                lineHeight: 1.6,
-                marginBottom: "clamp(43px, 6.256vh, 62px)",
-                maxWidth: "360px",
+                fontSize: "clamp(1.6rem, 3.2vw, 2.1rem)",
+                fontWeight: 700,
+                color: "#0F172A",
+                letterSpacing: "-0.03em",
+                marginBottom: "12px",
+                lineHeight: 1.15,
               }}
             >
-              Automating the manual infrastructure of global trade.
+              Contact Us
+            </h1>
+
+            <p
+              style={{
+                fontSize: "clamp(0.85rem, 1.1vw, 0.95rem)",
+                color: "#475569",
+                lineHeight: 1.6,
+                marginBottom: "clamp(28px, 4vh, 40px)",
+                maxWidth: "380px",
+              }}
+            >
+              Book a demo or reach our Mumbai team for customs automation,
+              freight forwarding AI, and export partnership inquiries.
             </p>
+
+            <a
+              href="mailto:ceo@strideship.dev"
+              style={{
+                fontSize: "0.9rem",
+                fontWeight: 600,
+                color: "#0F172A",
+                textDecoration: "none",
+                marginBottom: "clamp(28px, 4vh, 40px)",
+                borderBottom: "1px solid rgba(15,23,42,0.25)",
+                paddingBottom: "2px",
+              }}
+            >
+              ceo@strideship.dev
+            </a>
 
             {/* Buttons - stacked vertically */}
             <div
@@ -81,15 +109,31 @@ export default function ConnectPage() {
                 width: "100%",
               }}
             >
-              {/* Explore Website - primary StarButton */}
-              <Link href="/" style={{ textDecoration: "none" }}>
+              <a
+                href="https://cal.com/gaarth-godbole/audit-call"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
                 <StarButton
                   height={56}
                   paddingX={48}
                   fontSize="clamp(0.803rem, 1.168vw, 0.88rem)"
                 >
-                  Explore Website
+                  Book a Demo
                 </StarButton>
+              </a>
+
+              <Link href="/" style={{ textDecoration: "none" }}>
+                <span
+                  style={{
+                    fontSize: "0.85rem",
+                    fontWeight: 600,
+                    color: "#475569",
+                  }}
+                >
+                  Explore Website
+                </span>
               </Link>
 
               {/* StrideShip: LinkedIn - Raft light pill style */}

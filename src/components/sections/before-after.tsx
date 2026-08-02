@@ -11,13 +11,8 @@ function useCountUp(target: number, inView: boolean, duration = 1400) {
 
   useEffect(() => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (!inView) return;
 
-    if (!inView) {
-      setVal(0);
-      return;
-    }
-
-    setVal(0);
     let start: number | null = null;
     const step = (ts: number) => {
       if (!start) start = ts;
@@ -34,7 +29,7 @@ function useCountUp(target: number, inView: boolean, duration = 1400) {
     };
   }, [inView, target, duration]);
 
-  return val;
+  return inView ? val : 0;
 }
 
 /* ─────────────── SVG Icons ─────────────── */

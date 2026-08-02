@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "StrideShip Exports - Indian Manufacturer JV & Sourcing Partner",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "StrideShip Exports | Indian Export JV & Sourcing Partner",
     description:
       "Structured joint-venture export partnerships connecting Indian manufacturers with international buyers. Fully managed sales, compliance, and logistics.",
-    images: ["/og-image.png"],
+    images: ["/og.png"],
   },
 };
 

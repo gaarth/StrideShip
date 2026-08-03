@@ -4,19 +4,16 @@ import Link from "next/link";
 
 /* Full official wordmark — black for light footer surfaces */
 function BrandLogo({ height = 22 }: { height?: number }) {
-  const width = Math.round(height * (1330 / 260));
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/brand-logo-dark.svg"
       alt="StrideShip"
-      width={width}
       height={height}
       draggable={false}
       style={{
         height,
         width: "auto",
-        maxWidth: "100%",
         display: "block",
         flexShrink: 0,
         objectFit: "contain",
@@ -33,7 +30,7 @@ export function Footer() {
         color: "#0F172A",
         borderTop: "1px solid rgba(0, 0, 0, 0.08)",
         position: "relative",
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       <div
@@ -62,7 +59,6 @@ export function Footer() {
                 display: "inline-block",
                 marginBottom: "12px",
                 overflow: "visible",
-                maxWidth: "100%",
               }}
             >
               <BrandLogo height={28} />

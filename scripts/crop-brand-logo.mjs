@@ -5,25 +5,27 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 
-/**
- * Source artboards are 1500² with boat + wordmark near y≈620.
- * Text group is translated to x=425 with a 928-wide clip → ends ~x=1353.
- * Boat placement differs between the two official files.
- */
+/** Remove clip/mask/filter cruft that clips "Ship" or breaks small renders. */
+function sanitizeSvgInner(inner) {
+  return inner
+    .replace(/<clipPath[\s\S]*?<\/clipPath>/g, "")
+    .replace(/<mask[\s\S]*?<\/mask>/g, "")
+    .replace(/<filter[\s\S]*?<\/filter>/g, "")
+    .replace(/\sclip-path="[^"]*"/g, "")
+    .replace(/\smask="[^"]*"/g, "");
+}
+
 const logos = [
   {
-    // White marks for dark header glass
     src: path.join("Strideship logos", "strideship black transparent bg.svg"),
     out: path.join("public", "brand-logo.svg"),
-    // Boat ~188; text to ~1353
     view: "180 620 1200 250",
   },
   {
-    // Black marks for light footer
     src: path.join("Strideship logos", "strideship white transparent bg.svg"),
     out: path.join("public", "brand-logo-dark.svg"),
-    // Boat ~48; text clip ends ~1353 — previous 1220-wide crop cut off the final "p"
-    view: "40 610 1330 260",
+    // Extra right padding — text clip was 928px inside group at x=425
+    view: "35 605 1390 270",
   },
 ];
 
@@ -31,7 +33,7 @@ function makeLogo({ src, out, view }) {
   const srcPath = path.join(root, src);
   const outPath = path.join(root, out);
   const raw = fs.readFileSync(srcPath, "utf8");
-  const inner = raw.replace(/^<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "");
+  const inner = sanitizeSvgInner(raw.replace(/^<svg[^>]*>/, "").replace(/<\/svg>\s*$/, ""));
   const parts = view.split(/\s+/);
   const vw = parts[2];
   const vh = parts[3];

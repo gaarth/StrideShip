@@ -17,13 +17,11 @@ const links = [
 
 /* ── Full StrideShip wordmark (boat + text) — white marks for dark nav ──────── */
 function BrandLogo({ height = 22 }: { height?: number }) {
-  const width = Math.round(height * (1200 / 250));
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src="/brand-logo.svg"
       alt="StrideShip"
-      width={width}
       height={height}
       draggable={false}
       style={{

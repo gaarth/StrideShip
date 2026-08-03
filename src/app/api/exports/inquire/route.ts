@@ -78,8 +78,8 @@ export async function POST(request: Request) {
     // Only attempt to send email if API key is actually set, otherwise just log to prevent 500 error
     if (process.env.RESEND_API_KEY) {
       await resend.emails.send({
-        from: "StrideShip Exports <inquiries@strideship.dev>",
-        to: ["ceo@strideship.dev"],
+        from: "StrideShip Exports <onboarding@resend.dev>",
+        to: ["siddhantvaidya70@gmail.com"],
         subject: `New ${isBuyer ? 'Buyer' : 'Manufacturer'} Inquiry - ${companyName}`,
         html: htmlContent,
       });

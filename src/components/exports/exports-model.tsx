@@ -103,16 +103,59 @@ export function ExportsModel() {
               display: grid;
               grid-template-columns: repeat(4, 1fr);
               gap: 16px;
+              align-items: stretch;
+            }
+            .process-card {
+              height: 100%;
+              box-sizing: border-box;
+              background-color: #FFFFFF;
+              border-radius: 16px;
+              padding: 28px 24px 24px;
+              border: 1px solid rgba(0, 0, 0, 0.08);
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              overflow: hidden;
+            }
+            .process-card-label {
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: #0F172A;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              font-family: var(--font-worksans), Space Grotesk, sans-serif;
+              height: 1.2em;
+              line-height: 1.2;
+              margin: 0 0 14px;
+              flex-shrink: 0;
+            }
+            .process-card-title {
+              font-size: 1.1rem;
+              font-weight: 700;
+              color: #0F172A;
+              letter-spacing: -0.02em;
+              line-height: 1.3;
+              margin: 0 0 14px;
+              min-height: calc(1.1rem * 1.3 * 2);
+              flex-shrink: 0;
+            }
+            .process-card-body {
+              font-size: 0.9rem;
+              color: #475569;
+              line-height: 1.6;
+              margin: 0;
+              flex: 1;
             }
             @media (max-width: 900px) {
               .process-scroll-container {
                 display: flex;
+                align-items: stretch;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
                 padding-bottom: 16px;
-                margin-right: -4vw; /* Bleed off edge */
+                margin-right: -4vw;
                 padding-right: 4vw;
               }
               .process-scroll-container::-webkit-scrollbar {
@@ -120,7 +163,11 @@ export function ExportsModel() {
               }
               .process-card {
                 min-width: 280px;
+                width: 280px;
+                height: auto;
+                min-height: 280px;
                 scroll-snap-align: start;
+                flex-shrink: 0;
               }
             }
           `}} />
@@ -129,60 +176,27 @@ export function ExportsModel() {
             <motion.div
               key={step.number}
               className="process-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                backgroundColor: "#FFFFFF",
-                borderRadius: "16px",
-                padding: "24px",
-                border: "1px solid rgba(0, 0, 0, 0.08)", // No shadow, flat editorial look
-                display: "flex",
-                flexDirection: "column",
-                position: "relative",
-                overflow: "hidden",
-              }}
+              transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Subtle top accent line instead of a divider at the bottom */}
-              <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "3px", backgroundColor: "#0F172A", opacity: 0.1 }} />
-
               <div
+                aria-hidden
                 style={{
-                  fontSize: "0.85rem",
-                  fontWeight: 700,
-                  color: "#0F172A",
-                  marginBottom: "12px",
-                  letterSpacing: "0.05em",
-                  fontFamily: "var(--font-worksans), Space Grotesk, sans-serif",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "3px",
+                  backgroundColor: "#0F172A",
+                  opacity: 0.1,
                 }}
-              >
-                PHASE {step.number}
-              </div>
+              />
 
-              <h3
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 700,
-                  color: "#0F172A",
-                  marginBottom: "12px",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.3,
-                }}
-              >
-                {step.title}
-              </h3>
-
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "#475569",
-                  lineHeight: 1.6,
-                  margin: 0,
-                }}
-              >
-                {step.summary}
-              </p>
+              <div className="process-card-label">PHASE {step.number}</div>
+              <h3 className="process-card-title">{step.title}</h3>
+              <p className="process-card-body">{step.summary}</p>
             </motion.div>
           ))}
         </div>

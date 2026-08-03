@@ -7,20 +7,23 @@ const root = path.join(__dirname, "..");
 
 /**
  * Source artboards are 1500² with boat + wordmark near y≈620.
- * Boat placement differs between the two official files — crop each tightly.
+ * Text group is translated to x=425 with a 928-wide clip → ends ~x=1353.
+ * Boat placement differs between the two official files.
  */
 const logos = [
   {
     // White marks for dark header glass
     src: path.join("Strideship logos", "strideship black transparent bg.svg"),
     out: path.join("public", "brand-logo.svg"),
-    view: "180 620 1180 250",
+    // Boat ~188; text to ~1353
+    view: "180 620 1200 250",
   },
   {
-    // Black marks for light footer (boat sits further left in this file)
+    // Black marks for light footer
     src: path.join("Strideship logos", "strideship white transparent bg.svg"),
     out: path.join("public", "brand-logo-dark.svg"),
-    view: "40 610 1220 260",
+    // Boat ~48; text clip ends ~1353 — previous 1220-wide crop cut off the final "p"
+    view: "40 610 1330 260",
   },
 ];
 

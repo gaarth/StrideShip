@@ -4,7 +4,7 @@ import Link from "next/link";
 
 /* Full official wordmark — black for light footer surfaces */
 function BrandLogo({ height = 22 }: { height?: number }) {
-  const width = Math.round(height * (1220 / 260));
+  const width = Math.round(height * (1330 / 260));
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -15,7 +15,8 @@ function BrandLogo({ height = 22 }: { height?: number }) {
       draggable={false}
       style={{
         height,
-        width,
+        width: "auto",
+        maxWidth: "100%",
         display: "block",
         flexShrink: 0,
         objectFit: "contain",
@@ -53,8 +54,17 @@ export function Footer() {
           }}
         >
           {/* Column 1: Brand, Tagline & Direct Links (Far Left) */}
-          <div style={{ minWidth: "220px" }}>
-            <Link href="/" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", marginBottom: "12px" }}>
+          <div style={{ minWidth: "260px", overflow: "visible" }}>
+            <Link
+              href="/"
+              style={{
+                textDecoration: "none",
+                display: "inline-block",
+                marginBottom: "12px",
+                overflow: "visible",
+                maxWidth: "100%",
+              }}
+            >
               <BrandLogo height={28} />
             </Link>
 

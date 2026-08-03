@@ -64,7 +64,7 @@ export function ExportsHero() {
   };
 
   const statCards = [
-    { target: 250, suffix: "+", label: "Audited Processing Plants" },
+    { target: 4, suffix: "", label: "Priority Export Sectors" },
     { target: 30, suffix: "+", label: "Active Global Markets" },
     { target: 24, suffix: "h", label: "Sourcing Response Time" },
     { target: 100, suffix: "%", label: "Production Authority Retained" },

@@ -45,7 +45,8 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     whyIndia:
       "India commands over 70% of global organic moringa and turmeric cultivation with direct farm-to-extract supply chains.",
     targetMarkets: ["United States", "European Union", "UAE & GCC", "Japan"],
-    hsCodes: ["1211.90", "0910.30"],
+    // ITC-HS: moringa leaf powder; turmeric (curcuma) powder
+    hsCodes: ["12119029", "09103030"],
     featured: true,
   },
   {
@@ -57,7 +58,8 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     whyIndia:
       "World's largest spice producer with high volatile oil retention varieties and dedicated APEDA-certified agri-export zones.",
     targetMarkets: ["North America", "Middle East", "United Kingdom", "ASEAN"],
-    hsCodes: ["0904.22", "0909.31"],
+    // ITC-HS: chilli powder; cumin (other than black); black pepper garbled
+    hsCodes: ["09042211", "09093129", "09041130"],
     featured: true,
   },
   {
@@ -68,8 +70,9 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
       "Steam-distilled pure essential oils, oleoresins, and cold-pressed carrier oils for aromatherapy, cosmetics, and nutraceutical compounding.",
     whyIndia:
       "Century-old botanical distillation heritage paired with modern GC-MS analytical quality testing facilities.",
-    targetMarkets: ["EU (France, Germany)", "USA", "South Korea", "Australia"],
-    hsCodes: ["3301.29", "1302.19"],
+    targetMarkets: ["USA", "UK", "UAE"],
+    // ITC-HS: lemongrass oil; turmeric oleoresin; other spice oleoresins NES
+    hsCodes: ["33012942", "33019014", "33019029"],
     featured: true,
   },
   {
@@ -81,19 +84,8 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     whyIndia:
       "Abundant non-GMO sugarcane and coconut palms processed without chemical bleaching or artificial preservatives.",
     targetMarkets: ["North America", "Western Europe", "GCC Region"],
-    hsCodes: ["1701.13", "2938.90"],
-    featured: true,
-  },
-  {
-    id: "cat-5",
-    title: "Leather Goods & Industrial Wear",
-    slug: "leather-goods-industrial-wear",
-    description:
-      "LWG-certified finished leather products including industrial safety footwear, aprons, technical gloves, and premium travel accessories.",
-    whyIndia:
-      "World-class tannery clusters in Tamil Nadu and UP offering eco-tanned, heavy-duty leather meeting EU REACH compliance.",
-    targetMarkets: ["European Union", "United Kingdom", "Australia", "USA"],
-    hsCodes: ["4203.29", "6403.40"],
+    // ITC-HS: cane jaggery; coconut sugar; steviol glycosides / other glycosides
+    hsCodes: ["17011410", "17029090", "29389090"],
     featured: true,
   },
 ];
@@ -212,9 +204,9 @@ export const JV_MODEL_STEPS = [
   },
   {
     number: "03",
-    title: "End-to-End EXIM Operations",
+    title: "Logistics Network & Compliance",
     summary:
-      "StrideShip handles product sample dispatch, export documentation, phytosanitary clearance, ICEGATE filing, freight booking, and port logistics.",
+      "We connect you with our existing network of leading freight forwarders and logistics partners across India, and provide hands-on assistance through export compliance, documentation, and clearance workflows.",
   },
   {
     number: "04",

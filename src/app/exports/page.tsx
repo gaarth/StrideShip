@@ -68,7 +68,7 @@ const exportsServiceSchema = {
     },
   },
   description:
-    "Structured joint-venture export partnerships connecting vetted Indian manufacturers in Superfoods, Spices, Essential Oils, and Leather Goods with international importers. End-to-end sales execution, APEDA/Spices Board compliance, and trade logistics.",
+    "Structured joint-venture export partnerships connecting vetted Indian manufacturers in Superfoods, Spices, Essential Oils, and Natural Sweeteners with international importers. Sales execution, APEDA/Spices Board compliance, and logistics partner access.",
   areaServed: ["Worldwide", "India", "United States", "European Union", "UAE", "United Kingdom"],
   serviceType: "Joint Venture Export Execution & International Sourcing",
   hasOfferCatalog: {
@@ -79,7 +79,6 @@ const exportsServiceSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Spices & Agri Export Partnerships" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Essential Oils & Botanical Extracts" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Natural Sweeteners Sourcing" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Leather Goods & Industrial Wear Export" } },
     ],
   },
 };

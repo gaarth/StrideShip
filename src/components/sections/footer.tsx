@@ -88,7 +88,7 @@ export function Footer() {
               </a>
               <span style={{ color: "rgba(0,0,0,0.2)", fontSize: "0.8rem" }}>•</span>
               <a
-                href="mailto:exports@strideship.dev"
+                href="mailto:ceo@strideship.dev"
                 style={{
                   fontSize: "0.82rem",
                   color: "#475569",
@@ -98,7 +98,7 @@ export function Footer() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#0F172A")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
               >
-                exports@strideship.dev
+                ceo@strideship.dev
               </a>
             </div>
           </div>
